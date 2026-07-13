@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html id="main">
+    <title>Liver Simulator</title>
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        td, th{
+            padding: 0.25rem;
+            border: 1px solid;
+            width:50px;
+            text-align: center;
+        }
+        table tr:first-child, table th:first-child{
+            font-weight: bold;
+            /* background: rgb(255, 253, 200); */
+        }
+        table tr td:nth-child(1){
+            font-weight: bold;
+        }
+
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .button{
+            background-color:rgb(200, 200, 200);
+            border:none;
+            text-align: center;
+            box-shadow: 0 5px rgb(50, 50, 50);
+            display:inline-block;
+            border-radius:0%;
+            margin-bottom:10px;
+            font-size:20px;
+        }
+        .button:hover{
+            background-color: rgb(255, 255, 255);
+        }
+        .button:active{
+            background-color:rgb(150, 150, 150);
+            box-shadow: 0 3px rgb(50, 50, 50);
+            transform:translateY(2px);
+        }
+        .title{
+            font-family:'Courier New', Courier, monospace;
+            font-weight: bolder;
+            font-size: xx-large;
+	        text-align: center;
+        }
+        .subtitle{
+            font-family:Helvetica;
+            font-weight:lighter;
+            font-size:small;
+            text-align: center;
+            font-style:italic;
+            padding-bottom:20px;
+        }
+        .debug{
+            visibility:hidden;
+            position:absolute;
+            padding:2%;
+            left:0px;
+            font-family:monospace;
+        }
+    </style>
+
+    <div class="container">
+    <div class="title">
+        <div>LIVER SIMULATOR</div>
+        <div class = "subtitle">by Mohammad Almeqdadi, MD</div>
+    </div>
+    <div id="debug" class="debug"></div>
+    <body class="body">
+        <div>
+            <input class="button" type="button" value="Pause" onclick="togglePause();" />
+            <input class="button" type="button" value="Dark Mode" onclick="toggleLights();" />
+            <input class="button" type="button" value="Reset" onclick="reset();" />
+            <input class="button" type="button" value="Toggle Table" onclick="toggleTable();" />
+            <input class="button" type="button" value="Speed+" onclick="increaseSimulationSpeed();" />
+            <input class="button" type="button" value="Speed-" onclick="decreaseSimulationSpeed();" />
+        </div>
+        <div>
+            <input class="button" type="button" value="Tylenol" onclick="acuteTylenolToxicity();" />
+            <input class="button" type="button" value="Shock Liver" onclick="ischemicHepatitis();" />
+            <input class="button" type="button" value="Viral Hep" onclick="acuteViralHepatitis();" />
+            <input class="button" type="button" value="Alcoholic Hep" onclick="acuteAlcoholicHepatitis();" />
+            <input class="button" type="button" value="Wilson's" onclick="wilsonianHepatitis();" />
+        </div>
+        <div>
+            <input class="button" type="button" value="Rhabdomyolysis" onclick="rhabdomyolysis();" />
+            <input class="button" type="button" value="Augmentin" onclick="augmentinToxicity();" />
+            <input class="button" type="button" value="Bile Obstr" onclick="acuteBiliaryObstruction();" />
+            <input class="button" type="button" value="NAFLD" onclick="increaseBMI();" />
+
+        </div>
+        <div>
+            <input class="button" type="button" value="Give NAC" onclick="giveNAC();" />
+            <input class="button" type="button" value="ERCP/PTC" onclick="resolveBiliaryObstruction();" />
+            <input class="button" type="button" value="IV Vit K" onclick="giveVitK();" />
+            <input class="button" type="button" value="Chelate Copper" onclick="chelateCopper();" />
+            <input class="button" type="button" value="Weight Loss" onclick="decreaseBMI();" />
+
+        </div>
+        <canvas id="graph"></canvas>
+        <div id="tableDiv">
+            <table id=labsTable></table>
+        </div>
+        <canvas id="canvas"></canvas>
+        <!-- <canvas id="visualization"></canvas> -->
+    </div>
+
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <script src="js/Vector.js"></script>
+    <script src="js/Sprite.js"></script>
+    <script src="js/main.js"></script>
+</html>
