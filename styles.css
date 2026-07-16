@@ -1,7 +1,7 @@
 :root {
   --paper: #f3efe5;
   --ink: #16251d;
-  --muted: #657168;
+  --muted: #536158;
   --line: rgba(22, 37, 29, 0.2);
   --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --serif: Georgia, "Times New Roman", serif;
@@ -40,11 +40,10 @@ img {
 
 .shell {
   display: grid;
-  width: min(1600px, calc(100% - 36px));
-  height: 100svh;
-  min-height: 640px;
+  width: min(1440px, calc(100% - 48px));
+  min-height: 100svh;
   margin-inline: auto;
-  grid-template-rows: 58px minmax(0, 1fr) 34px;
+  grid-template-rows: 68px auto 52px;
 }
 
 .header,
@@ -71,46 +70,42 @@ img {
 }
 
 main {
-  display: grid;
-  min-height: 0;
-  grid-template-rows: auto minmax(0, 1fr);
-  gap: 14px;
-  padding: 16px 0;
+  padding: 54px 0 72px;
 }
 
 .intro {
-  display: flex;
-  align-items: baseline;
-  gap: 22px;
+  max-width: 920px;
+  margin-bottom: 36px;
 }
 
 .intro h1 {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(2.1rem, 4vw, 4rem);
+  font-size: clamp(2.8rem, 5.7vw, 5.6rem);
   font-weight: 400;
   letter-spacing: -0.055em;
-  line-height: 0.95;
+  line-height: 0.92;
 }
 
 .intro p {
   margin: 0;
+  max-width: 720px;
+  margin-top: 18px;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: clamp(0.98rem, 1.3vw, 1.1rem);
+  line-height: 1.55;
 }
 
 .grid {
   display: grid;
-  min-height: 0;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-template-rows: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .card {
   position: relative;
   min-width: 0;
-  min-height: 0;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   border: 1px solid var(--line);
   background: #e8e4d9;
@@ -118,15 +113,12 @@ main {
   isolation: isolate;
 }
 
-.card-wide {
-  grid-column: span 2;
-}
-
 .card::after {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(180deg, transparent 32%, rgba(10, 23, 16, 0.84) 100%);
+  background: linear-gradient(180deg, transparent 25%, rgba(10, 23, 16, 0.28) 52%, rgba(10, 23, 16, 0.94) 100%);
+  transition: background-color 250ms ease;
   content: "";
 }
 
@@ -142,6 +134,11 @@ main {
   transform: scale(1.025);
 }
 
+.card:hover,
+.card:focus-visible {
+  border-color: rgba(22, 37, 29, 0.62);
+}
+
 .card-content {
   position: absolute;
   right: 16px;
@@ -154,31 +151,29 @@ main {
 
 .category {
   margin-bottom: 3px;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 0.56rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
-.card strong {
+.card h2 {
+  margin: 0;
   padding-right: 28px;
   font-family: var(--serif);
-  font-size: clamp(1rem, 1.55vw, 1.55rem);
+  font-size: clamp(1.3rem, 1.65vw, 1.65rem);
   font-weight: 400;
   letter-spacing: -0.035em;
   line-height: 1.1;
 }
 
-.card-wide strong {
-  font-size: clamp(1.2rem, 2vw, 2rem);
-}
-
 .description {
   margin-top: 5px;
   padding-right: 32px;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: clamp(0.62rem, 0.72vw, 0.74rem);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.875rem;
+  line-height: 1.4;
 }
 
 .arrow {
@@ -186,14 +181,14 @@ main {
   right: 14px;
   bottom: 14px;
   z-index: 3;
-  display: grid;
-  width: 26px;
-  height: 26px;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.58);
-  border-radius: 50%;
+  transition: transform 200ms ease;
   color: white;
-  font-size: 0.72rem;
+  font-size: 1.2rem;
+}
+
+.card:hover .arrow,
+.card:focus-visible .arrow {
+  transform: translateX(4px);
 }
 
 .footer {
@@ -203,30 +198,18 @@ main {
 
 .footer p {
   margin: 0;
-  font-size: 0.62rem;
+  font-size: 0.75rem;
 }
 
-@media (max-width: 1050px) {
-  .shell {
-    height: auto;
-    min-height: 100svh;
-    grid-template-rows: 58px auto 34px;
-  }
-
-  main {
-    min-height: calc(100svh - 92px);
-  }
-
+@media (max-width: 1080px) {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: none;
-    grid-auto-rows: minmax(220px, 31vw);
   }
 }
 
-@media (max-width: 620px) {
+@media (max-width: 680px) {
   .shell {
-    width: min(100% - 20px, 520px);
+    width: min(calc(100% - 32px), 560px);
     min-height: 100svh;
   }
 
@@ -236,24 +219,19 @@ main {
 
   .name,
   .github {
-    font-size: 0.7rem;
+    font-size: 0.875rem;
   }
 
   main {
-    gap: 12px;
-    padding: 14px 0 18px;
-  }
-
-  .intro {
-    display: block;
+    padding: 38px 0 54px;
   }
 
   .intro h1 {
-    font-size: 2.6rem;
+    font-size: clamp(2.6rem, 13vw, 4rem);
   }
 
   .intro p {
-    margin-top: 4px;
+    margin-top: 14px;
   }
 
   .grid {
@@ -261,42 +239,50 @@ main {
     grid-auto-rows: auto;
   }
 
-  .card,
-  .card-wide {
-    grid-column: auto;
-    aspect-ratio: 16 / 10;
+  .card {
+    display: grid;
+    overflow: visible;
+    aspect-ratio: auto;
+    background: #fffdf7;
   }
 
-  .card strong,
-  .card-wide strong {
-    font-size: 1.35rem;
+  .card::after {
+    display: none;
+  }
+
+  .card img {
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .card-content {
+    position: static;
+    padding: 18px;
+    color: var(--ink);
+  }
+
+  .category {
+    color: var(--muted);
+  }
+
+  .card h2 {
+    font-size: 1.55rem;
   }
 
   .description {
-    font-size: 0.7rem;
+    padding-right: 26px;
+    color: var(--muted);
+    font-size: 0.875rem;
+  }
+
+  .arrow {
+    right: 18px;
+    bottom: 20px;
+    color: var(--ink);
   }
 
   .footer {
     min-height: 42px;
-  }
-}
-
-@media (max-height: 700px) and (min-width: 1051px) {
-  .shell {
-    grid-template-rows: 50px minmax(0, 1fr) 28px;
-  }
-
-  main {
-    gap: 10px;
-    padding: 10px 0;
-  }
-
-  .intro h1 {
-    font-size: 2.2rem;
-  }
-
-  .description {
-    display: none;
   }
 }
 
