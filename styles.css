@@ -187,8 +187,8 @@ p { text-wrap: pretty; }
 
 .cover {
   display: flex;
-  min-height: calc(100svh - var(--head-h));
-  padding: clamp(52px, 6vw, 90px) var(--pad) clamp(34px, 4.5vw, 66px);
+  min-height: auto;
+  padding: clamp(48px, 5vw, 72px) var(--pad) clamp(38px, 4vw, 54px);
   background: var(--cover);
   color: var(--cover-text);
 }
@@ -197,16 +197,16 @@ p { text-wrap: pretty; }
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: min(100%, var(--wide));
   margin-inline: auto;
 }
 
 .cover h1 {
-  max-width: 10.8em;
+  max-width: 11.25em;
   margin: 0;
   font-family: var(--display);
-  font-size: clamp(3.5rem, 8.5vw, 8.75rem);
+  font-size: clamp(3.25rem, 7.2vw, 7.5rem);
   font-weight: 400;
   line-height: .96;
   letter-spacing: -.035em;
@@ -214,10 +214,10 @@ p { text-wrap: pretty; }
 .cover h1 em { font-style: italic; font-weight: 400; }
 
 .byline {
-  margin: clamp(18px, 2vw, 30px) 0 0;
+  margin: clamp(14px, 1.8vw, 24px) 0 0;
   color: var(--coral);
   font-family: var(--display);
-  font-size: clamp(1.5rem, 3.2vw, 3.35rem);
+  font-size: clamp(1.45rem, 2.7vw, 2.8rem);
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: -.02em;
@@ -229,44 +229,27 @@ p { text-wrap: pretty; }
   grid-template-columns: repeat(9, minmax(0, 1fr));
   gap: clamp(8px, 1.6vw, 24px);
   width: 100%;
-  margin-top: clamp(74px, 11vh, 112px);
+  margin-top: clamp(42px, 5vw, 64px);
 }
 
 .fig {
   display: grid;
   justify-items: center;
-  gap: 10px;
-  padding: 10px 4px 4px;
+  padding: 8px 4px 2px;
   color: var(--teal);
   text-decoration: none;
   transition: color 200ms var(--ease), background-color 200ms var(--ease);
 }
 .fig .glyph {
-  width: clamp(64px, 7vw, 108px);
-  height: clamp(64px, 7vw, 108px);
+  width: clamp(58px, 5.8vw, 88px);
+  height: clamp(58px, 5.8vw, 88px);
   transition: transform 320ms var(--ease);
 }
-
-.fig-label {
-  font-family: var(--mono);
-  font-size: .6rem;
-  line-height: 1.3;
-  letter-spacing: .01em;
-  text-align: center;
-  color: var(--cover-muted);
-  opacity: 0;
-  transition: opacity 200ms var(--ease);
-}
-
-.figstrip:hover .fig-label,
-.figstrip:focus-within .fig-label { opacity: .5; }
 
 .fig:hover,
 .fig:focus-visible { color: var(--cover-text); background: var(--cover-sunk); }
 .fig:hover .glyph,
 .fig:focus-visible .glyph { transform: translateY(-3px); }
-.fig:hover .fig-label,
-.fig:focus-visible .fig-label { opacity: 1; color: var(--coral); }
 .fig:focus-visible { outline-color: var(--teal); }
 
 /* ==========================================================================
@@ -284,33 +267,23 @@ main {
 .project-section + .project-section { margin-top: 46px; }
 .project-index > .secondary { margin-top: 64px; }
 
-.project-index { counter-reset: sec entry; }
-.project-section { counter-increment: sec; }
-.project-row { counter-increment: entry; }
-
 .section-heading {
   display: grid;
-  grid-template-columns: var(--gutter) auto minmax(0, 1fr);
+  grid-template-columns: minmax(24px, 1fr) auto minmax(24px, 1fr);
   align-items: center;
   gap: 18px;
 }
 
-.section-heading::before {
-  content: counter(sec, upper-roman);
-  font-family: var(--mono);
-  font-size: .78rem;
-  letter-spacing: .08em;
-  color: var(--oxblood);
-}
-
+.section-heading::before,
 .section-heading::after {
   content: "";
-  height: 2px;
+  height: 1px;
   background: var(--ink);
 }
 
 .section-heading h2 {
   margin: 0;
+  text-align: center;
   font-family: var(--serif);
   font-size: clamp(1.5rem, 2.4vw, 2rem);
   font-weight: 500;
@@ -366,21 +339,13 @@ main {
 
 .project-mark {
   display: grid;
-  justify-items: start;
-  gap: 10px;
-  padding-top: 2px;
+  place-items: center;
+  align-self: center;
 }
-
-.mark-num {
-  font-family: var(--mono);
-  font-size: .72rem;
-  letter-spacing: .06em;
-  color: var(--muted);
-  transition: color 200ms var(--ease);
-}
-.mark-num::before { content: counter(entry, decimal-leading-zero); }
 
 .project-mark .glyph {
+  width: 48px;
+  height: 48px;
   color: var(--teal-deep);
   opacity: .72;
   transition: opacity 220ms var(--ease), transform 280ms var(--ease);
@@ -427,9 +392,6 @@ main {
 .project-row:hover .project-description,
 .project-row:focus-visible .project-description { color: var(--ink); }
 
-.project-row:hover .mark-num,
-.project-row:focus-visible .mark-num { color: var(--oxblood); }
-
 .project-row:hover .glyph,
 .project-row:focus-visible .glyph { opacity: 1; transform: translateY(-2px); }
 
@@ -447,7 +409,6 @@ main {
 .project-row:active::after { background: var(--ink); }
 .project-row:active,
 .project-row:active .project-description,
-.project-row:active .mark-num,
 .project-row:active .project-source { color: var(--paper); }
 .project-row:active .glyph { color: var(--teal); }
 
@@ -564,16 +525,15 @@ main {
     gap: 2px;
     max-width: none;
     margin-inline: calc(var(--pad) * -1);
-    margin-top: clamp(58px, 10vh, 96px);
-    padding: 10px var(--pad) 4px;
+    margin-top: clamp(36px, 7vw, 52px);
+    padding: 8px var(--pad) 2px;
     overflow-x: auto;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
   .figstrip::-webkit-scrollbar { display: none; }
-  .fig { flex: 0 0 82px; }
-  .fig .glyph { width: 40px; height: 40px; }
-  .fig-label { opacity: .5; }
+  .fig { flex: 0 0 76px; }
+  .fig .glyph { width: 48px; height: 48px; }
 
   .project-section + .project-section { margin-top: 38px; }
   .project-index > .secondary { margin-top: 50px; }
@@ -581,7 +541,7 @@ main {
   .section-heading { gap: 12px; }
 
   .project-row { gap: 10px 14px; padding: 20px 8px 22px 0; }
-  .project-mark .glyph { width: 34px; height: 34px; }
+  .project-mark .glyph { width: 40px; height: 40px; }
   .project-description { font-size: .95rem; }
 
   .project-row::after { inset: 0 calc(var(--pad) * -1); }
@@ -594,8 +554,7 @@ main {
 
 @media (max-width: 420px) {
   :root { --gutter: 46px; }
-  .project-mark .glyph { width: 30px; height: 30px; }
-  .mark-num { font-size: .66rem; }
+  .project-mark .glyph { width: 36px; height: 36px; }
 }
 
 /* ==========================================================================
@@ -645,6 +604,7 @@ main {
     --teal-deep:  #86b7b3;
   }
 
+  .section-heading::before,
   .section-heading::after { background: var(--rule); }
   .project-list { border-bottom-color: var(--rule); }
   .colophon { border-top-color: var(--rule); }
@@ -652,6 +612,5 @@ main {
   .project-row:active::after { background: var(--cover-sunk); }
   .project-row:active,
   .project-row:active .project-description,
-  .project-row:active .mark-num,
   .project-row:active .project-source { color: var(--ink); }
 }
