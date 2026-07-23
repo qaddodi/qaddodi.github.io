@@ -186,6 +186,7 @@ p { text-wrap: pretty; }
    ========================================================================== */
 
 .cover {
+  --hero-size: clamp(3.25rem, 7.2vw, 7.5rem);
   display: flex;
   min-height: auto;
   padding: clamp(48px, 5vw, 72px) var(--pad) clamp(38px, 4vw, 54px);
@@ -206,7 +207,7 @@ p { text-wrap: pretty; }
   max-width: 11.25em;
   margin: 0;
   font-family: var(--display);
-  font-size: clamp(3.25rem, 7.2vw, 7.5rem);
+  font-size: var(--hero-size);
   font-weight: 400;
   line-height: .96;
   letter-spacing: -.035em;
@@ -226,16 +227,18 @@ p { text-wrap: pretty; }
 /* figure strip — every tool, one glyph, jumps to its row ----------------- */
 .figstrip {
   display: grid;
-  grid-template-columns: repeat(9, minmax(0, 1fr));
-  gap: clamp(8px, 1.6vw, 24px);
+  grid-template-columns: repeat(9, auto);
+  justify-content: space-between;
   width: 100%;
+  max-width: 11.25em;
   margin-top: clamp(42px, 5vw, 64px);
+  font-size: var(--hero-size);
 }
 
 .fig {
   display: grid;
   justify-items: center;
-  padding: 8px 4px 2px;
+  padding: 8px 0 2px;
   color: var(--teal);
   text-decoration: none;
   transition: color 200ms var(--ease), background-color 200ms var(--ease);
@@ -243,6 +246,7 @@ p { text-wrap: pretty; }
 .fig .glyph {
   width: clamp(58px, 5.8vw, 88px);
   height: clamp(58px, 5.8vw, 88px);
+  stroke-width: .75;
   transition: transform 320ms var(--ease);
 }
 
@@ -524,6 +528,7 @@ main {
     grid-template-columns: none;
     gap: 2px;
     max-width: none;
+    font-size: inherit;
     margin-inline: calc(var(--pad) * -1);
     margin-top: clamp(36px, 7vw, 52px);
     padding: 8px var(--pad) 2px;
