@@ -569,8 +569,8 @@ main {
   }
   .masthead-tag {
     min-width: 0;
-    margin-left: 0;
-    flex: 1 1 auto;
+    margin: 0;
+    flex: 0 0 auto;
     font-size: clamp(.5rem, 1.55vw, .62rem);
     letter-spacing: .09em;
     text-align: left;
