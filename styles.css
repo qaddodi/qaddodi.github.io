@@ -553,9 +553,15 @@ main {
 }
 
 @media (max-width: 680px) {
-  .masthead-inner { gap: 14px; }
+  .masthead-inner {
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
   .masthead-link { display: none; }
-  .wordmark { font-size: .94rem; }
+  .wordmark {
+    flex: 0 0 auto;
+    font-size: .94rem;
+  }
   .wordmark-given { font-size: 0; }
   .wordmark-given::after {
     content: "M.";
@@ -563,23 +569,23 @@ main {
   }
   .masthead-tag {
     min-width: 0;
-    margin-left: auto;
-    flex: 0 1 auto;
+    margin-left: 0;
+    flex: 1 1 auto;
     font-size: clamp(.5rem, 1.55vw, .62rem);
     letter-spacing: .09em;
-    text-align: right;
+    text-align: left;
     white-space: nowrap;
   }
 }
 
 @media (max-width: 360px) {
-  .masthead { padding-inline: 14px; }
-  .masthead-inner { gap: 8px; }
-  .wordmark { font-size: .88rem; }
-  .wordmark-given::after { font-size: .88rem; }
+  .masthead { padding-inline: 10px; }
+  .masthead-inner { gap: 6px; }
+  .wordmark { font-size: .84rem; }
+  .wordmark-given::after { font-size: .84rem; }
   .masthead-tag {
-    font-size: .48rem;
-    letter-spacing: .055em;
+    font-size: .45rem;
+    letter-spacing: .04em;
   }
 }
 
