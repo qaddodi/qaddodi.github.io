@@ -157,12 +157,9 @@ p { text-wrap: pretty; }
   font-size: 1.05rem;
   font-weight: 500;
   letter-spacing: -.01em;
-  text-decoration: none;
   white-space: nowrap;
 }
-.wordmark-desktop > span,
-.wordmark-mobile > span { color: var(--coral); }
-.wordmark-mobile { display: none; }
+.wordmark-credentials { color: var(--coral); }
 
 .masthead-tag {
   flex: 1;
@@ -510,23 +507,6 @@ main {
 @media (max-width: 820px) {
   :root { --gutter: 54px; --head-h: 54px; }
 
-  .masthead-inner {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2px;
-    justify-content: start;
-    padding-block: 8px;
-  }
-  .masthead-tag {
-    display: block;
-    grid-row: 2;
-    white-space: nowrap;
-  }
-  .masthead-link { display: none; }
-  .wordmark { font-size: .98rem; }
-  .wordmark-desktop { display: none; }
-  .wordmark-mobile { display: inline; }
-
   .cover {
     --hero-size: clamp(3.2rem, 13.5vw, 5.9rem);
     min-height: auto;
@@ -570,6 +550,37 @@ main {
   .colophon { grid-template-columns: 1fr; gap: 32px; }
   .footer-inner { grid-template-columns: 1fr; gap: 14px; padding-block: 26px 30px; }
   .copyright { white-space: normal; }
+}
+
+@media (max-width: 680px) {
+  .masthead-inner { gap: 14px; }
+  .masthead-link { display: none; }
+  .wordmark { font-size: .94rem; }
+  .wordmark-given { font-size: 0; }
+  .wordmark-given::after {
+    content: "M.";
+    font-size: .94rem;
+  }
+  .masthead-tag {
+    min-width: 0;
+    margin-left: auto;
+    flex: 0 1 auto;
+    font-size: clamp(.5rem, 1.55vw, .62rem);
+    letter-spacing: .09em;
+    text-align: right;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 360px) {
+  .masthead { padding-inline: 14px; }
+  .masthead-inner { gap: 8px; }
+  .wordmark { font-size: .88rem; }
+  .wordmark-given::after { font-size: .88rem; }
+  .masthead-tag {
+    font-size: .48rem;
+    letter-spacing: .055em;
+  }
 }
 
 @media (max-width: 420px) {
