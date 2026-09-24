@@ -1,0 +1,37 @@
+# Site settings. Projects, the daily panel, and the update log live in _data/.
+# See README.md for how to add a project or roll back the homepage.
+
+title: Mohammad Almeqdadi, MD
+short_title: Almeqdadi
+tagline: Hepatology · Clinical tools · Education
+description: >-
+  Free hepatology calculators, case-based teaching, physiologic simulators, and
+  research tools by Mohammad Almeqdadi, MD, transplant hepatologist.
+url: https://qaddodi.github.io
+baseurl: ""
+lang: en
+timezone: America/New_York
+
+author:
+  name: Mohammad Almeqdadi
+  honorific: MD
+  email: mohammad.almeqdadi@gmail.com
+  github: qaddodi
+  orcid: 0000-0002-5503-2371
+  affiliation: Tufts Medical Center
+
+# The first day of the daily panel. Panel "No. 1" is this date.
+panel_epoch: 2026-09-24
+
+# A project counts as "New" for this many days after its `added` date.
+new_days: 45
+
+plugins:
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .gitignore

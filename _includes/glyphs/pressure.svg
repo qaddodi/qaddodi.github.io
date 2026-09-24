@@ -1,0 +1,6 @@
+<circle cx="16" cy="16" r="13.2"/>
+<circle cx="16" cy="16" r="11.3" opacity=".54"/>
+<path d="M5.2 17.5h2.1M7.2 11.5l1.9 1.1M11.2 7.2l1.1 1.9M16 5.6v2.2M20.8 7.2l-1.1 1.9M24.8 11.5l-1.9 1.1M26.8 17.5h-2.1" opacity=".82"/>
+<path class="needle" d="M16 20.2 24 10.4"/>
+<circle cx="16" cy="20.2" r="1.55" fill="currentColor" stroke="none"/>
+<path d="M12.3 27.2h7.4"/>

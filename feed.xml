@@ -1,0 +1,27 @@
+---
+layout: null
+sitemap: false
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ site.lang }}">
+  <title>{{ site.title | xml_escape }} · What's new</title>
+  <subtitle>New hepatology tools, cases, and updates.</subtitle>
+  <link href="{{ '/feed.xml' | absolute_url }}" rel="self" type="application/atom+xml"/>
+  <link href="{{ '/' | absolute_url }}" rel="alternate" type="text/html"/>
+  <id>{{ '/' | absolute_url }}</id>
+  <updated>{{ site.data.changelog.first.date | date: '%Y-%m-%dT12:00:00Z' }}</updated>
+  <author><name>{{ site.author.name | xml_escape }}, {{ site.author.honorific }}</name></author>
+  <icon>{{ '/assets/icons/icon-192.png' | absolute_url }}</icon>
+  {%- for e in site.data.changelog %}
+    {%- assign ep = nil -%}
+    {%- if e.project %}{% assign ep = site.data.projects | where: "id", e.project | first %}{% endif %}
+    {%- if ep %}{% assign link = ep.url %}{% else %}{% assign link = '/#updates' | absolute_url %}{% endif %}
+  <entry>
+    <title>{% if e.kind == 'new' %}New: {% elsif ep %}{{ ep.title | xml_escape }}: {% endif %}{{ e.title | xml_escape }}</title>
+    <link href="{{ link }}" rel="alternate" type="text/html"/>
+    <id>{{ '/' | absolute_url }}#{{ e.date | date: '%Y-%m-%d' }}-{{ e.title | slugify }}</id>
+    <updated>{{ e.date | date: '%Y-%m-%dT12:00:00Z' }}</updated>
+    <summary>{{ e.text | strip | xml_escape }}</summary>
+  </entry>
+  {%- endfor %}
+</feed>

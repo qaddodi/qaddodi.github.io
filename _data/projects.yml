@@ -1,0 +1,196 @@
+# One entry per project. This file drives the homepage rows, the figure strip,
+# the search palette, JSON-LD, /projects.json, and the 404 page.
+#
+# Fields
+#   id        unique slug, also the row anchor (#p-<id>)
+#   legacy_anchor  optional old anchor kept working for existing links
+#   title     display name
+#   short     2–3 word label under the figure-strip glyph
+#   url       where the project lives
+#   repo      owner/name on GitHub; the homepage reads the latest commit date from it
+#   path      optional folder inside `repo` (for projects that live in a subfolder)
+#   type      calculator | case | simulator | research  (see _data/sections.yml)
+#   glyph     file in _includes/glyphs/ (without .svg)
+#   summary   one or two sentences
+#   specimen  label/value pairs shown as the row's "figure caption"
+#   sources   optional citations; `url` optional
+#   note      optional short caveat shown in the meta line
+#   keywords  extra words for search
+#   added     date it first appeared on the homepage (drives the "New" badge)
+#   updated   last meaningful update (the homepage refreshes this from GitHub when it can)
+#   cta       optional override of the section's call to action
+
+- id: chb-hcc-risk
+  legacy_anchor: t-hcc
+  title: CHB HCC Risk Calculators
+  short: HCC risk
+  url: https://qaddodi.github.io/chb-hcc-risk/
+  repo: qaddodi/chb-hcc-risk
+  type: calculator
+  glyph: hcc
+  summary: >-
+    Hepatocellular carcinoma risk in chronic hepatitis B from two validated scores,
+    calculated side by side from one shared form.
+  specimen:
+    - [In, "Age · sex · platelets · albumin · AST · quantitative HBsAg"]
+    - [Out, "HBsAg-HCC and PAGE-B risk, with EMR-ready text to copy"]
+  sources:
+    - text: Papatheodoridis et al., J Hepatol 2016 (PAGE-B)
+      url: https://pubmed.ncbi.nlm.nih.gov/26678008/
+    - text: Guo et al., Aliment Pharmacol Ther 2026 (HBsAg-HCC)
+      url: https://pubmed.ncbi.nlm.nih.gov/41933428/
+  keywords: hepatitis B HBV CHB hepatocellular carcinoma surveillance PAGE-B HBsAg
+  added: 2026-07-23
+  updated: 2026-07-22
+
+- id: portal-hypertension-predictor
+  legacy_anchor: t-portal-htn
+  title: Portal Hypertension Predictor
+  short: Portal HTN
+  url: https://qaddodi.github.io/portal-hypertension-predictor/
+  repo: qaddodi/portal-hypertension-predictor
+  type: calculator
+  glyph: portal-htn
+  summary: >-
+    Probability of clinically significant and severe portal hypertension from routine
+    labs, using the Vienna models, with liver stiffness if you have it.
+  specimen:
+    - [In, "Platelets · bilirubin · INR  (+ liver stiffness, optional)"]
+    - [Out, "P(CSPH, HVPG ≥ 10) and P(severe PH, HVPG ≥ 16)"]
+  sources:
+    - text: Reiniš et al., J Hepatol 2023;78:390–400
+    - text: Mohammed et al., Dig Dis Sci 2026 (US validation)
+  note: A rule-out aid. Confirm with HVPG where management depends on it.
+  keywords: CSPH HVPG Vienna cirrhosis compensated elastography LSM FIB-4
+  added: 2026-07-13
+  updated: 2026-07-09
+
+- id: liver-injury-backtracker
+  legacy_anchor: t-backtrack
+  title: Liver Injury Backtracker
+  short: Backtracker
+  url: https://qaddodi.github.io/liverenzymebacktrack/
+  repo: qaddodi/liverenzymebacktrack
+  type: calculator
+  glyph: backtrack
+  summary: >-
+    Work backward from today's AST, ALT, and LDH to estimate what they were hours
+    or days ago, using editable enzyme half-lives.
+  specimen:
+    - [In, "Current AST · ALT · LDH and the time they were drawn"]
+    - [Out, "A table of estimated earlier values, in 12-hour steps by default"]
+  note: "Default half-lives: AST 17 h, ALT 72 h, LDH 24 h."
+  keywords: transaminase half-life timing injury onset ischemic enzymes
+  added: 2026-07-13
+  updated: 2024-12-28
+
+- id: liver-panel
+  legacy_anchor: t-panel
+  title: Interpreting the Liver Panel
+  short: Liver panel
+  url: https://qaddodi.github.io/acute-liver-injury-cases/
+  repo: qaddodi/acute-liver-injury-cases
+  type: case
+  glyph: panel
+  summary: >-
+    Thirteen lab panels, each with a diagnosis hiding in the pattern. Name it
+    before the reveal, then see why.
+  specimen:
+    - [Format, "13 panels · read the pattern, name the diagnosis, reveal"]
+    - [Covers, "R factor · AST:ALT · acetaminophen · cholestasis · Wilson disease"]
+  keywords: LFTs liver function tests R factor AST ALT ALP GGT hepatocellular cholestatic
+  added: 2026-07-13
+  updated: 2026-07-13
+
+- id: cirrhosis-case
+  legacy_anchor: t-cirrhosis
+  title: Cirrhosis Interactive Case
+  short: Cirrhosis
+  url: https://qaddodi.github.io/cirrhosis-interactive-case/
+  repo: qaddodi/cirrhosis-interactive-case
+  type: case
+  glyph: cirrhosis
+  summary: >-
+    Follow one patient, Adam, from an early clue in primary care through
+    decompensation, the ICU, and the transplant decision.
+  specimen:
+    - [Format, "52 steps · 25 questions to answer before the reveal"]
+    - [Goals, "Recognize · Interpret · Stabilize · Escalate"]
+  keywords: ascites SBP variceal bleeding hepatic encephalopathy HRS-AKI terlipressin transplant EAST-VIBES
+  added: 2026-07-16
+  updated: 2026-08-26
+
+- id: portal-pressure-simulator
+  legacy_anchor: t-pressure
+  title: Portal Pressure Simulator
+  short: Portal pressure
+  url: https://qaddodi.github.io/portal-pressure-simulator/
+  repo: qaddodi/portal-pressure-simulator
+  type: simulator
+  glyph: pressure
+  summary: >-
+    A live model of the portal circulation. Change flow, resistance, or shunting
+    and watch pressure and HVPG respond.
+  specimen:
+    - [Move, "Gut inflow · pre/post-hepatic resistance · TIPS diameter · splenorenal shunt"]
+    - [Watch, "Pressure by color, flow by speed, and HVPG (wedged − free)"]
+  keywords: TIPS HVPG shunt resistance flow hemodynamics wedged hepatic venous pressure
+  added: 2026-07-13
+  updated: 2026-01-19
+
+- id: liver-simulator
+  legacy_anchor: t-liver-sim
+  title: Liver Simulator
+  short: Liver sim
+  url: https://qaddodi.github.io/liver-simulator/
+  repo: qaddodi/qaddodi.github.io
+  path: liver-simulator
+  type: simulator
+  glyph: liver-sim
+  summary: >-
+    Trigger an injury, give a treatment, and watch the labs move in real time.
+  specimen:
+    - [Injure, "Acetaminophen · shock liver · viral · alcohol · Wilson · rhabdo · Augmentin · obstruction · NAFLD"]
+    - [Treat, "NAC · ERCP/PTC · IV vitamin K · copper chelation · weight loss"]
+  keywords: simulation labs trajectory AST ALT ALP bilirubin INR NAC
+  added: 2026-07-13
+  updated: 2021-08-14
+
+- id: abstract-atelier
+  legacy_anchor: t-abstract
+  title: Abstract Atelier
+  short: Abstracts
+  url: https://qaddodi.github.io/abstract-atelier/
+  repo: qaddodi/abstract-atelier
+  type: research
+  glyph: abstract
+  summary: >-
+    A writing desk for medical abstracts. Type a PMID and the citation appears
+    beside your draft, with the abstract a hover away.
+  specimen:
+    - [In, "Your draft, with PMIDs typed inline"]
+    - [Out, "Citation cards, hover-to-read abstracts, copy as HTML or print"]
+  note: Drafts are saved in your browser.
+  keywords: PubMed PMID citation writing manuscript abstract NCBI
+  added: 2026-07-13
+  updated: 2026-01-12
+
+- id: auris-eeg
+  legacy_anchor: t-auris
+  title: Auris EEG Sonification
+  short: EEG audio
+  url: https://qaddodi.github.io/auris-eeg/
+  repo: qaddodi/auris-eeg
+  type: research
+  glyph: auris
+  cta: Open workstation
+  summary: >-
+    Review deidentified EEG, explore its spectrum, and listen to it. Parsed
+    entirely in your browser, nothing uploaded.
+  specimen:
+    - [In, "EDF/EDF+ recording, or the bundled TUH EEG sample"]
+    - [Out, "Montages, filters, spectrum/DSA, sonification, WAV export"]
+  note: For education and research. Not a medical device.
+  keywords: EEG EDF sonification audio spectrum DSA neurology seizure
+  added: 2026-08-28
+  updated: 2026-09-07
