@@ -1,0 +1,27 @@
+---
+layout: base
+title: Page not found | Mohammad Almeqdadi, MD
+description: That page isn't here. Every hepatology tool on this site is listed below.
+permalink: /404.html
+sitemap: false
+noindex: true
+body_class: lost-page
+---
+<main class="cover lost" id="contents">
+  <div class="cover-inner">
+    <div class="cover-copy">
+      <p class="cover-kicker micro">404 &middot; Not found</p>
+      <h1>That page isn&rsquo;t here, but every tool is.</h1>
+      <p class="lede">The address may have changed. Pick a tool below, or press <kbd>/</kbd> to search.</p>
+      <ul class="lost-list">
+        {%- for p in site.data.projects %}
+        <li><a href="{{ p.url }}">{% include glyph.html id=p.glyph %}{{ p.title }}</a></li>
+        {%- endfor %}
+      </ul>
+      <div class="lost-actions">
+        <a class="btn" href="{{ '/' | relative_url }}">Go to the homepage</a>
+        <button class="btn btn-quiet" type="button" data-open-palette>Search tools</button>
+      </div>
+    </div>
+  </div>
+</main>

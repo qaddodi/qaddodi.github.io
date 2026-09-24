@@ -1,0 +1,23 @@
+---
+layout: null
+sitemap: false
+---
+{
+  "name": {{ site.title | jsonify }},
+  "url": {{ '/' | absolute_url | jsonify }},
+  "generated": {{ site.time | date_to_xmlschema | jsonify }},
+  "projects": [
+    {%- for p in site.data.projects %}
+    {
+      "id": {{ p.id | jsonify }},
+      "title": {{ p.title | jsonify }},
+      "type": {{ p.type | jsonify }},
+      "url": {{ p.url | jsonify }},
+      "summary": {{ p.summary | strip | jsonify }},
+      "added": {{ p.added | date: '%Y-%m-%d' | jsonify }},
+      "updated": {{ p.updated | date: '%Y-%m-%d' | jsonify }}{% if p.repo %},
+      "repo": {{ p.repo | prepend: 'https://github.com/' | jsonify }}{% endif %}
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor %}
+  ]
+}

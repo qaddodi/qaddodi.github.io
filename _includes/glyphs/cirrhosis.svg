@@ -1,0 +1,8 @@
+<circle class="node" cx="16" cy="3.7" r="2.25"/>
+<circle class="node n2" cx="8.8" cy="14.7" r="2.25"/>
+<circle class="node n2" cx="23.2" cy="14.7" r="2.25"/>
+<circle class="node n3" cx="4.2" cy="28.1" r="2.25"/>
+<circle class="node n3" cx="12.7" cy="28.1" r="2.25"/>
+<circle class="node n3" cx="20.1" cy="28.1" r="2.25"/>
+<circle class="node n3" cx="28.1" cy="28.1" r="2.25"/>
+<path d="M14.8 5.6 10 12.8M17.2 5.6l4.8 7.2M8.1 16.8 5 26M9.7 16.8l2.4 9.2M22.4 16.8l-1.7 9.2M24 16.8l3.3 9.2"/>

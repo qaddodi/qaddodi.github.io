@@ -1,0 +1,60 @@
+# "What's new" on the homepage and the Atom feed at /feed.xml. Newest first.
+# `project` is an id from projects.yml (optional). `kind`: new | update | site.
+
+- date: 2026-09-24
+  kind: site
+  title: A daily liver panel, and a new front page
+  text: >-
+    One lab panel a day from Interpreting the Liver Panel. Name the pattern,
+    keep your streak. The index now shows what each tool takes in and gives back.
+
+- date: 2026-09-07
+  kind: update
+  project: auris-eeg
+  title: EEG traces colored by frequency band
+  text: >-
+    Band-colored traces, a DSA band overlay and legend, and rule-based review
+    candidates to step through.
+
+- date: 2026-08-28
+  kind: new
+  project: auris-eeg
+  title: Auris EEG Sonification
+  text: >-
+    Open a deidentified EDF recording in the browser, review it, and listen to it.
+
+- date: 2026-08-26
+  kind: update
+  project: cirrhosis-case
+  title: Learning objectives for the cirrhosis case
+  text: >-
+    The case now opens with its four goals: recognize, interpret, stabilize, escalate.
+
+- date: 2026-08-03
+  kind: update
+  project: cirrhosis-case
+  title: EAST-VIBES summary and terlipressin safety
+  text: >-
+    New summary slide, initial labs added to the clinical assessment, and a
+    refined renal trend chart.
+
+- date: 2026-07-23
+  kind: new
+  project: chb-hcc-risk
+  title: CHB HCC Risk Calculators
+  text: >-
+    HBsAg-HCC and PAGE-B from one shared form, both results side by side, with
+    EMR-ready text.
+
+- date: 2026-07-16
+  kind: new
+  project: cirrhosis-case
+  title: Cirrhosis Interactive Case
+  text: >-
+    A longitudinal case following one patient from primary care to transplant evaluation.
+
+- date: 2026-07-13
+  kind: site
+  title: The index launches
+  text: >-
+    Calculators, cases, simulators, and research tools gathered in one place.

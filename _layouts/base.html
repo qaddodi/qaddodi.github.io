@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    {%- assign page_description = page.description | default: site.description | strip_newlines | strip %}
+    <meta name="description" content="{{ page_description | escape }}">
+    <meta name="theme-color" content="#141815">
+    <meta name="color-scheme" content="light dark">
+    {%- if page.noindex %}
+    <meta name="robots" content="noindex">
+    {%- endif %}
+
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+    <meta property="og:title" content="{{ page.og_title | default: page.title | default: site.title | escape }}">
+    <meta property="og:description" content="{{ page_description | escape }}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:image" content="{{ '/og.png' | absolute_url }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Hepatology tools by {{ site.author.name }}, {{ site.author.honorific }}: calculators, cases, simulators, and research tools.">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="{{ '/assets/icons/icon.svg' | relative_url }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ '/assets/icons/apple-touch-icon.png' | relative_url }}">
+    <link rel="manifest" href="{{ '/manifest.webmanifest' | relative_url }}">
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title }} · What's new" href="{{ '/feed.xml' | relative_url }}">
+
+    <link rel="preload" href="{{ '/assets/fonts/source-serif-4-var.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/playfair-display-var.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    {%- assign v = site.time | date: '%s' %}
+    <link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}?v={{ v }}">
+
+    <script>
+      /* Apply a saved theme before first paint. */
+      try {
+        var t = localStorage.getItem("qd:theme");
+        if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+      } catch (e) {}
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+
+  <body class="{{ page.body_class }}">
+    <div class="progress" aria-hidden="true"></div>
+    <a class="skip" href="#contents">Skip to contents</a>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="{{ site.title }}, home">
+          <span class="wordmark-given">Mohammad</span><span class="wordmark-initial" aria-hidden="true">M.</span> Almeqdadi<span class="wordmark-credentials">, MD</span>
+        </a>
+        <p class="masthead-tag">{{ site.tagline }}</p>
+
+        <nav class="masthead-nav" aria-label="Sections">
+          <a href="{{ '/#tools' | relative_url }}">Tools</a>
+          <a href="{{ '/#today' | relative_url }}">Today&rsquo;s panel</a>
+          <a href="{{ '/#updates' | relative_url }}">What&rsquo;s new<span class="nav-dot" data-updates-dot hidden aria-hidden="true"></span></a>
+          <a href="{{ '/#about' | relative_url }}">About</a>
+        </nav>
+
+        <div class="masthead-tools">
+          <button class="tool-btn search-btn" type="button" data-open-palette aria-label="Search tools" aria-keyshortcuts="Control+K Meta+K /">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m12.7 12.7 4.3 4.3"/></svg>
+            <span class="search-label">Search</span>
+            <kbd class="search-kbd" aria-hidden="true">/</kbd>
+          </button>
+          <button class="tool-btn theme-btn" type="button" data-theme-toggle aria-label="Color theme: automatic">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="M10 3.5a6.5 6.5 0 0 1 0 13z" fill="currentColor" stroke="none"/></svg>
+          </button>
+          <a class="masthead-link" href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer">
+            GitHub <span aria-hidden="true">&#8599;</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    {{ content }}
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>
+          Educational and research tools. Not medical advice. Clinical calculators should be
+          interpreted in the context of their source publications and appropriate clinical judgment.
+        </p>
+        <p class="footer-links">
+          <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+          <a href="{{ '/projects.json' | relative_url }}">JSON</a>
+          <a href="https://github.com/{{ site.author.github }}/{{ site.author.github }}.github.io" target="_blank" rel="noopener noreferrer">Source</a>
+        </p>
+        <p class="copyright">&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}, {{ site.author.honorific }}</p>
+      </div>
+    </footer>
+
+    <!-- search palette -->
+    <dialog class="palette" id="palette" aria-label="Search tools">
+      <form method="dialog" class="palette-form" role="search">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m12.7 12.7 4.3 4.3"/></svg>
+        <input class="palette-input" type="search" placeholder="Search tools, topics, or actions" autocomplete="off" spellcheck="false"
+               role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" aria-label="Search">
+        <kbd aria-hidden="true">esc</kbd>
+      </form>
+      <ul class="palette-list" id="palette-list" role="listbox" aria-label="Results"></ul>
+      <p class="palette-foot" aria-hidden="true"><kbd>↑</kbd><kbd>↓</kbd> move <kbd>↵</kbd> open <kbd>esc</kbd> close</p>
+    </dialog>
+
+    <!-- present / QR -->
+    <dialog class="present" id="present" aria-labelledby="present-title">
+      <div class="present-inner">
+        <p class="micro present-kicker" data-present-kicker></p>
+        <h2 class="present-title" id="present-title" data-present-title></h2>
+        <div class="present-qr" data-present-qr aria-hidden="true"></div>
+        <p class="present-url" data-present-url></p>
+        <div class="present-actions">
+          <button type="button" class="btn" data-present-full>Full screen</button>
+          <button type="button" class="btn btn-quiet" data-present-close>Close</button>
+        </div>
+      </div>
+    </dialog>
+
+    <div class="toast" role="status" aria-live="polite" data-toast></div>
+
+    <script id="site-data" type="application/json">
+      {%- include site-data.json -%}
+    </script>
+    <script src="{{ '/assets/site.js' | relative_url }}?v={{ v }}" defer></script>
+  </body>
+</html>

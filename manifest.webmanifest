@@ -1,0 +1,25 @@
+---
+layout: null
+sitemap: false
+---
+{
+  "name": "Hepatology tools · {{ site.author.name }}, {{ site.author.honorific }}",
+  "short_name": "Liver tools",
+  "description": {{ site.description | strip | jsonify }},
+  "start_url": "/?source=homescreen",
+  "scope": "/",
+  "display": "minimal-ui",
+  "background_color": "#141815",
+  "theme_color": "#141815",
+  "icons": [
+    { "src": "/assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/assets/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "shortcuts": [
+    {%- for p in site.data.projects limit: 4 %}
+    { "name": {{ p.title | jsonify }}, "short_name": {{ p.short | jsonify }}, "url": {{ p.url | jsonify }} }{% unless forloop.last %},{% endunless %}
+    {%- endfor %}
+  ]
+}

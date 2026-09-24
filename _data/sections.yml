@@ -1,0 +1,31 @@
+# Homepage sections, in display order. Each project's `type` places it in a section.
+# `verb` is the default call to action for that type (a project can override with `cta`).
+# `intent` groups sections into the three "doors" under the headline.
+
+- id: calculators
+  type: calculator
+  title: Clinical calculators
+  intent: bedside
+  verb: Open calculator
+  kicker: From published models
+
+- id: education
+  type: case
+  title: Interactive clinical education
+  intent: teaching
+  verb: Start case
+  kicker: Case-based, reveal as you go
+
+- id: simulators
+  type: simulator
+  title: Physiologic simulators
+  intent: teaching
+  verb: Run simulator
+  kicker: Move a variable, watch the physiology
+
+- id: research
+  type: research
+  title: Research &amp; writing
+  intent: research
+  verb: Open workspace
+  kicker: Runs in your browser
