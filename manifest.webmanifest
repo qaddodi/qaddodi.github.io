@@ -9,8 +9,8 @@ sitemap: false
   "start_url": "/?source=homescreen",
   "scope": "/",
   "display": "minimal-ui",
-  "background_color": "#141815",
-  "theme_color": "#141815",
+  "background_color": "#f5f1ea",
+  "theme_color": "#f5f1ea",
   "icons": [
     { "src": "/assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },

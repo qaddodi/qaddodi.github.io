@@ -10,7 +10,9 @@
 #   repo      owner/name on GitHub; the homepage reads the latest commit date from it
 #   path      optional folder inside `repo` (for projects that live in a subfolder)
 #   type      calculator | case | simulator | research  (see _data/sections.yml)
-#   glyph     file in _includes/glyphs/ (without .svg)
+#   glyph     small icon: file in _includes/glyphs/ (without .svg)
+#   art       plate illustration: file in _includes/art/ (made by _scripts/make-art.py);
+#             optional, the glyph is drawn large when it's missing
 #   summary   one or two sentences
 #   specimen  label/value pairs shown as the row's "figure caption"
 #   sources   optional citations; `url` optional
@@ -28,6 +30,7 @@
   repo: qaddodi/chb-hcc-risk
   type: calculator
   glyph: hcc
+  art: hcc
   summary: >-
     Hepatocellular carcinoma risk in chronic hepatitis B from two validated scores,
     calculated side by side from one shared form.
@@ -51,11 +54,12 @@
   repo: qaddodi/portal-hypertension-predictor
   type: calculator
   glyph: portal-htn
+  art: portal-htn
   summary: >-
     Probability of clinically significant and severe portal hypertension from routine
     labs, using the Vienna models, with liver stiffness if you have it.
   specimen:
-    - [In, "Platelets · bilirubin · INR  (+ liver stiffness, optional)"]
+    - [In, "Platelets · bilirubin · INR · liver stiffness (optional)"]
     - [Out, "P(CSPH, HVPG ≥ 10) and P(severe PH, HVPG ≥ 16)"]
   sources:
     - text: Reiniš et al., J Hepatol 2023;78:390–400
@@ -73,11 +77,12 @@
   repo: qaddodi/liverenzymebacktrack
   type: calculator
   glyph: backtrack
+  art: backtrack
   summary: >-
     Work backward from today's AST, ALT, and LDH to estimate what they were hours
     or days ago, using editable enzyme half-lives.
   specimen:
-    - [In, "Current AST · ALT · LDH and the time they were drawn"]
+    - [In, "AST · ALT · LDH · time drawn"]
     - [Out, "A table of estimated earlier values, in 12-hour steps by default"]
   note: "Default half-lives: AST 17 h, ALT 72 h, LDH 24 h."
   keywords: transaminase half-life timing injury onset ischemic enzymes
@@ -92,6 +97,7 @@
   repo: qaddodi/acute-liver-injury-cases
   type: case
   glyph: panel
+  art: panel
   summary: >-
     Thirteen lab panels, each with a diagnosis hiding in the pattern. Name it
     before the reveal, then see why.
@@ -110,6 +116,7 @@
   repo: qaddodi/cirrhosis-interactive-case
   type: case
   glyph: cirrhosis
+  art: cirrhosis
   summary: >-
     Follow one patient, Adam, from an early clue in primary care through
     decompensation, the ICU, and the transplant decision.
@@ -128,6 +135,7 @@
   repo: qaddodi/portal-pressure-simulator
   type: simulator
   glyph: pressure
+  art: pressure
   summary: >-
     A live model of the portal circulation. Change flow, resistance, or shunting
     and watch pressure and HVPG respond.
@@ -147,6 +155,7 @@
   path: liver-simulator
   type: simulator
   glyph: liver-sim
+  art: liver-sim
   summary: >-
     Trigger an injury, give a treatment, and watch the labs move in real time.
   specimen:
@@ -164,6 +173,7 @@
   repo: qaddodi/abstract-atelier
   type: research
   glyph: abstract
+  art: abstract
   summary: >-
     A writing desk for medical abstracts. Type a PMID and the citation appears
     beside your draft, with the abstract a hover away.
@@ -183,6 +193,7 @@
   repo: qaddodi/auris-eeg
   type: research
   glyph: auris
+  art: auris
   cta: Open workstation
   summary: >-
     Review deidentified EEG, explore its spectrum, and listen to it. Parsed

@@ -1,179 +1,218 @@
 ---
 layout: base
-title: Hepatology Clinical Tools &amp; Interactive Cases | Mohammad Almeqdadi, MD
-og_title: Hepatology tools for the bedside, the classroom, and the bench
+title: Hepatology, made interactive | Mohammad Almeqdadi, MD
+og_title: Hepatology, made interactive
 body_class: home
 ---
 {%- assign projects = site.data.projects -%}
 {%- assign sections = site.data.sections -%}
 {%- assign panel_deck = projects | where: "id", "liver-panel" | first -%}
+{%- assign latest = site.data.changelog | first -%}
 
-<!-- ─── cover ─────────────────────────────────────────────────────── -->
-<section class="cover" aria-labelledby="cover-title">
-  <div class="cover-inner">
-    <div class="cover-copy">
-      <p class="cover-kicker micro">Transplant hepatology &middot; Boston</p>
-      <h1 id="cover-title">Tools for the bedside, the classroom, and the bench.</h1>
+<main id="contents">
+
+<!-- ─── hero ──────────────────────────────────────────────────────── -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="triad-dots" aria-hidden="true"><i class="h-blue"></i><i class="h-crimson"></i><i class="h-green"></i><i class="h-amber"></i></span>Transplant hepatology &middot; Boston</p>
+      <h1 id="hero-title">Hepatology, <em>made interactive.</em></h1>
       <p class="lede">
-        Free calculators, case-based teaching, and physiologic simulators from
-        <span class="lede-name">{{ site.author.name }}, {{ site.author.honorific }}</span>.
-        No sign-in, nothing to install.
+        Calculators for the bedside, cases for the classroom, and simulators for the curious.
+        Free and open, from transplant hepatologist <strong>{{ site.author.name }}, {{ site.author.honorific }}</strong>.
       </p>
-
-      <ul class="doors" aria-label="Start here">
-        {%- for intent in site.data.intents %}
-          {%- assign intent_sections = sections | where: "intent", intent.id -%}
-          {%- assign count = 0 -%}
-          {%- for s in intent_sections -%}
-            {%- assign in_section = projects | where: "type", s.type -%}
-            {%- assign count = count | plus: in_section.size -%}
-          {%- endfor %}
-        <li>
-          <a class="door" href="#s-{{ intent_sections.first.id }}" data-intent="{{ intent.id }}">
-            <span class="door-label">{{ intent.label }}</span>
-            <span class="door-line">{{ intent.line }}</span>
-            <span class="door-count">{{ count }} tool{% if count != 1 %}s{% endif %} <span aria-hidden="true">&darr;</span></span>
-          </a>
-        </li>
-        {%- endfor %}
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#tools">Explore the tools <span class="arrow" aria-hidden="true">&darr;</span></a>
+        <a class="btn btn-ghost" href="#today"><span class="live" aria-hidden="true"></span>Today&rsquo;s panel</a>
+      </div>
+      <ul class="stats" aria-label="At a glance">
+        <li><b>{{ projects.size }}</b><span>free tools</span></li>
+        <li><b>{{ site.data.panels.size }}</b><span>daily lab panels</span></li>
+        <li><b>0</b><span>sign-ins, installs, or ads</span></li>
       </ul>
     </div>
 
-    <!-- today's panel: filled in by site.js; the fallback links to the deck -->
-    <aside class="today" id="today" aria-labelledby="today-title">
-      <header class="today-head">
-        <p class="micro today-kicker"><span class="live-dot" aria-hidden="true"></span>Today&rsquo;s panel <span class="today-no" data-panel-no></span></p>
-        <p class="today-streak" data-panel-streak hidden></p>
-      </header>
-      <h2 class="today-title" id="today-title" data-panel-clue>Read the labs. Name the pattern.</h2>
-      <div class="today-body" data-panel-body>
-        <p class="today-fallback">
-          One lab panel a day from <a href="{{ panel_deck.url }}">Interpreting the Liver Panel</a>.
-          Turn on JavaScript to play here, or work through all {{ site.data.panels.size }} cases in the deck.
-        </p>
+    <figure class="lobule" data-lobule>
+      <div class="lobule-art">{% include art/lobule.svg %}</div>
+      <figcaption>
+        <span class="fig-label">Fig. 0</span> The hepatic lobule. Blood enters at the portal triads and drains
+        to the central vein; bile runs the other way. This page takes its colors from the triad.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ─── tools ─────────────────────────────────────────────────────── -->
+<section class="tools" id="tools" aria-labelledby="tools-title">
+  <h2 class="visually-hidden" id="tools-title">Tools</h2>
+
+  <div class="toolbar" data-toolbar>
+    <div class="toolbar-inner">
+      <label class="search">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m12.7 12.7 4.3 4.3"/></svg>
+        <span class="visually-hidden">Search tools</span>
+        <input id="q" type="search" placeholder="Search: HVPG, hepatitis B, ascites, EEG…" autocomplete="off" spellcheck="false" data-search>
+        <kbd aria-hidden="true">/</kbd>
+      </label>
+      <div class="filters" role="group" aria-label="Filter by type">
+        <button type="button" class="filter" data-filter="all" aria-pressed="true">All <span class="count">{{ projects.size }}</span></button>
+        {%- for s in sections %}
+          {%- assign in_section = projects | where: "type", s.type %}
+          {%- if in_section.size > 0 %}
+        <button type="button" class="filter hue-{{ s.hue }}" data-filter="{{ s.type }}" aria-pressed="false"><span class="dot" aria-hidden="true"></span>{{ s.title }} <span class="count">{{ in_section.size }}</span></button>
+          {%- endif %}
+        {%- endfor %}
       </div>
-    </aside>
+    </div>
   </div>
 
-  <nav class="figstrip" aria-label="All tools">
-    <ol class="figstrip-list">
-      {%- assign n = 0 -%}
+  <div class="tools-inner">
+    <p class="since" data-since hidden>
+      <span class="since-pulse" aria-hidden="true"></span>
+      <span data-since-text></span>
+      <button type="button" class="since-x" data-since-dismiss aria-label="Dismiss">&times;</button>
+    </p>
+
+    <div class="shelf" data-shelf hidden>
+      <p class="shelf-label">Continue</p>
+      <ul class="shelf-list" data-shelf-list></ul>
+      <button class="text-btn" type="button" data-shelf-clear>Clear history</button>
+    </div>
+
+    <div class="bento" data-bento>
+
+      <!-- today's panel: filled in by site.js; the fallback links to the deck -->
+      <article class="tile today" id="today" aria-labelledby="today-title" data-special>
+        <div class="today-grid">
+          <div class="today-left">
+            <header class="today-head">
+              <p class="today-kicker"><span class="live" aria-hidden="true"></span>Today&rsquo;s panel <span class="today-no" data-panel-no></span></p>
+              <p class="today-streak" data-panel-streak hidden></p>
+            </header>
+            <h2 class="today-title" id="today-title" data-panel-clue>Read the labs. Name the pattern.</h2>
+            <div data-panel-labs>
+              <p class="today-fallback">
+                One lab panel a day from <a href="{{ panel_deck.url }}">Interpreting the Liver Panel</a>.
+                Turn on JavaScript to play here, or work through all {{ site.data.panels.size }} cases in the deck.
+              </p>
+            </div>
+          </div>
+          <div class="today-right" data-panel-right></div>
+        </div>
+      </article>
+
       {%- for s in sections -%}
         {%- assign in_section = projects | where: "type", s.type -%}
-        {%- for p in in_section -%}
-          {%- assign n = n | plus: 1 %}
-      <li>
-        <a class="fig" href="#p-{{ p.id }}" data-fig="{{ p.id }}">
-          {% include glyph.html id=p.glyph %}
-          <span class="fig-caption"><span class="fig-n">Fig.&nbsp;{{ n }}</span><span class="fig-short">{{ p.short }}</span></span>
-          <span class="fig-dot" data-fig-dot hidden aria-hidden="true"></span>
-          <span class="visually-hidden">{{ p.title }}</span>
-        </a>
-      </li>
+        {%- for p in in_section %}
+      {% include plate.html project=p section=s %}
         {%- endfor -%}
       {%- endfor %}
-    </ol>
-  </nav>
-</section>
 
-<!-- ─── your shelf (pinned + recently opened, stored in this browser) ─── -->
-<section class="shelf" id="shelf" aria-labelledby="shelf-title" hidden>
-  <div class="shelf-inner">
-    <h2 class="micro shelf-title" id="shelf-title">Your shelf</h2>
-    <ul class="shelf-list" data-shelf-list></ul>
-    <button class="shelf-clear" type="button" data-shelf-clear>Clear history</button>
-  </div>
-</section>
-
-<!-- ─── contents ──────────────────────────────────────────────────── -->
-<main id="contents">
-  <div class="index-wrap" id="tools">
-    <div class="since" data-since hidden>
-      <span class="since-dot" aria-hidden="true"></span>
-      <span data-since-text></span>
-      <button type="button" class="since-dismiss" data-since-dismiss aria-label="Dismiss">&times;</button>
-    </div>
-
-    {%- assign n = 0 -%}
-    {%- for s in sections -%}
-      {%- assign in_section = projects | where: "type", s.type -%}
-      {%- if in_section.size > 0 %}
-    <section class="project-section" id="s-{{ s.id }}" data-intent="{{ s.intent }}" aria-labelledby="h-{{ s.id }}">
-      <div class="section-heading">
-        <h2 id="h-{{ s.id }}">{{ s.title }}</h2>
-        <p class="section-kicker">{{ s.kicker }}</p>
-      </div>
-      <div class="project-list">
-        {%- for p in in_section -%}
-          {%- assign n = n | plus: 1 %}
-        {% include project-row.html project=p section=s index=n %}
-        {%- endfor %}
-      </div>
-    </section>
-      {%- endif -%}
-    {%- endfor %}
-  </div>
-
-  <!-- ─── what's new ──────────────────────────────────────────────── -->
-  <section class="updates" id="updates" aria-labelledby="h-updates">
-    <div class="updates-head">
-      <h2 id="h-updates">What&rsquo;s new</h2>
-      <p class="updates-sub">
-        <a href="{{ '/feed.xml' | relative_url }}" class="pill-link">
-          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4a12 12 0 0 1 12 12M4 9a7 7 0 0 1 7 7"/><circle cx="4.8" cy="15.2" r="1.3" fill="currentColor" stroke="none"/></svg>
-          Subscribe (RSS)
-        </a>
-        <a href="https://github.com/{{ site.author.github }}" class="pill-link" target="_blank" rel="noopener noreferrer">Follow on GitHub <span aria-hidden="true">&#8599;</span></a>
-      </p>
-    </div>
-    <ol class="timeline">
-      {%- for e in site.data.changelog limit: 6 %}
-        {%- assign ep = nil -%}
-        {%- if e.project %}{% assign ep = projects | where: "id", e.project | first %}{% endif %}
-      <li class="timeline-item timeline-item--{{ e.kind }}" data-date="{{ e.date | date: '%Y-%m-%d' }}">
-        <time datetime="{{ e.date | date: '%Y-%m-%d' }}">{{ e.date | date: '%b %-d, %Y' }}</time>
-        <div>
-          <p class="timeline-kind micro">{% case e.kind %}{% when 'new' %}New tool{% when 'site' %}This site{% else %}{% if ep %}{{ ep.title }}{% else %}Update{% endif %}{% endcase %}<span class="timeline-fresh" data-fresh hidden> &middot; since your last visit</span></p>
-          <h3>{% if ep %}<a href="{{ ep.url }}">{{ e.title }}</a>{% else %}{{ e.title }}{% endif %}</h3>
-          <p>{{ e.text }}</p>
-        </div>
-      </li>
-      {%- endfor %}
-    </ol>
-  </section>
-
-  <!-- ─── colophon ────────────────────────────────────────────────── -->
-  <section class="colophon" id="about" aria-labelledby="h-colophon">
-    <div>
-      <h2 class="micro" id="h-colophon">About</h2>
-      <p class="colophon-bio">
-        Mohammad Almeqdadi, MD, trained in internal medicine at St. Elizabeth&rsquo;s Medical Center,
-        gastroenterology at SUNY Downstate, and transplant hepatology at Lahey Clinic. He is a
-        transplant hepatologist and gastroenterologist at Tufts Medical Center in Boston. These tools
-        grew out of clinical practice, trainee education, research, and a recurring need to make
-        complex liver concepts easier to use.
-      </p>
-      <div class="cite-box">
-        <p class="micro">Cite a tool</p>
-        <p class="cite-text" data-cite-text>{{ site.author.name }}. <em>Hepatology clinical tools and interactive cases</em>. {{ site.time | date: '%Y' }}. Available at: {{ site.url }}/</p>
-        <button class="btn btn-quiet" type="button" data-copy-cite>Copy citation</button>
-      </div>
-    </div>
-    <div>
-      <h2 class="micro">Elsewhere</h2>
-      <ul class="colophon-links">
-        <li><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Almeqdadi+M%5BAuthor%5D" target="_blank" rel="noopener noreferrer">Publications on PubMed</a></li>
-        <li><a href="https://scholar.google.com/scholar?hl=en&amp;q=%22Mohammad+Almeqdadi%22" target="_blank" rel="noopener noreferrer">Publications on Google Scholar</a></li>
-        <li><a href="https://orcid.org/{{ site.author.orcid }}" target="_blank" rel="noopener noreferrer">ORCID</a></li>
-        <li><a href="mailto:{{ site.author.email }}">Email</a></li>
-      </ul>
-      <a class="suggest" href="mailto:{{ site.author.email }}?subject=Idea%20for%20a%20hepatology%20tool">
-        <span class="micro">Have an idea?</span>
-        <span class="suggest-line">Suggest a tool, a case, or a fix <span aria-hidden="true">&rarr;</span></span>
+      <!-- the latest updates -->
+      <a class="tile latest" href="#updates" data-special>
+        <p class="latest-kicker"><span class="live" aria-hidden="true"></span>Latest</p>
+        <ol class="latest-list">
+          {%- for e in site.data.changelog limit: 3 %}
+            {%- assign lp = nil -%}{%- assign lhue = "ink" -%}
+            {%- if e.project %}{% assign lp = projects | where: "id", e.project | first %}{% assign ls = sections | where: "type", lp.type | first %}{% assign lhue = ls.hue %}{% endif %}
+          <li class="hue-{{ lhue }}">
+            <time datetime="{{ e.date | date: '%Y-%m-%d' }}">{{ e.date | date: '%b %-d' }}</time>
+            <span class="latest-title">{{ e.title }}</span>
+            {%- if forloop.first %}<span class="latest-text">{{ e.text }}</span>{% endif %}
+          </li>
+          {%- endfor %}
+        </ol>
+        <span class="latest-go">All updates <span class="arrow" aria-hidden="true">&rarr;</span></span>
       </a>
     </div>
-  </section>
+
+    <div class="empty" data-empty hidden>
+      <p class="empty-title">Nothing matches <q data-empty-q></q>.</p>
+      <p>Try a broader word, or <a data-empty-suggest href="mailto:{{ site.author.email }}">suggest the tool you were hoping for</a>.</p>
+      <button type="button" class="btn btn-ghost" data-clear-search>Show all tools</button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── what's new ────────────────────────────────────────────────── -->
+<section class="news" id="updates" aria-labelledby="news-title">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Changelog</p>
+      <h2 id="news-title">What&rsquo;s new</h2>
+    </div>
+    <p class="section-actions">
+      <a class="btn btn-ghost sm" href="{{ '/feed.xml' | relative_url }}">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4a12 12 0 0 1 12 12M4 9a7 7 0 0 1 7 7"/><circle cx="4.8" cy="15.2" r="1.3" fill="currentColor" stroke="none"/></svg>
+        Subscribe (RSS)
+      </a>
+    </p>
+  </div>
+  <ol class="news-list">
+    {%- for e in site.data.changelog limit: 6 %}
+      {%- assign ep = nil -%}
+      {%- assign hue = "ink" -%}
+      {%- if e.project %}
+        {%- assign ep = projects | where: "id", e.project | first -%}
+        {%- assign es = sections | where: "type", ep.type | first -%}
+        {%- assign hue = es.hue -%}
+      {%- endif %}
+    <li class="news-item hue-{{ hue }}" data-date="{{ e.date | date: '%Y-%m-%d' }}">
+      <div class="news-meta">
+        {% if ep %}{% include glyph.html id=ep.glyph class="news-glyph" %}{% else %}{% include mark.svg %}{% endif %}
+        <time datetime="{{ e.date | date: '%Y-%m-%d' }}">{{ e.date | date: '%b %-d, %Y' }}</time>
+        <span class="news-kind">{% case e.kind %}{% when 'new' %}New tool{% when 'site' %}This site{% else %}Update{% endcase %}</span>
+        <span class="news-fresh" data-fresh hidden>Since your last visit</span>
+      </div>
+      <h3>{% if ep %}<a href="{{ ep.url }}">{{ e.title }}</a>{% else %}{{ e.title }}{% endif %}</h3>
+      {% if ep and e.kind != 'new' %}<p class="news-project">{{ ep.title }}</p>{% endif %}
+      <p class="news-text">{{ e.text }}</p>
+    </li>
+    {%- endfor %}
+  </ol>
+</section>
+
+<!-- ─── about ─────────────────────────────────────────────────────── -->
+<section class="about" id="about" aria-labelledby="about-title">
+  <div class="about-main">
+    <p class="eyebrow">About</p>
+    <h2 id="about-title" class="about-lead">Built at the bedside, for the people learning at it.</h2>
+    <p class="about-bio">
+      Mohammad Almeqdadi, MD, trained in internal medicine at St. Elizabeth&rsquo;s Medical Center,
+      gastroenterology at SUNY Downstate, and transplant hepatology at Lahey Clinic. He is a
+      transplant hepatologist and gastroenterologist at Tufts Medical Center in Boston. These tools
+      grew out of clinical practice, trainee education, research, and a recurring need to make
+      complex liver concepts easier to use.
+    </p>
+  </div>
+  <div class="about-side">
+    <ul class="links">
+      <li><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Almeqdadi+M%5BAuthor%5D" target="_blank" rel="noopener noreferrer">Publications on PubMed <span aria-hidden="true">&#8599;</span></a></li>
+      <li><a href="https://scholar.google.com/scholar?hl=en&amp;q=%22Mohammad+Almeqdadi%22" target="_blank" rel="noopener noreferrer">Google Scholar <span aria-hidden="true">&#8599;</span></a></li>
+      <li><a href="https://orcid.org/{{ site.author.orcid }}" target="_blank" rel="noopener noreferrer">ORCID <span aria-hidden="true">&#8599;</span></a></li>
+      <li><a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">&#8599;</span></a></li>
+      <li><a href="mailto:{{ site.author.email }}">Email <span aria-hidden="true">&rarr;</span></a></li>
+    </ul>
+    <a class="card-cta hue-crimson" href="mailto:{{ site.author.email }}?subject=Idea%20for%20a%20hepatology%20tool">
+      <span class="eyebrow">Have an idea?</span>
+      <span class="card-cta-line">Suggest a tool, a case, or a fix <span class="arrow" aria-hidden="true">&rarr;</span></span>
+    </a>
+    <div class="cite">
+      <p class="eyebrow">Cite this collection</p>
+      <p class="cite-text" data-cite-text>{{ site.author.name }}. <em>Hepatology clinical tools and interactive cases</em>. {{ site.time | date: '%Y' }}. Available at: {{ site.url }}/</p>
+      <button class="btn btn-ghost sm" type="button" data-copy-cite>Copy citation</button>
+    </div>
+  </div>
+</section>
+
 </main>
+
+<!-- small icons for the Continue shelf -->
+<template id="glyph-templates">
+  {%- for p in projects %}
+  <span data-glyph="{{ p.id }}">{% include glyph.html id=p.glyph %}</span>
+  {%- endfor %}
+</template>
 
 <script type="application/ld+json">
 {

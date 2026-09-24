@@ -1,0 +1,56 @@
+{%- assign p = include.project -%}
+{%- assign sec = include.section -%}
+<article class="tile plate hue-{{ sec.hue }}" id="p-{{ p.id }}" data-project="{{ p.id }}" data-type="{{ p.type }}"
+         data-added="{{ p.added | date: '%Y-%m-%d' }}" data-updated="{{ p.updated | date: '%Y-%m-%d' }}"
+         style="view-transition-name: p-{{ p.id }}">
+  {%- if p.legacy_anchor %}<span class="legacy-anchor" id="{{ p.legacy_anchor }}"></span>{% endif %}
+  <div class="plate-art">
+    {%- if p.art -%}
+      {%- capture art_path %}art/{{ p.art }}.svg{% endcapture %}{% include {{ art_path }} %}
+    {%- else -%}
+      {% include glyph.html id=p.glyph class="plate-glyph" %}
+    {%- endif %}
+    <span class="plate-type"><span class="dot" aria-hidden="true"></span>{{ sec.one }}</span>
+    <span class="badges" data-badges></span>
+  </div>
+
+  <div class="plate-body">
+    <h3 class="plate-title">
+      <a class="plate-link" href="{{ p.url }}" data-track="{{ p.id }}">{{ p.title }}</a>
+    </h3>
+    <p class="plate-summary">{{ p.summary }}</p>
+
+    {%- if p.specimen %}
+    <dl class="io">
+      {%- for row in p.specimen %}
+      <div class="io-row">
+        <dt>{{ row[0] }}</dt>
+        <dd>
+          {%- assign bits = row[1] | split: " · " -%}
+          {%- assign longest = 0 -%}
+          {%- for b in bits %}{% assign l = b | strip | size %}{% if l > longest %}{% assign longest = l %}{% endif %}{% endfor -%}
+          {%- if forloop.first and bits.size > 1 and longest <= 30 -%}
+            {%- for b in bits %}<span class="chip">{{ b | strip }}</span>{% endfor -%}
+          {%- else -%}
+            {{ row[1] }}
+          {%- endif -%}
+        </dd>
+      </div>
+      {%- endfor %}
+    </dl>
+    {%- endif %}
+  </div>
+
+  <footer class="plate-foot">
+    <span class="plate-updated">Updated <time datetime="{{ p.updated | date: '%Y-%m-%d' }}" data-updated-label>{{ p.updated | date: '%b %Y' }}</time></span>
+    <span class="plate-actions">
+      <button class="icon-btn sm" type="button" data-details="{{ p.id }}" aria-label="Details, sources, and sharing for {{ p.title }}" title="Details, sources, share">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.2"/><path d="M10 9v5"/><circle cx="10" cy="6.4" r=".4" fill="currentColor"/></svg>
+      </button>
+      <button class="icon-btn sm pin-btn" type="button" data-pin="{{ p.id }}" aria-pressed="false" aria-label="Pin {{ p.title }}" title="Pin to Continue">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.8l2.2 4.5 4.9.7-3.6 3.5.9 4.9L10 14.1l-4.4 2.3.9-4.9L2.9 8l4.9-.7z"/></svg>
+      </button>
+    </span>
+    <span class="plate-go" aria-hidden="true">{{ p.cta | default: sec.verb }} <span class="arrow">&rarr;</span></span>
+  </footer>
+</article>

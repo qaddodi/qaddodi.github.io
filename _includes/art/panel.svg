@@ -1,0 +1,15 @@
+<svg class="art" viewBox="0 0 400 240" role="img" aria-label="A lab report grid with the diagnostic clues highlighted and the diagnosis still hidden" preserveAspectRatio="xMidYMid meet">
+<rect class="cf tell t1" x="26" y="22" width="104" height="40" rx="8"/><text class="tx tx-on" x="38" y="38">AST</text><rect class="bar-on" x="38" y="46" width="62" height="5" rx="2.5"/>
+<rect class="cf tell t2" x="142" y="22" width="104" height="40" rx="8"/><text class="tx tx-on" x="154" y="38">ALT</text><rect class="bar-on" x="154" y="46" width="70" height="5" rx="2.5"/>
+<rect class="cell" x="258" y="22" width="104" height="40" rx="8"/><text class="tx " x="270" y="38">ALP</text><rect class="bar" x="270" y="46" width="30" height="5" rx="2.5"/>
+<rect class="cell" x="26" y="74" width="104" height="40" rx="8"/><text class="tx " x="38" y="90">GGT</text><rect class="bar" x="38" y="98" width="26" height="5" rx="2.5"/>
+<rect class="cf tell t3" x="142" y="74" width="104" height="40" rx="8"/><text class="tx tx-on" x="154" y="90">LDH</text><rect class="bar-on" x="154" y="98" width="58" height="5" rx="2.5"/>
+<rect class="cell" x="258" y="74" width="104" height="40" rx="8"/><text class="tx " x="270" y="90">TBili</text><rect class="bar" x="270" y="98" width="22" height="5" rx="2.5"/>
+<rect class="cell" x="26" y="126" width="104" height="40" rx="8"/><text class="tx " x="38" y="142">Alb</text><rect class="bar" x="38" y="150" width="34" height="5" rx="2.5"/>
+<rect class="cell" x="142" y="126" width="104" height="40" rx="8"/><text class="tx " x="154" y="142">INR</text><rect class="bar" x="154" y="150" width="20" height="5" rx="2.5"/>
+<rect class="cell" x="258" y="126" width="104" height="40" rx="8"/><text class="tx " x="270" y="142">PLT</text><rect class="bar" x="270" y="150" width="44" height="5" rx="2.5"/>
+<rect class="cell" x="26" y="178" width="104" height="40" rx="8"/><text class="tx " x="38" y="194">MCV</text><rect class="bar" x="38" y="202" width="30" height="5" rx="2.5"/>
+<rect class="cell" x="142" y="178" width="104" height="40" rx="8"/><text class="tx " x="154" y="194">TP</text><rect class="bar" x="154" y="202" width="36" height="5" rx="2.5"/>
+<rect class="cs ask" x="258" y="178" width="104" height="40" rx="8"/><text class="tx tx-big tx-c" x="310.0" y="205" text-anchor="middle">Dx ?</text>
+<rect x="352" y="22" width="30" height="196" rx="8" class="cs"/><circle class="cf seq s1" cx="367" cy="40" r="4"/><circle class="cf seq s2" cx="367" cy="72" r="4"/><circle class="cf seq s3" cx="367" cy="104" r="4"/><circle class="cf seq s4" cx="367" cy="136" r="4"/><circle class="cf seq s5" cx="367" cy="168" r="4"/><circle class="cf seq s6" cx="367" cy="200" r="4"/>
+</svg>

@@ -7,21 +7,18 @@ sitemap: false
 noindex: true
 body_class: lost-page
 ---
-<main class="cover lost" id="contents">
-  <div class="cover-inner">
-    <div class="cover-copy">
-      <p class="cover-kicker micro">404 &middot; Not found</p>
-      <h1>That page isn&rsquo;t here, but every tool is.</h1>
-      <p class="lede">The address may have changed. Pick a tool below, or press <kbd>/</kbd> to search.</p>
-      <ul class="lost-list">
-        {%- for p in site.data.projects %}
-        <li><a href="{{ p.url }}">{% include glyph.html id=p.glyph %}{{ p.title }}</a></li>
-        {%- endfor %}
-      </ul>
-      <div class="lost-actions">
-        <a class="btn" href="{{ '/' | relative_url }}">Go to the homepage</a>
-        <button class="btn btn-quiet" type="button" data-open-palette>Search tools</button>
-      </div>
-    </div>
+<main class="lost" id="contents">
+  <p class="eyebrow"><span class="triad-dots" aria-hidden="true"><i class="h-blue"></i><i class="h-crimson"></i><i class="h-green"></i><i class="h-amber"></i></span>404 &middot; Not found</p>
+  <h1>That page isn&rsquo;t here, but every tool is.</h1>
+  <p class="lede">The address may have changed. Pick a tool, or head back to the index.</p>
+  <ul class="lost-list">
+    {%- for p in site.data.projects %}
+      {%- assign s = site.data.sections | where: "type", p.type | first %}
+    <li class="hue-{{ s.hue }}"><a href="{{ p.url }}">{% include glyph.html id=p.glyph %}<span>{{ p.title }}</span></a></li>
+    {%- endfor %}
+  </ul>
+  <div class="lost-actions">
+    <a class="btn btn-primary" href="{{ '/' | relative_url }}">Go to the homepage</a>
+    <a class="btn btn-ghost" href="{{ '/#today' | relative_url }}"><span class="live" aria-hidden="true"></span>Play today&rsquo;s panel</a>
   </div>
 </main>
