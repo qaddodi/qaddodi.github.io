@@ -1,31 +1,38 @@
-# Homepage sections, in display order. Each project's `type` places it in a section.
-# `verb` is the default call to action for that type (a project can override with `cta`).
-# `intent` groups sections into the three "doors" under the headline.
+# Tool types, in display order. Each project's `type` places it here.
+#   title   plural heading and filter label
+#   one     singular label shown on each plate
+#   hue     color family in assets/site.css — the page borrows the portal triad:
+#           blue = portal vein, red = hepatic artery, green = bile duct, amber = bilirubin
+#   verb    default call to action (a project can override it with `cta`)
 
 - id: calculators
   type: calculator
-  title: Clinical calculators
-  intent: bedside
+  title: Calculators
+  one: Calculator
+  hue: amber
   verb: Open calculator
-  kicker: From published models
+  blurb: Risk and pressure estimates from published models.
 
 - id: education
   type: case
-  title: Interactive clinical education
-  intent: teaching
+  title: Cases
+  one: Interactive case
+  hue: crimson
   verb: Start case
-  kicker: Case-based, reveal as you go
+  blurb: Reason through real patterns before the reveal.
 
 - id: simulators
   type: simulator
-  title: Physiologic simulators
-  intent: teaching
+  title: Simulators
+  one: Simulator
+  hue: blue
   verb: Run simulator
-  kicker: Move a variable, watch the physiology
+  blurb: Move a variable and watch the physiology answer.
 
 - id: research
   type: research
-  title: Research &amp; writing
-  intent: research
+  title: Research
+  one: Research tool
+  hue: green
   verb: Open workspace
-  kicker: Runs in your browser
+  blurb: Writing and signal tools that run in your browser.

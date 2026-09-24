@@ -1,0 +1,17 @@
+<svg class="art art-halo" viewBox="0 0 400 240" role="img" aria-label="AST, LDH, and ALT extrapolated back 48 hours from the current value using their half-lives" preserveAspectRatio="xMidYMid meet">
+<path class="ax" d="M48 30V190H356"/>
+<path class="ax" d="M356 190v5"/><text class="tx" x="356" y="208" text-anchor="middle">now</text>
+<path class="ax" d="M279 190v5"/><text class="tx" x="279" y="208" text-anchor="middle">−12h</text>
+<path class="ax" d="M202 190v5"/><text class="tx" x="202" y="208" text-anchor="middle">−24h</text>
+<path class="ax" d="M125 190v5"/><text class="tx" x="125" y="208" text-anchor="middle">−36h</text>
+<path class="ax" d="M48 190v5"/><text class="tx" x="48" y="208" text-anchor="middle">−48h</text>
+<path class="c draw d1 dashline" pathLength="1" d="M356 168.9 C351.7 168.3 338.9 166.6 330.3 165.2 C321.8 163.9 313.2 162.4 304.7 160.8 C296.1 159.2 287.6 157.5 279 155.7 C270.4 153.8 261.9 151.8 253.3 149.6 C244.8 147.4 236.2 145 227.7 142.4 C219.1 139.8 210.6 137 202 134 C193.4 130.9 184.9 127.7 176.3 124.1 C167.8 120.5 159.2 116.6 150.7 112.4 C142.1 108.1 133.6 103.6 125 98.6 C116.4 93.6 107.9 88.3 99.3 82.4 C90.8 76.6 82.2 70.3 73.7 63.4 C65.1 56.5 52.3 44.7 48 41"/>
+<text class="tx tx-c" x="52" y="33">AST t½ 17h</text>
+<path class="c c2 draw d2 dashline" pathLength="1" d="M356 168.9 C351.7 168.5 338.9 167.3 330.3 166.4 C321.8 165.5 313.2 164.5 304.7 163.5 C296.1 162.5 287.6 161.4 279 160.2 C270.4 159.1 261.9 157.9 253.3 156.6 C244.8 155.3 236.2 153.9 227.7 152.5 C219.1 151 210.6 149.5 202 147.9 C193.4 146.3 184.9 144.6 176.3 142.7 C167.8 140.9 159.2 139 150.7 137 C142.1 134.9 133.6 132.8 125 130.5 C116.4 128.2 107.9 125.7 99.3 123.2 C90.8 120.6 82.2 117.9 73.7 115 C65.1 112.1 52.3 107.3 48 105.8"/>
+<text class="tx tx-c" x="52" y="97.8">LDH t½ 24h</text>
+<path class="c c3 draw d3 dashline" pathLength="1" d="M356 168.9 C351.7 168.8 338.9 168.4 330.3 168.1 C321.8 167.8 313.2 167.6 304.7 167.3 C296.1 167 287.6 166.7 279 166.4 C270.4 166.1 261.9 165.8 253.3 165.4 C244.8 165.1 236.2 164.8 227.7 164.5 C219.1 164.1 210.6 163.8 202 163.5 C193.4 163.1 184.9 162.8 176.3 162.4 C167.8 162.1 159.2 161.7 150.7 161.4 C142.1 161 133.6 160.6 125 160.2 C116.4 159.8 107.9 159.5 99.3 159.1 C90.8 158.7 82.2 158.3 73.7 157.8 C65.1 157.4 52.3 156.8 48 156.6"/>
+<text class="tx tx-c" x="52" y="148.6">ALT t½ 72h</text>
+<circle class="cf" cx="356" cy="168.9" r="5"/>
+<path class="c2 dash" d="M356 30V190"/>
+
+</svg>

@@ -1,0 +1,13 @@
+<svg class="art art-halo" viewBox="0 0 400 240" role="img" aria-label="A winding path through the case from the first clinic visit to the transplant decision" preserveAspectRatio="xMidYMid meet">
+<path class="ax ax-thick" d="M40 176 C50.7 168 84.7 129 104 128 C123.3 127 137.7 173.3 156 170 C174.3 166.7 196.3 111.3 214 108 C231.7 104.7 245.7 152 262 150 C278.3 148 295.7 111.7 312 96 C328.3 80.3 352 62.7 360 56"/>
+<path class="c draw journey" pathLength="1" d="M40 176 C50.7 168 84.7 129 104 128 C123.3 127 137.7 173.3 156 170 C174.3 166.7 196.3 111.3 214 108 C231.7 104.7 245.7 152 262 150 C278.3 148 295.7 111.7 312 96 C328.3 80.3 352 62.7 360 56"/>
+<circle class="cf st1" cx="40" cy="176" r="7"/><text class="tx" x="40" y="198" text-anchor="middle">Clinic</text>
+<circle class="stop st2" cx="104" cy="128" r="5.5"/><text class="tx" x="104" y="114" text-anchor="middle">Ascites</text>
+<circle class="stop st3" cx="156" cy="170" r="5.5"/><text class="tx" x="156" y="192" text-anchor="middle">SBP</text>
+<circle class="stop st4" cx="214" cy="108" r="5.5"/><text class="tx" x="214" y="94" text-anchor="middle">Bleed</text>
+<circle class="stop st5" cx="262" cy="150" r="5.5"/><text class="tx" x="262" y="172" text-anchor="middle">HE</text>
+<circle class="stop st6" cx="312" cy="96" r="5.5"/><text class="tx" x="312" y="118" text-anchor="middle">HRS-AKI</text>
+<circle class="cf st7" cx="360" cy="56" r="7"/><text class="tx" x="360" y="42" text-anchor="middle">Transplant</text>
+<circle class="cf walker" r="5" style="offset-path: path('M40 176 C50.7 168 84.7 129 104 128 C123.3 127 137.7 173.3 156 170 C174.3 166.7 196.3 111.3 214 108 C231.7 104.7 245.7 152 262 150 C278.3 148 295.7 111.7 312 96 C328.3 80.3 352 62.7 360 56')"/>
+<text class="tx tx-dim" x="40" y="222">1 Recognize</text><text class="tx tx-dim" x="136" y="222">2 Interpret</text><text class="tx tx-dim" x="232" y="222">3 Stabilize</text><text class="tx tx-dim" x="328" y="222">4 Escalate</text>
+</svg>

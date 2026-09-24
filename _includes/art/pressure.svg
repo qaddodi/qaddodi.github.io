@@ -1,0 +1,14 @@
+<svg class="art art-halo" viewBox="0 0 400 240" role="img" aria-label="Schematic of portal circulation from gut through the liver to the IVC, with a TIPS bypass and an HVPG gauge" preserveAspectRatio="xMidYMid meet">
+<rect class="cs" x="16" y="94" width="58" height="52" rx="10"/><text class="tx" x="45" y="124" text-anchor="middle">Gut</text>
+<rect class="cs" x="326" y="94" width="58" height="52" rx="10"/><text class="tx" x="355" y="124" text-anchor="middle">IVC</text>
+<path class="pipe" d="M74 120H150"/><path class="pipe" d="M250 120H326"/>
+<path class="c flow f1" d="M74 120H150"/><path class="c flow f3" d="M250 120H326"/>
+<path class="c resist" d="M150 120 L158 104 L168 136 L178 104 L188 136 L198 104 L208 136 L218 104 L228 136 L238 104 L250 120"/>
+<text class="tx" x="200" y="160" text-anchor="middle">Liver · resistance</text>
+<path class="c2 tips" d="M140 120C150 40 250 40 260 120"/><path class="c flow f2 tips-flow" d="M140 120C150 40 250 40 260 120"/>
+<text class="tx tx-c" x="200" y="46" text-anchor="middle">TIPS</text>
+<circle class="cf" cx="140" cy="120" r="6"/><text class="tx" x="112" y="104">PV</text>
+<circle class="cf" cx="260" cy="120" r="6"/><text class="tx" x="268" y="104">HV</text>
+<path class="ax ax-thick" d="M150 214a50 50 0 0 1 100 0"/><path class="c gauge" pathLength="1" d="M150 214a50 50 0 0 1 100 0"/><path class="c needle" d="M200 214L226 190"/><circle class="cf" cx="200" cy="214" r="4"/><text class="tx" x="262" y="214">HVPG</text>
+
+</svg>
