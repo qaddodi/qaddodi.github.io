@@ -59,6 +59,15 @@ The "New" badge appears for 45 days after `added` (change `new_days` in `_config
 `updated` is a fallback: the page asks GitHub for each repo's latest commit date and uses
 it when it's newer.
 
+## The tools' shared look
+
+The standalone tools (the calculators first) link `/assets/tool.css` and `/assets/tool.js`
+from this site, so they share its palette, fonts, dark theme, header, and footer. Each tool
+keeps its own layout styles, mapped onto the shared `--qd-*` tokens. The theme toggle uses the
+same saved choice as this page. Changing `tool.css` restyles every tool that links it, so
+check them after editing it. Because the files load from the site root, a tool opened straight
+from disk (`file://`) shows unstyled; preview it through a local server with this site at `/`.
+
 ## Features that remember things
 
 The shelf (pins and recently opened), guided-path progress, the daily-panel streak, "since your last visit",
