@@ -3,6 +3,14 @@
 
 - date: 2026-09-26
   kind: site
+  title: The calculators get the new look
+  text: >-
+    HCC Risk, the Portal Hypertension Predictor, and the Backtracker now match this
+    page, with a dark theme and a way back to every tool. The Backtracker updates as
+    you type and draws its estimates.
+
+- date: 2026-09-26
+  kind: site
   title: Try the tools before you open them
   text: >-
     Move a slider on the calculator and simulator cards, follow a guided path, and
