@@ -451,7 +451,7 @@ kbd {
 :is(.lobule, .zone-art) .blood.b1 { stroke: var(--blue); }
 :is(.lobule, .zone-art) .blood.b2 { stroke: color-mix(in srgb, var(--blue) 55%, var(--crimson)); }
 :is(.lobule, .zone-art) .blood.b3 { stroke: var(--crimson); }
-:is(.lobule, .zone-art) .bile { fill: none; stroke: var(--green); stroke-width: 1.8; stroke-linecap: round; stroke-dasharray: 2 10; opacity: .9; }
+:is(.lobule, .zone-art) .bile { fill: none; stroke: var(--green); stroke-width: 1.8; stroke-linecap: round; stroke-dasharray: 6 10; opacity: .9; }
 :is(.lobule, .zone-art) .pv { fill: var(--blue); }
 :is(.lobule, .zone-art) .ha { fill: var(--crimson); }
 :is(.lobule, .zone-art) .bd { fill: var(--green); }
@@ -465,7 +465,7 @@ kbd {
   :is(.lobule, .zone-art) .blood { animation: flow-in 2.6s linear infinite; }
   :is(.lobule, .zone-art) .blood.b2 { animation-duration: 3.1s; }
   :is(.lobule, .zone-art) .blood.b3 { animation-duration: 2.2s; }
-  :is(.lobule, .zone-art) .bile { animation: flow-in 3.4s linear infinite reverse; }
+  :is(.lobule, .zone-art) .bile { animation: flow-in 3.4s linear infinite; /* outward: bile drains toward the triads */ }
   :is(.lobule, .zone-art) .triad { animation: breathe 5s ease-in-out infinite; }
   :is(.lobule, .zone-art) .tr2 { animation-delay: -.8s; } :is(.lobule, .zone-art) .tr3 { animation-delay: -1.6s; }
   :is(.lobule, .zone-art) .tr4 { animation-delay: -2.4s; } :is(.lobule, .zone-art) .tr5 { animation-delay: -3.2s; } :is(.lobule, .zone-art) .tr6 { animation-delay: -4s; }
