@@ -1,0 +1,20 @@
+# Guided paths shown above the tools. `steps` are project ids from projects.yml, in order.
+# Progress is kept in the reader's browser (a step is checked once its tool is opened).
+
+- id: labs
+  title: New to liver labs
+  blurb: Read the pattern, watch it move, then work backward in time.
+  hue: crimson
+  steps: [liver-panel, liver-simulator, liver-injury-backtracker]
+
+- id: portal
+  title: Cirrhosis & portal hypertension
+  blurb: Estimate the pressure, change the physiology, then follow one patient.
+  hue: blue
+  steps: [portal-hypertension-predictor, portal-pressure-simulator, cirrhosis-case]
+
+- id: bedside
+  title: At the bedside
+  blurb: Published models for decisions on rounds.
+  hue: amber
+  steps: [chb-hcc-risk, portal-hypertension-predictor, liver-injury-backtracker]

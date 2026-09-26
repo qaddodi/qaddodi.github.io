@@ -21,6 +21,9 @@
 #   added     date it first appeared on the homepage (drives the "New" badge)
 #   updated   last meaningful update (the homepage refreshes this from GitHub when it can)
 #   cta       optional override of the section's call to action
+#   wide      optional; true makes the plate a double-width flagship (keep the grid even:
+#             see README)
+#   try       optional inline demo on the plate, drawn by site.js: vienna | backtrack | pressure
 
 - id: chb-hcc-risk
   legacy_anchor: t-hcc
@@ -66,6 +69,7 @@
     - text: Mohammed et al., Dig Dis Sci 2026 (US validation)
   note: A rule-out aid. Confirm with HVPG where management depends on it.
   keywords: CSPH HVPG Vienna cirrhosis compensated elastography LSM FIB-4
+  try: vienna
   added: 2026-07-13
   updated: 2026-07-09
 
@@ -86,6 +90,7 @@
     - [Out, "A table of estimated earlier values, in 12-hour steps by default"]
   note: "Default half-lives: AST 17 h, ALT 72 h, LDH 24 h."
   keywords: transaminase half-life timing injury onset ischemic enzymes
+  try: backtrack
   added: 2026-07-13
   updated: 2024-12-28
 
@@ -124,6 +129,7 @@
     - [Format, "52 steps · 25 questions to answer before the reveal"]
     - [Goals, "Recognize · Interpret · Stabilize · Escalate"]
   keywords: ascites SBP variceal bleeding hepatic encephalopathy HRS-AKI terlipressin transplant EAST-VIBES
+  wide: true
   added: 2026-07-16
   updated: 2026-08-26
 
@@ -143,6 +149,8 @@
     - [Move, "Gut inflow · pre/post-hepatic resistance · TIPS diameter · splenorenal shunt"]
     - [Watch, "Pressure by color, flow by speed, and HVPG (wedged − free)"]
   keywords: TIPS HVPG shunt resistance flow hemodynamics wedged hepatic venous pressure
+  wide: true
+  try: pressure
   added: 2026-07-13
   updated: 2026-01-19
 

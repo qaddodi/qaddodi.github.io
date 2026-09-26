@@ -10,7 +10,11 @@ Jekyll; there is nothing to install or run to publish. Push to `master` and it d
 | A project (title, summary, inputs/outputs, sources, dates) | `_data/projects.yml` |
 | Tool types: names, colors, order, call-to-action wording | `_data/sections.yml` |
 | "What's new" and the RSS feed | `_data/changelog.yml` |
-| The daily "Today's panel" cases | `_data/panels.yml` |
+| The daily "Today's panel" cases (and which lobule zone each lights up) | `_data/panels.yml` |
+| Reference ranges and "why this lab" lines for the panel | `_data/labs.yml` |
+| The "Start here" guided paths | `_data/paths.yml` |
+| Dotted-underline definitions (HVPG, CSPH, …) | `_data/glossary.yml` |
+| Portal Pressure Simulator card numbers | `_scripts/make-pressure-grid.mjs` → `_data/pressure_grid.json` |
 | Page structure | `index.html`, `_layouts/base.html`, `_includes/` |
 | Look and feel | `assets/site.css` |
 | Interactive features | `assets/site.js` |
@@ -38,8 +42,18 @@ figure of what the tool does, drawn by `_scripts/make-art.py`.
    `python3 _scripts/make-art.py`. Without it, the plate shows the glyph large.
 5. Add a `new` entry to the top of `_data/changelog.yml`.
 
-The grid holds today's panel (two cells), the tools, and the "Latest" tile, so it fills
-evenly at 3 columns when the number of tools is a multiple of 3, and at 2 columns when it's odd.
+The grid holds today's panel (two cells), the tools (a `wide: true` tool takes two cells),
+and the "Latest" tile (two cells at 3 columns, one at 2). Today that is 15 cells at 3 columns
+and 16 at 2, so both fill evenly; if you add a tool, check both widths (a new tool plus
+`wide: false` on one flagship, or a third flagship, keeps things even). The grid packs densely,
+so a single-width tool fills a gap next to a flagship.
+
+## Try-it cards
+
+A project with `try:` gets a live control on its card, computed with the tool's own math:
+`vienna` (Vienna 3P coefficients), `backtrack` (the Backtracker's half-lives), or `pressure`
+(a table sampled from the simulator's engine). If the simulator's model changes, clone it
+and run `node _scripts/make-pressure-grid.mjs /path/to/portal-pressure-simulator`.
 
 The "New" badge appears for 45 days after `added` (change `new_days` in `_config.yml`).
 `updated` is a fallback: the page asks GitHub for each repo's latest commit date and uses
@@ -47,7 +61,7 @@ it when it's newer.
 
 ## Features that remember things
 
-The shelf (pins and recently opened), the daily-panel streak, "since your last visit",
+The shelf (pins and recently opened), guided-path progress, the daily-panel streak, "since your last visit",
 and the theme choice are kept in the reader's own browser (`localStorage`, keys start with
 `qd:`). Nothing is sent anywhere, and the page works fully without them.
 

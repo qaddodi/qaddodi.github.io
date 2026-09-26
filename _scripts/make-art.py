@@ -301,6 +301,16 @@ def lobule():
         x1, y1 = (r_edge - 14) * math.cos(t), (r_edge - 14) * math.sin(t)
         body += f'<path class="cord" d="M{f(x0)} {f(y0)}L{f(x1)} {f(y1)}"/>'
     body += '</g>\n'
+    # the three acinar zones as hexagonal bands, lit by the daily panel after a reveal:
+    # zone 1 periportal (outer), zone 2 midzonal, zone 3 pericentral (inner)
+    def ring(r0, r1):
+        outer = [(r1 * math.cos(math.radians(a)), r1 * math.sin(math.radians(a))) for a in range(0, 360, 60)]
+        inner = [(r0 * math.cos(math.radians(a)), r0 * math.sin(math.radians(a))) for a in range(0, 360, 60)]
+        return poly(outer) + "Z" + (poly(inner[::-1]) + "Z" if r0 else "")
+    body += '<g class="lob-zones">'
+    for z, (r0, r1) in ((1, (R * .68, R)), (2, (R * .38, R * .68)), (3, (0, R * .38))):
+        body += f'<path class="zone z{z}" fill-rule="evenodd" d="{ring(r0, r1)}"/>'
+    body += '</g>\n'
     body += f'<path class="lob-edge" d="{poly(corners)}Z"/>\n'
     # sinusoidal blood flow: triads → central vein
     body += '<g class="lob-flow">'

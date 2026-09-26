@@ -4,9 +4,11 @@
 #   hue     color family in assets/site.css — the page borrows the portal triad:
 #           blue = portal vein, red = hepatic artery, green = bile duct, amber = bilirubin
 #   verb    default call to action (a project can override it with `cta`)
+#   vessel  the part of the lobule that carries this color; the hero legend filters by it
 
 - id: calculators
   type: calculator
+  vessel: Bilirubin
   title: Calculators
   one: Calculator
   hue: amber
@@ -15,6 +17,7 @@
 
 - id: education
   type: case
+  vessel: Hepatic artery
   title: Cases
   one: Interactive case
   hue: crimson
@@ -23,6 +26,7 @@
 
 - id: simulators
   type: simulator
+  vessel: Portal vein
   title: Simulators
   one: Simulator
   hue: blue
@@ -31,6 +35,7 @@
 
 - id: research
   type: research
+  vessel: Bile duct
   title: Research
   one: Research tool
   hue: green

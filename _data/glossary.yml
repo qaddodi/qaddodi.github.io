@@ -1,0 +1,36 @@
+# Hover (or tap) definitions for abbreviations on the homepage.
+# The first use of each term inside a tool summary, its In/Out line, or a daily-panel
+# teaching point gets a dotted underline and this definition.
+
+- term: HVPG
+  def: Hepatic venous pressure gradient. Wedged minus free hepatic venous pressure; the reference measure of portal pressure. Normal is 1–5 mmHg.
+- term: CSPH
+  def: Clinically significant portal hypertension, defined as HVPG ≥ 10 mmHg. Above it, varices and decompensation become likely.
+- term: TIPS
+  def: Transjugular intrahepatic portosystemic shunt. A stent from a hepatic vein into the portal vein that lowers portal pressure.
+- term: R factor
+  def: (ALT ÷ ALT upper limit) ÷ (ALP ÷ ALP upper limit). 5 or more is hepatocellular, 2–5 mixed, 2 or less cholestatic.
+- term: HBsAg
+  def: Hepatitis B surface antigen. Quantitative levels help stratify risk in chronic hepatitis B.
+- term: PAGE-B
+  def: HCC risk score for chronic hepatitis B on antiviral therapy, from platelets, age, and gender.
+- term: HCC
+  def: Hepatocellular carcinoma, the most common primary liver cancer.
+- term: EMR
+  def: Electronic medical record.
+- term: NAC
+  def: N-acetylcysteine, the antidote for acetaminophen toxicity.
+- term: ERCP
+  def: Endoscopic retrograde cholangiopancreatography. Endoscopic imaging and drainage of the bile ducts.
+- term: PTC
+  def: Percutaneous transhepatic cholangiography. Bile duct access through the skin and liver.
+- term: INR
+  def: International normalized ratio. In liver disease, a marker of synthetic function.
+- term: EDF
+  def: European Data Format, the standard file format for EEG recordings.
+- term: DSA
+  def: Density spectral array. EEG power by frequency, compressed over time.
+- term: PMID
+  def: PubMed identifier, the unique number of an article in PubMed.
+- term: ULN
+  def: Upper limit of normal.

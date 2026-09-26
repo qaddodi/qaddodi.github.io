@@ -3,9 +3,13 @@
 # (qaddodi/acute-liver-injury-cases). One case is shown per day, in a fixed rotation.
 # Each lab is [name, value, unit, tell]; tell = true marks the clues highlighted after the reveal.
 # Add a case by appending an entry; answers become the multiple-choice options.
+# zone (optional) lights up the lobule after the reveal: "1", "2", or "3" for a textbook
+# zonal pattern, "extrahepatic" when the source isn't the liver. Leave it out otherwise
+# (the whole lobule is highlighted). Reference ranges for the H/L flags are in labs.yml.
 
 - case: 1
   answer: "Ischemic hepatitis"
+  zone: "3"
   clue: "Marked hepatocellular injury in the thousands. What pattern gives away the diagnosis?"
   teach: "ALT:LDH < 1.5 supports ischemic hepatitis. When AST and ALT are in the thousands, think acute viral, autoimmune, acetaminophen, or ischemic injury."
   labs:
@@ -40,6 +44,7 @@
 
 - case: 3
   answer: "Acetaminophen toxicity"
+  zone: "3"
   clue: "ALT is over 10,000 and the INR is high."
   teach: "ALT > 10,000 should trigger acetaminophen toxicity. Do not delay NAC while the level is pending, and use the King's College Criteria to trigger transplant evaluation."
   labs:
@@ -58,6 +63,7 @@
 
 - case: 4
   answer: "Rhabdomyolysis"
+  zone: "extrahepatic"
   clue: "AST is enormous, ALT is far lower, and LDH is high. Is this liver injury?"
   teach: "AST far out of proportion to ALT points away from the liver: muscle, heart, red cells, or kidney. Confirm a muscle source with CK."
   labs:
@@ -109,6 +115,7 @@
 
 - case: 7
   answer: "Extrahepatic ALP"
+  zone: "extrahepatic"
   clue: "ALP is high, but GGT is not. Where is the source?"
   teach: "A high ALP with a normal GGT means the source is not hepatic: bone, intestine, kidney, or placenta."
   labs:
@@ -194,6 +201,7 @@
 
 - case: 12
   answer: "Hemolysis with possible DIC"
+  zone: "extrahepatic"
   clue: "AST is high without ALT elevation, and bilirubin/LDH/MCV are high. What process fits?"
   teach: "High AST with a normal ALT points to an extrahepatic source. High LDH, bilirubin, and MCV support hemolysis; a high INR with low platelets raises concern for DIC."
   labs:

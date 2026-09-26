@@ -1,6 +1,6 @@
 {%- assign p = include.project -%}
 {%- assign sec = include.section -%}
-<article class="tile plate hue-{{ sec.hue }}" id="p-{{ p.id }}" data-project="{{ p.id }}" data-type="{{ p.type }}"
+<article class="tile plate hue-{{ sec.hue }}{% if p.wide %} is-wide{% endif %}" id="p-{{ p.id }}" data-project="{{ p.id }}" data-type="{{ p.type }}"
          data-added="{{ p.added | date: '%Y-%m-%d' }}" data-updated="{{ p.updated | date: '%Y-%m-%d' }}"
          style="view-transition-name: p-{{ p.id }}">
   {%- if p.legacy_anchor %}<span class="legacy-anchor" id="{{ p.legacy_anchor }}"></span>{% endif %}
@@ -19,6 +19,9 @@
       <a class="plate-link" href="{{ p.url }}" data-track="{{ p.id }}">{{ p.title }}</a>
     </h3>
     <p class="plate-summary">{{ p.summary }}</p>
+    {%- if p.try %}
+    <div class="tryit" data-try="{{ p.try }}" hidden></div>
+    {%- endif %}
 
     {%- if p.specimen %}
     <dl class="io">

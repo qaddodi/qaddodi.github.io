@@ -1,0 +1,53 @@
+# Adult reference ranges for "Today's panel". Ranges vary by lab; the panel says so.
+# name must match the lab names in panels.yml. lo/hi in the panel's units.
+# role: one line on what the lab says, shown when you tap a lab after the reveal.
+
+- name: AST
+  lo: 0
+  hi: 40
+  role: Hepatocellular injury, but also released by muscle, heart, and red cells. Clears fastest (half-life about 17 h).
+- name: ALT
+  lo: 0
+  hi: 40
+  role: The more liver-specific transaminase. Clears slowly (half-life about 72 h).
+- name: ALP
+  lo: 40
+  hi: 130
+  role: Cholestasis or infiltration when GGT rises with it; bone, gut, kidney, or placenta when GGT is normal.
+- name: GGT
+  lo: 0
+  hi: 60
+  role: Confirms a hepatic source for a high ALP. Also rises with alcohol use.
+- name: LDH
+  lo: 0
+  hi: 250
+  role: Rises with ischemia, hemolysis, and muscle injury. ALT:LDH below 1.5 favors ischemic injury.
+- name: T bili
+  lo: 0
+  hi: 1.2
+  role: Excretory function. Also rises with hemolysis.
+- name: Albumin
+  lo: 3.5
+  hi: 5.0
+  role: Synthetic function over weeks. Low in chronic liver disease, malnutrition, and inflammation.
+- name: T prot
+  lo: 6.0
+  hi: 8.3
+  role: Total protein. With albumin, gives the globulin fraction.
+- name: INR
+  lo: 0
+  hi: 1.1
+  role: Synthetic function over hours to days. Also rises with vitamin K deficiency.
+  xuln: false
+- name: Plt
+  lo: 150000
+  hi: 400000
+  role: Low with portal hypertension and splenic sequestration, alcohol, or consumption.
+- name: MCV
+  lo: 80
+  hi: 100
+  role: Macrocytosis with alcohol use, liver disease, and reticulocytosis.
+- name: Lipase
+  lo: 0
+  hi: 60
+  role: Pancreatic injury.
