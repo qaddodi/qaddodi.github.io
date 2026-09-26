@@ -1,6 +1,13 @@
 # "What's new" on the homepage and the Atom feed at /feed.xml. Newest first.
 # `project` is an id from projects.yml (optional). `kind`: new | update | site.
 
+- date: 2026-09-26
+  kind: site
+  title: Try the tools before you open them
+  text: >-
+    Move a slider on the calculator and simulator cards, follow a guided path, and
+    see which lobule zone each daily panel injures, with reference ranges on every lab.
+
 - date: 2026-09-24
   kind: site
   title: A daily liver panel, and a new front page

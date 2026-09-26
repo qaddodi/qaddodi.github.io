@@ -27,7 +27,7 @@ body_class: home
       </div>
       <ul class="stats" aria-label="At a glance">
         <li><b>{{ projects.size }}</b><span>free tools</span></li>
-        <li><b>{{ site.data.panels.size }}</b><span>daily lab panels</span></li>
+        <li data-stat-panel><b>{{ site.data.panels.size }}</b><span>daily lab panels</span></li>
         <li><b>0</b><span>sign-ins, installs, or ads</span></li>
       </ul>
     </div>
@@ -36,8 +36,18 @@ body_class: home
       <div class="lobule-art">{% include art/lobule.svg %}</div>
       <figcaption>
         <span class="fig-label">Fig. 0</span> The hepatic lobule. Blood enters at the portal triads and drains
-        to the central vein; bile runs the other way. This page takes its colors from the triad.
+        to the central vein; bile runs the other way. <span class="js-only">Each color on this page is a part of it: pick one to see its tools.</span>
       </figcaption>
+      <ul class="vessels js-only" aria-label="Show tools by color">
+        {%- for s in sections %}
+          {%- assign in_section = projects | where: "type", s.type %}
+          {%- if in_section.size > 0 %}
+        <li><button type="button" class="vessel hue-{{ s.hue }}" data-vessel="{{ s.type }}" data-hue="{{ s.hue }}" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span class="v-name">{{ s.vessel }}</span><span class="v-tools">{{ s.title }}</span>
+        </button></li>
+          {%- endif %}
+        {%- endfor %}
+      </ul>
     </figure>
   </div>
 </section>
@@ -78,6 +88,31 @@ body_class: home
       <ul class="shelf-list" data-shelf-list></ul>
       <button class="text-btn" type="button" data-shelf-clear>Clear history</button>
     </div>
+
+    <!-- guided paths: progress filled in by site.js -->
+    <section class="paths" data-paths aria-labelledby="paths-title">
+      <h3 class="paths-label" id="paths-title">Start here</h3>
+      <ol class="path-list">
+        {%- for path in site.data.paths %}
+        <li class="path hue-{{ path.hue }}" data-path="{{ path.id }}">
+          <p class="path-title">{{ path.title }}</p>
+          <p class="path-blurb">{{ path.blurb }}</p>
+          <ol class="path-steps">
+            {%- for sid in path.steps %}
+              {%- assign sp = projects | where: "id", sid | first %}
+            <li class="path-step" data-step="{{ sid }}">
+              <a href="{{ sp.url }}" data-track="{{ sid }}" title="{{ sp.title }}">
+                <span class="step-no" aria-hidden="true">{{ forloop.index }}</span>
+                <span class="step-name">{{ sp.short }}</span><span class="visually-hidden" data-step-state></span>
+              </a>
+            </li>
+            {%- endfor %}
+          </ol>
+          <p class="path-progress" data-path-progress></p>
+        </li>
+        {%- endfor %}
+      </ol>
+    </section>
 
     <div class="bento" data-bento>
 
@@ -158,15 +193,17 @@ body_class: home
         {%- assign hue = es.hue -%}
       {%- endif %}
     <li class="news-item hue-{{ hue }}" data-date="{{ e.date | date: '%Y-%m-%d' }}">
-      <div class="news-meta">
-        {% if ep %}{% include glyph.html id=ep.glyph class="news-glyph" %}{% else %}{% include mark.svg %}{% endif %}
-        <time datetime="{{ e.date | date: '%Y-%m-%d' }}">{{ e.date | date: '%b %-d, %Y' }}</time>
-        <span class="news-kind">{% case e.kind %}{% when 'new' %}New tool{% when 'site' %}This site{% else %}Update{% endcase %}</span>
-        <span class="news-fresh" data-fresh hidden>Since your last visit</span>
+      <time class="news-date" datetime="{{ e.date | date: '%Y-%m-%d' }}">{{ e.date | date: '%b %-d' }}<span>{{ e.date | date: '%Y' }}</span></time>
+      <span class="news-node" aria-hidden="true">{% if ep %}{% include glyph.html id=ep.glyph class="news-glyph" %}{% else %}{% include mark.svg %}{% endif %}</span>
+      <div class="news-body">
+        <p class="news-meta">
+          <span class="news-kind">{% case e.kind %}{% when 'new' %}New tool{% when 'site' %}This site{% else %}Update{% endcase %}</span>
+          {%- if ep and e.kind != 'new' %}<span class="news-project">{{ ep.title }}</span>{% endif %}
+          <span class="news-fresh" data-fresh hidden>Since your last visit</span>
+        </p>
+        <h3>{% if ep %}<a href="{{ ep.url }}">{{ e.title }}</a>{% else %}{{ e.title }}{% endif %}</h3>
+        <p class="news-text">{{ e.text }}</p>
       </div>
-      <h3>{% if ep %}<a href="{{ ep.url }}">{{ e.title }}</a>{% else %}{{ e.title }}{% endif %}</h3>
-      {% if ep and e.kind != 'new' %}<p class="news-project">{{ ep.title }}</p>{% endif %}
-      <p class="news-text">{{ e.text }}</p>
     </li>
     {%- endfor %}
   </ol>
@@ -177,6 +214,9 @@ body_class: home
   <div class="about-main">
     <p class="eyebrow">About</p>
     <h2 id="about-title" class="about-lead">Built at the bedside, for the people learning at it.</h2>
+    <blockquote class="about-why">
+      <p>Most of hepatology is pattern recognition. Patterns are easier to learn when you can move them.</p>
+    </blockquote>
     <p class="about-bio">
       Mohammad Almeqdadi, MD, trained in internal medicine at St. Elizabeth&rsquo;s Medical Center,
       gastroenterology at SUNY Downstate, and transplant hepatology at Lahey Clinic. He is a
