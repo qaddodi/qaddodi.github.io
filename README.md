@@ -93,3 +93,7 @@ The last commit before the redesign is `c0baff8` ("Add Auris to tools index"). T
 restore any single file from it: `git show c0baff8:index.html` or
 `git checkout c0baff8 -- index.html styles.css` (then remove `_config.yml` and `_data/`
 if you want the fully static version back).
+
+## Copyright
+
+© 2026 Mohammad Almeqdadi. All rights reserved.
