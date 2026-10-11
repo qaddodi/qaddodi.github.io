@@ -1,6 +1,6 @@
 {%- assign p = include.project -%}
 {%- assign sec = include.section -%}
-<article class="tile plate hue-{{ sec.hue }}{% if p.wide %} is-wide{% endif %}" id="p-{{ p.id }}" data-project="{{ p.id }}" data-type="{{ p.type }}"
+<article class="tile plate hue-{{ sec.hue }}{% if p.wide %} is-wide{% endif %}{% if p.soon %} is-soon{% endif %}" id="p-{{ p.id }}" data-project="{{ p.id }}" data-type="{{ p.type }}"
          data-added="{{ p.added | date: '%Y-%m-%d' }}" data-updated="{{ p.updated | date: '%Y-%m-%d' }}"
          style="view-transition-name: p-{{ p.id }}">
   {%- if p.legacy_anchor %}<span class="legacy-anchor" id="{{ p.legacy_anchor }}"></span>{% endif %}
@@ -16,10 +16,10 @@
 
   <div class="plate-body">
     <h3 class="plate-title">
-      <a class="plate-link" href="{{ p.url }}" data-track="{{ p.id }}">{{ p.title }}</a>
+      {%- if p.soon %}{{ p.title }}{% else %}<a class="plate-link" href="{{ p.url }}" data-track="{{ p.id }}">{{ p.title }}</a>{% endif %}
     </h3>
     <p class="plate-summary">{{ p.summary }}</p>
-    {%- if p.try %}
+    {%- if p.try and p.soon != true %}
     <div class="tryit" data-try="{{ p.try }}" hidden></div>
     {%- endif %}
 
@@ -45,6 +45,9 @@
   </div>
 
   <footer class="plate-foot">
+    {%- if p.soon %}
+    <span class="plate-soon">Coming soon</span>
+    {%- else %}
     <span class="plate-updated">Updated <time datetime="{{ p.updated | date: '%Y-%m-%d' }}" data-updated-label>{{ p.updated | date: '%b %Y' }}</time></span>
     <span class="plate-actions">
       <button class="icon-btn sm" type="button" data-details="{{ p.id }}" aria-label="Details, sources, and sharing for {{ p.title }}" title="Details, sources, share">
@@ -55,5 +58,6 @@
       </button>
     </span>
     <span class="plate-go" aria-hidden="true">{{ p.cta | default: sec.verb }} <span class="arrow">&rarr;</span></span>
+    {%- endif %}
   </footer>
 </article>

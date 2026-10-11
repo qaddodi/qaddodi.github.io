@@ -7,7 +7,8 @@ sitemap: false
   "url": {{ '/' | absolute_url | jsonify }},
   "generated": {{ site.time | date_to_xmlschema | jsonify }},
   "projects": [
-    {%- for p in site.data.projects %}
+    {%- assign live_projects = site.data.projects | where_exp: "p", "p.soon != true" -%}
+    {%- for p in live_projects %}
     {
       "id": {{ p.id | jsonify }},
       "title": {{ p.title | jsonify }},

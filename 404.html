@@ -12,7 +12,8 @@ body_class: lost-page
   <h1>That page isn&rsquo;t here, but every tool is.</h1>
   <p class="lede">The address may have changed. Pick a tool, or head back to the index.</p>
   <ul class="lost-list">
-    {%- for p in site.data.projects %}
+    {%- assign live_projects = site.data.projects | where_exp: "p", "p.soon != true" -%}
+    {%- for p in live_projects %}
       {%- assign s = site.data.sections | where: "type", p.type | first %}
     <li class="hue-{{ s.hue }}"><a href="{{ p.url }}">{% include glyph.html id=p.glyph %}<span>{{ p.title }}</span></a></li>
     {%- endfor %}

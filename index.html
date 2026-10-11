@@ -5,6 +5,7 @@ og_title: Hepatology, made interactive
 body_class: home
 ---
 {%- assign projects = site.data.projects -%}
+{%- assign live_projects = projects | where_exp: "p", "p.soon != true" -%}
 {%- assign sections = site.data.sections -%}
 {%- assign panel_deck = projects | where: "id", "liver-panel" | first -%}
 {%- assign latest = site.data.changelog | first -%}
@@ -26,7 +27,7 @@ body_class: home
         <a class="btn btn-ghost" href="#today"><span class="live" aria-hidden="true"></span>Today&rsquo;s panel</a>
       </div>
       <ul class="stats" aria-label="At a glance">
-        <li><b>{{ projects.size }}</b><span>free tools</span></li>
+        <li><b>{{ live_projects.size }}</b><span>free tools</span></li>
         <li data-stat-panel><b>{{ site.data.panels.size }}</b><span>daily lab panels</span></li>
         <li><b>0</b><span>sign-ins, installs, or ads</span></li>
       </ul>
@@ -260,9 +261,9 @@ body_class: home
   "@type": "ItemList",
   "name": "Hepatology clinical tools and interactive cases",
   "url": {{ site.url | append: '/' | jsonify }},
-  "numberOfItems": {{ projects.size }},
+  "numberOfItems": {{ live_projects.size }},
   "itemListElement": [
-    {%- for p in projects %}
+    {%- for p in live_projects %}
     {
       "@type": {% if p.type == 'case' %}"LearningResource"{% else %}"SoftwareApplication"{% endif %},
       "position": {{ forloop.index }},

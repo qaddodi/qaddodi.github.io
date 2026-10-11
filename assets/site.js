@@ -251,8 +251,8 @@
   let recent = store.get("recent", []);
   if (!Array.isArray(pins)) pins = [];
   if (!Array.isArray(recent)) recent = [];
-  pins = pins.filter((id) => byId[id]);
-  recent = recent.filter((r) => r && byId[r.id]);
+  pins = pins.filter((id) => byId[id] && !byId[id].soon);
+  recent = recent.filter((r) => r && byId[r.id] && !byId[r.id].soon);
 
   // every tool ever opened, for the guided paths (seeded from the recent list)
   let visited = store.get("visited", null);
@@ -459,7 +459,7 @@
     });
     search.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
-        const first = plates.find((p) => !p.hidden);
+        const first = plates.find((p) => !p.hidden && !byId[p.dataset.project]?.soon);
         if (first) { e.preventDefault(); track(first.dataset.project); location.href = byId[first.dataset.project].url; }
       } else if (e.key === "Escape") {
         if (search.value) { e.preventDefault(); search.value = ""; state.q = ""; applyFilters(); }

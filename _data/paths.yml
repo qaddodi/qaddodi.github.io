@@ -9,9 +9,9 @@
 
 - id: portal
   title: Cirrhosis & portal hypertension
-  blurb: Estimate the pressure, change the physiology, then follow one patient.
+  blurb: Estimate the pressure, then follow one patient.
   hue: blue
-  steps: [portal-hypertension-predictor, portal-pressure-simulator, cirrhosis-case]
+  steps: [portal-hypertension-predictor, cirrhosis-case]  # add portal-pressure-simulator back between these when it launches
 
 - id: bedside
   title: At the bedside

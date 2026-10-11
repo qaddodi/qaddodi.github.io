@@ -758,6 +758,25 @@ kbd {
 }
 .plate:hover .plate-go { background: var(--c); color: var(--c-on); }
 .plate:hover .plate-go .arrow { transform: translateX(4px); }
+.plate.is-soon:hover { transform: none; box-shadow: none; border-color: var(--line); }
+.plate.is-soon .plate-art { filter: grayscale(.6); opacity: .7; }
+.plate.is-soon .badges { display: none; }
+.plate-soon {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 14px;
+  margin-left: auto;
+  border-radius: 999px;
+  border: 1px dashed color-mix(in srgb, var(--c) 45%, var(--line));
+  color: var(--c-ink);
+  font-family: var(--mono);
+  font-size: .74rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .plate.is-flash { animation: flash 1.4s var(--ease); }

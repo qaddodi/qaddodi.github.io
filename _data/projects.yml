@@ -24,6 +24,8 @@
 #   wide      optional; true makes the plate a double-width flagship (keep the grid even:
 #             see README)
 #   try       optional inline demo on the plate, drawn by site.js: vienna | backtrack | pressure
+#   soon      optional; true shows the plate as "Coming soon" with no link, and leaves the
+#             project out of paths, search results, the 404 page, JSON-LD, and /projects.json
 
 - id: chb-hcc-risk
   legacy_anchor: t-hcc
@@ -151,6 +153,7 @@
   keywords: TIPS HVPG shunt resistance flow hemodynamics wedged hepatic venous pressure
   wide: true
   try: pressure
+  soon: true
   added: 2026-07-13
   updated: 2026-01-19
 
