@@ -1,0 +1,17 @@
+# The homepage groups tools by what a visitor wants to do. `types` are tool types from
+# sections.yml, shown in this order inside the group.
+
+- id: learn
+  title: Learn liver medicine
+  blurb: Cases and simulators for students, residents, and fellows.
+  types: [case, simulator]
+
+- id: bedside
+  title: Use at the bedside
+  blurb: Calculators built on published models.
+  types: [calculator]
+
+- id: research
+  title: Research tools
+  blurb: Writing and signal tools that run in your browser.
+  types: [research]

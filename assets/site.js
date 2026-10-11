@@ -165,10 +165,8 @@
       badges.textContent = "";
       const isNew = added && now - added.getTime() < (CFG.newDays || 45) * DAY;
       const since = !isNew && isFresh(plate.dataset.updated);
-      const recent = !isNew && !since && updated && now - updated.getTime() < 30 * DAY;
       if (isNew) badges.append(el("span", { class: "badge badge--new", text: "New" }));
       if (since) badges.append(el("span", { class: "badge badge--since", text: "Updated since your visit" }));
-      if (recent) badges.append(el("span", { class: "badge badge--updated", text: "Updated" }));
       if (since) updatedSince.push(id);
       if (returning && isFresh(plate.dataset.added)) addedSince.push(id);
 
@@ -251,8 +249,8 @@
   let recent = store.get("recent", []);
   if (!Array.isArray(pins)) pins = [];
   if (!Array.isArray(recent)) recent = [];
-  pins = pins.filter((id) => byId[id]);
-  recent = recent.filter((r) => r && byId[r.id]);
+  pins = pins.filter((id) => byId[id] && !byId[id].soon);
+  recent = recent.filter((r) => r && byId[r.id] && !byId[r.id].soon);
 
   // every tool ever opened, for the guided paths (seeded from the recent list)
   let visited = store.get("visited", null);
@@ -393,13 +391,6 @@
     v.addEventListener("blur", () => showVessel(null));
     v.addEventListener("click", () => pickType(v.dataset.vessel));
   }
-  // the vessels in the drawing work too (the legend buttons are the accessible way in)
-  const PART_TYPE = Object.fromEntries((DATA.sections || []).map((s) => [{ blue: "pv", crimson: "ha", green: "bd" }[s.hue], s.type]));
-  $(".lobule-art", lobFig || document)?.addEventListener("click", (e) => {
-    const part = e.target.closest?.(".pv, .ha, .bd");
-    const type = part && PART_TYPE[part.getAttribute("class")];
-    if (type) pickType(type);
-  });
 
   const matches = (id, q) => !q || q.split(/\s+/).filter(Boolean).every((t) => hay[id].includes(t));
 
@@ -418,6 +409,7 @@
       }
       const filtering = state.type !== "all" || !!q;
       for (const s of $$("[data-special]", bento)) s.hidden = filtering;
+      for (const g of $$("[data-group]", bento)) g.hidden = !$$("article.plate", g).some((p) => !p.hidden);
       const paths = $("[data-paths]");
       if (paths) paths.hidden = filtering;
       for (const v of vessels) v.setAttribute("aria-pressed", String(v.dataset.vessel === state.type));
@@ -459,7 +451,7 @@
     });
     search.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
-        const first = plates.find((p) => !p.hidden);
+        const first = plates.find((p) => !p.hidden && !byId[p.dataset.project]?.soon);
         if (first) { e.preventDefault(); track(first.dataset.project); location.href = byId[first.dataset.project].url; }
       } else if (e.key === "Escape") {
         if (search.value) { e.preventDefault(); search.value = ""; state.q = ""; applyFilters(); }

@@ -610,6 +610,19 @@ kbd {
 .shelf-meta { color: var(--muted); font-family: var(--mono); font-size: .72rem; font-weight: 400; }
 .shelf-item.is-pinned .shelf-meta { color: var(--c-ink); }
 
+/* groups -------------------------------------------------------------------- */
+.group { margin-top: clamp(40px, 5vw, 64px); scroll-margin-top: calc(var(--head-h) + 90px); }
+.group-head { display: grid; gap: 6px; margin: 0 0 20px; }
+.group-head h2 {
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+  font-weight: 420;
+  font-variation-settings: "opsz" 72, "SOFT" 40;
+  line-height: 1.1;
+  letter-spacing: -.025em;
+}
+.group-head p { margin: 0; color: var(--muted); font-size: 1rem; }
+
 /* bento --------------------------------------------------------------------- */
 .bento {
   display: grid;
@@ -743,6 +756,7 @@ kbd {
 .pin-btn[aria-pressed="true"] { color: var(--c-ink); }
 .pin-btn[aria-pressed="true"] svg { fill: currentColor; }
 .plate-go {
+  margin-left: auto;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -758,6 +772,25 @@ kbd {
 }
 .plate:hover .plate-go { background: var(--c); color: var(--c-on); }
 .plate:hover .plate-go .arrow { transform: translateX(4px); }
+.plate.is-soon:hover { transform: none; box-shadow: none; border-color: var(--line); }
+.plate.is-soon .plate-art { filter: grayscale(.6); opacity: .7; }
+.plate.is-soon .badges { display: none; }
+.plate-soon {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 14px;
+  margin-left: auto;
+  border-radius: 999px;
+  border: 1px dashed color-mix(in srgb, var(--c) 45%, var(--line));
+  color: var(--c-ink);
+  font-family: var(--mono);
+  font-size: .74rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .plate.is-flash { animation: flash 1.4s var(--ease); }
