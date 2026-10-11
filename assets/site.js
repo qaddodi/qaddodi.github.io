@@ -165,10 +165,8 @@
       badges.textContent = "";
       const isNew = added && now - added.getTime() < (CFG.newDays || 45) * DAY;
       const since = !isNew && isFresh(plate.dataset.updated);
-      const recent = !isNew && !since && updated && now - updated.getTime() < 30 * DAY;
       if (isNew) badges.append(el("span", { class: "badge badge--new", text: "New" }));
       if (since) badges.append(el("span", { class: "badge badge--since", text: "Updated since your visit" }));
-      if (recent) badges.append(el("span", { class: "badge badge--updated", text: "Updated" }));
       if (since) updatedSince.push(id);
       if (returning && isFresh(plate.dataset.added)) addedSince.push(id);
 
@@ -393,13 +391,6 @@
     v.addEventListener("blur", () => showVessel(null));
     v.addEventListener("click", () => pickType(v.dataset.vessel));
   }
-  // the vessels in the drawing work too (the legend buttons are the accessible way in)
-  const PART_TYPE = Object.fromEntries((DATA.sections || []).map((s) => [{ blue: "pv", crimson: "ha", green: "bd" }[s.hue], s.type]));
-  $(".lobule-art", lobFig || document)?.addEventListener("click", (e) => {
-    const part = e.target.closest?.(".pv, .ha, .bd");
-    const type = part && PART_TYPE[part.getAttribute("class")];
-    if (type) pickType(type);
-  });
 
   const matches = (id, q) => !q || q.split(/\s+/).filter(Boolean).every((t) => hay[id].includes(t));
 
@@ -418,6 +409,7 @@
       }
       const filtering = state.type !== "all" || !!q;
       for (const s of $$("[data-special]", bento)) s.hidden = filtering;
+      for (const g of $$("[data-group]", bento)) g.hidden = !$$("article.plate", g).some((p) => !p.hidden);
       const paths = $("[data-paths]");
       if (paths) paths.hidden = filtering;
       for (const v of vessels) v.setAttribute("aria-pressed", String(v.dataset.vessel === state.type));

@@ -16,39 +16,19 @@ body_class: home
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-inner">
     <div class="hero-copy">
-      <p class="eyebrow"><span class="triad-dots" aria-hidden="true"><i class="h-blue"></i><i class="h-crimson"></i><i class="h-green"></i><i class="h-amber"></i></span>Transplant hepatology &middot; Boston</p>
+      <p class="eyebrow">Transplant hepatology &middot; Boston</p>
       <h1 id="hero-title">Hepatology, <em>made interactive.</em></h1>
       <p class="lede">
-        Calculators for the bedside, cases for the classroom, and simulators for the curious.
-        Free and open, from transplant hepatologist <strong>{{ site.author.name }}, {{ site.author.honorific }}</strong>.
+        Free tools for learning and practicing liver medicine, from transplant hepatologist
+        <strong>{{ site.author.name }}, {{ site.author.honorific }}</strong>. No sign-in, nothing to install.
       </p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#tools">Explore the tools <span class="arrow" aria-hidden="true">&darr;</span></a>
-        <a class="btn btn-ghost" href="#today"><span class="live" aria-hidden="true"></span>Today&rsquo;s panel</a>
+        <a class="btn btn-primary" href="#tools">See the tools <span class="arrow" aria-hidden="true">&darr;</span></a>
       </div>
-      <ul class="stats" aria-label="At a glance">
-        <li><b>{{ live_projects.size }}</b><span>free tools</span></li>
-        <li data-stat-panel><b>{{ site.data.panels.size }}</b><span>daily lab panels</span></li>
-        <li><b>0</b><span>sign-ins, installs, or ads</span></li>
-      </ul>
     </div>
 
-    <figure class="lobule" data-lobule>
+    <figure class="lobule" data-lobule aria-hidden="true">
       <div class="lobule-art">{% include art/lobule.svg %}</div>
-      <figcaption>
-        <span class="fig-label">Fig. 0</span> The hepatic lobule. Blood enters at the portal triads and drains
-        to the central vein; bile runs the other way. <span class="js-only">Each color on this page is a part of it: pick one to see its tools.</span>
-      </figcaption>
-      <ul class="vessels js-only" aria-label="Show tools by color">
-        {%- for s in sections %}
-          {%- assign in_section = projects | where: "type", s.type %}
-          {%- if in_section.size > 0 %}
-        <li><button type="button" class="vessel hue-{{ s.hue }}" data-vessel="{{ s.type }}" data-hue="{{ s.hue }}" aria-pressed="false">
-          <span class="dot" aria-hidden="true"></span><span class="v-name">{{ s.vessel }}</span><span class="v-tools">{{ s.title }}</span>
-        </button></li>
-          {%- endif %}
-        {%- endfor %}
-      </ul>
     </figure>
   </div>
 </section>
@@ -62,18 +42,9 @@ body_class: home
       <label class="search">
         <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m12.7 12.7 4.3 4.3"/></svg>
         <span class="visually-hidden">Search tools</span>
-        <input id="q" type="search" placeholder="Search: HVPG, hepatitis B, ascites, EEG…" autocomplete="off" spellcheck="false" data-search>
+        <input id="q" type="search" placeholder="Search the tools" autocomplete="off" spellcheck="false" data-search>
         <kbd aria-hidden="true">/</kbd>
       </label>
-      <div class="filters" role="group" aria-label="Filter by type">
-        <button type="button" class="filter" data-filter="all" aria-pressed="true">All <span class="count">{{ projects.size }}</span></button>
-        {%- for s in sections %}
-          {%- assign in_section = projects | where: "type", s.type %}
-          {%- if in_section.size > 0 %}
-        <button type="button" class="filter hue-{{ s.hue }}" data-filter="{{ s.type }}" aria-pressed="false"><span class="dot" aria-hidden="true"></span>{{ s.title }} <span class="count">{{ in_section.size }}</span></button>
-          {%- endif %}
-        {%- endfor %}
-      </div>
     </div>
   </div>
 
@@ -90,32 +61,7 @@ body_class: home
       <button class="text-btn" type="button" data-shelf-clear>Clear history</button>
     </div>
 
-    <!-- guided paths: progress filled in by site.js -->
-    <section class="paths" data-paths aria-labelledby="paths-title">
-      <h3 class="paths-label" id="paths-title">Start here</h3>
-      <ol class="path-list">
-        {%- for path in site.data.paths %}
-        <li class="path hue-{{ path.hue }}" data-path="{{ path.id }}">
-          <p class="path-title">{{ path.title }}</p>
-          <p class="path-blurb">{{ path.blurb }}</p>
-          <ol class="path-steps">
-            {%- for sid in path.steps %}
-              {%- assign sp = projects | where: "id", sid | first %}
-            <li class="path-step" data-step="{{ sid }}">
-              <a href="{{ sp.url }}" data-track="{{ sid }}" title="{{ sp.title }}">
-                <span class="step-no" aria-hidden="true">{{ forloop.index }}</span>
-                <span class="step-name">{{ sp.short }}</span><span class="visually-hidden" data-step-state></span>
-              </a>
-            </li>
-            {%- endfor %}
-          </ol>
-          <p class="path-progress" data-path-progress></p>
-        </li>
-        {%- endfor %}
-      </ol>
-    </section>
-
-    <div class="bento" data-bento>
+    <div class="groups" data-bento>
 
       <!-- today's panel: filled in by site.js; the fallback links to the deck -->
       <article class="tile today" id="today" aria-labelledby="today-title" data-special>
@@ -137,29 +83,23 @@ body_class: home
         </div>
       </article>
 
-      {%- for s in sections -%}
-        {%- assign in_section = projects | where: "type", s.type -%}
-        {%- for p in in_section %}
-      {% include plate.html project=p section=s %}
-        {%- endfor -%}
-      {%- endfor %}
-
-      <!-- the latest updates -->
-      <a class="tile latest" href="#updates" data-special>
-        <p class="latest-kicker"><span class="live" aria-hidden="true"></span>Latest</p>
-        <ol class="latest-list">
-          {%- for e in site.data.changelog limit: 3 %}
-            {%- assign lp = nil -%}{%- assign lhue = "ink" -%}
-            {%- if e.project %}{% assign lp = projects | where: "id", e.project | first %}{% assign ls = sections | where: "type", lp.type | first %}{% assign lhue = ls.hue %}{% endif %}
-          <li class="hue-{{ lhue }}">
-            <time datetime="{{ e.date | date: '%Y-%m-%d' }}">{{ e.date | date: '%b %-d' }}</time>
-            <span class="latest-title">{{ e.title }}</span>
-            {%- if forloop.first %}<span class="latest-text">{{ e.text }}</span>{% endif %}
-          </li>
+      {%- for g in site.data.groups %}
+      <section class="group" data-group aria-labelledby="g-{{ g.id }}">
+        <header class="group-head">
+          <h2 id="g-{{ g.id }}">{{ g.title }}</h2>
+          <p>{{ g.blurb }}</p>
+        </header>
+        <div class="bento">
+          {%- for t in g.types %}
+            {%- assign s = sections | where: "type", t | first -%}
+            {%- assign in_section = projects | where: "type", t -%}
+            {%- for p in in_section %}
+          {% include plate.html project=p section=s %}
+            {%- endfor -%}
           {%- endfor %}
-        </ol>
-        <span class="latest-go">All updates <span class="arrow" aria-hidden="true">&rarr;</span></span>
-      </a>
+        </div>
+      </section>
+      {%- endfor %}
     </div>
 
     <div class="empty" data-empty hidden>

@@ -13,8 +13,8 @@
 #   glyph     small icon: file in _includes/glyphs/ (without .svg)
 #   art       plate illustration: file in _includes/art/ (made by _scripts/make-art.py);
 #             optional, the glyph is drawn large when it's missing
-#   summary   one or two sentences
-#   specimen  label/value pairs shown as the row's "figure caption"
+#   summary   one plain-English sentence, shown on the card (write it for a medical student)
+#   specimen  label/value pairs; used for search, not shown on the homepage
 #   sources   optional citations; `url` optional
 #   note      optional short caveat shown in the meta line
 #   keywords  extra words for search
@@ -37,8 +37,7 @@
   glyph: hcc
   art: hcc
   summary: >-
-    Hepatocellular carcinoma risk in chronic hepatitis B from two validated scores,
-    calculated side by side from one shared form.
+    Estimate liver cancer risk for a patient with chronic hepatitis B, using two published scores.
   specimen:
     - [In, "Age · sex · platelets · albumin · AST · quantitative HBsAg"]
     - [Out, "HBsAg-HCC and PAGE-B risk, with EMR-ready text to copy"]
@@ -61,8 +60,7 @@
   glyph: portal-htn
   art: portal-htn
   summary: >-
-    Probability of clinically significant and severe portal hypertension from routine
-    labs, using the Vienna models, with liver stiffness if you have it.
+    Estimate the chance of significant portal hypertension in cirrhosis from a few routine labs.
   specimen:
     - [In, "Platelets · bilirubin · INR · liver stiffness (optional)"]
     - [Out, "P(CSPH, HVPG ≥ 10) and P(severe PH, HVPG ≥ 16)"]
@@ -85,8 +83,7 @@
   glyph: backtrack
   art: backtrack
   summary: >-
-    Work backward from today's AST, ALT, and LDH to estimate what they were hours
-    or days ago, using editable enzyme half-lives.
+    Estimate what AST, ALT, and LDH were hours or days ago, to time when a liver injury began.
   specimen:
     - [In, "AST · ALT · LDH · time drawn"]
     - [Out, "A table of estimated earlier values, in 12-hour steps by default"]
@@ -106,8 +103,7 @@
   glyph: panel
   art: panel
   summary: >-
-    Thirteen lab panels, each with a diagnosis hiding in the pattern. Name it
-    before the reveal, then see why.
+    Practice reading liver labs: 13 patterns, guess the diagnosis, then see why.
   specimen:
     - [Format, "13 panels · read the pattern, name the diagnosis, reveal"]
     - [Covers, "R factor · AST:ALT · acetaminophen · cholestasis · Wilson disease"]
@@ -125,8 +121,7 @@
   glyph: cirrhosis
   art: cirrhosis
   summary: >-
-    Follow one patient, Adam, from an early clue in primary care through
-    decompensation, the ICU, and the transplant decision.
+    Follow one patient with cirrhosis from the first clue in clinic to the transplant decision, answering questions along the way.
   specimen:
     - [Format, "52 steps · 25 questions to answer before the reveal"]
     - [Goals, "Recognize · Interpret · Stabilize · Escalate"]
@@ -145,8 +140,7 @@
   glyph: pressure
   art: pressure
   summary: >-
-    A live model of the portal circulation. Change flow, resistance, or shunting
-    and watch pressure and HVPG respond.
+    Change blood flow and resistance in the liver and watch portal pressure respond.
   specimen:
     - [Move, "Gut inflow · pre/post-hepatic resistance · TIPS diameter · splenorenal shunt"]
     - [Watch, "Pressure by color, flow by speed, and HVPG (wedged − free)"]
@@ -168,7 +162,7 @@
   glyph: liver-sim
   art: liver-sim
   summary: >-
-    Trigger an injury, give a treatment, and watch the labs move in real time.
+    Pick a liver injury and a treatment, then watch the labs change over time.
   specimen:
     - [Injure, "Acetaminophen · shock liver · viral · alcohol · Wilson · rhabdo · Augmentin · obstruction · NAFLD"]
     - [Treat, "NAC · ERCP/PTC · IV vitamin K · copper chelation · weight loss"]
@@ -186,8 +180,7 @@
   glyph: abstract
   art: abstract
   summary: >-
-    A writing desk for medical abstracts. Type a PMID and the citation appears
-    beside your draft, with the abstract a hover away.
+    Write a medical abstract with PubMed citations that appear as you type.
   specimen:
     - [In, "Your draft, with PMIDs typed inline"]
     - [Out, "Citation cards, hover-to-read abstracts, copy as HTML or print"]
@@ -207,8 +200,7 @@
   art: auris
   cta: Open workstation
   summary: >-
-    Review deidentified EEG, explore its spectrum, and listen to it. Parsed
-    entirely in your browser, nothing uploaded.
+    Open an EEG recording in your browser to review it and listen to it.
   specimen:
     - [In, "EDF/EDF+ recording, or the bundled TUH EEG sample"]
     - [Out, "Montages, filters, spectrum/DSA, sonification, WAV export"]
