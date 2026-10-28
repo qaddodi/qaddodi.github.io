@@ -40,11 +40,9 @@ figure of what the tool does, drawn by `_scripts/make-art.py`.
    `python3 _scripts/make-art.py`. Without it, the plate shows the glyph large.
 5. Add a `new` entry to the top of `_data/changelog.yml`.
 
-The grid holds the tools (a `wide: true` tool takes two cells),
-and the "Latest" tile (two cells at 3 columns, one at 2). Today that is 15 cells at 3 columns
-and 16 at 2, so both fill evenly; if you add a tool, check both widths (a new tool plus
-`wide: false` on one flagship, or a third flagship, keeps things even). The grid packs densely,
-so a single-width tool fills a gap next to a flagship.
+Each group's grid is 4 compact cards wide on a laptop, 2 on a tablet, and 1 on a phone.
+`wide: true` still makes a card take two cells, but no tool uses it today; groups of 4
+fill evenly at every width.
 
 ## Try-it cards
 

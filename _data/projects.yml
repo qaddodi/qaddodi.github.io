@@ -68,7 +68,6 @@
     - text: HIBSAGO US Prescribing Information, Oct 2026
       url: https://gskpro.com/content/dam/global/hcpportal/en_US/Prescribing_Information/Hibsago/pdf/HIBSAGO-PI-MG-IFU.PDF
   keywords: bepirovirsen HIBSAGO hepatitis B HBV CHB HBsAg functional cure NrtI antisense B-Well protocol
-  wide: true
   added: 2026-10-28
   updated: 2026-10-28
 
@@ -92,7 +91,6 @@
   note: A rule-out aid. Confirm with HVPG where management depends on it.
   keywords: CSPH HVPG Vienna cirrhosis compensated elastography LSM FIB-4
   try: vienna
-  wide: true
   added: 2026-07-13
   updated: 2026-07-09
 
@@ -149,7 +147,6 @@
     - [Format, "52 steps · 25 questions to answer before the reveal"]
     - [Goals, "Recognize · Interpret · Stabilize · Escalate"]
   keywords: ascites SBP variceal bleeding hepatic encephalopathy HRS-AKI terlipressin transplant EAST-VIBES
-  wide: true
   added: 2026-07-16
   updated: 2026-08-26
 
@@ -168,7 +165,6 @@
     - [Move, "Gut inflow · pre/post-hepatic resistance · TIPS diameter · splenorenal shunt"]
     - [Watch, "Pressure by color, flow by speed, and HVPG (wedged − free)"]
   keywords: TIPS HVPG shunt resistance flow hemodynamics wedged hepatic venous pressure
-  wide: true
   try: pressure
   soon: true
   added: 2026-07-13
