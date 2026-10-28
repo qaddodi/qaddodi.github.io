@@ -50,6 +50,28 @@
   added: 2026-07-23
   updated: 2026-07-22
 
+- id: hibsago-protocol
+  title: HIBSAGO Protocol
+  short: HIBSAGO
+  url: https://qaddodi.github.io/hibsago-protocol/
+  repo: qaddodi/hibsago-protocol
+  type: calculator
+  glyph: hibsago
+  art: hibsago
+  cta: Open protocol
+  summary: >-
+    A one-page clinic guide to bepirovirsen for hepatitis B: who qualifies, dosing, labs, and when to stop.
+  specimen:
+    - [Covers, "Eligibility · dosing · standing labs · week 12 and week 48 decisions"]
+    - [Rules, "Hold and stop thresholds for platelets, ALT, bilirubin, and eGFR"]
+  sources:
+    - text: HIBSAGO US Prescribing Information, Oct 2026
+      url: https://gskpro.com/content/dam/global/hcpportal/en_US/Prescribing_Information/Hibsago/pdf/HIBSAGO-PI-MG-IFU.PDF
+  keywords: bepirovirsen HIBSAGO hepatitis B HBV CHB HBsAg functional cure NrtI antisense B-Well protocol
+  wide: true
+  added: 2026-10-28
+  updated: 2026-10-28
+
 - id: portal-hypertension-predictor
   legacy_anchor: t-portal-htn
   title: Portal Hypertension Predictor
@@ -70,6 +92,7 @@
   note: A rule-out aid. Confirm with HVPG where management depends on it.
   keywords: CSPH HVPG Vienna cirrhosis compensated elastography LSM FIB-4
   try: vienna
+  wide: true
   added: 2026-07-13
   updated: 2026-07-09
 

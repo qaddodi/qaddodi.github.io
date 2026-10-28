@@ -125,6 +125,30 @@ def backtrack():
     return svg(body, "AST, LDH, and ALT extrapolated back 48 hours from the current value using their half-lives")
 
 
+def hibsago():
+    # the protocol as a timeline: doses to week 24, NrtI throughout, decisions at weeks 12 and 48
+    x0, x1, y0 = 40, 368, 172
+    wk = lambda w: x0 + w / 48 * (x1 - x0)
+    body = f'<path class="ax" d="M{x0} {y0}H{x1}"/>\n'
+    for w in (0, 12, 24, 48):
+        body += f'<path class="ax" d="M{f(wk(w))} {y0}v5"/><text class="tx" x="{f(wk(w))}" y="{y0 + 18}" text-anchor="middle">wk {w}</text>\n'
+    doses = [0, 0.5, 1, 1.5] + list(range(2, 24))
+    for i, w in enumerate(doses):
+        body += f'<rect class="cf" x="{f(wk(w) - 1.5)}" y="{y0 - 30}" width="3" height="22" rx="1.5" opacity="{1 if w < 2 else .8}"/>'
+    body += '\n'
+    body += f'<path class="ax" d="M{f(wk(0))} {y0 - 40}V{y0 - 46}H{f(wk(23.5))}V{y0 - 40}"/><text class="tx tx-c" x="{f(wk(0))}" y="{y0 - 52}">HIBSAGO 24 wk</text>\n'
+    body += f'<path class="c c2 draw" pathLength="1" d="M{f(wk(0))} {y0 + 40}H{f(wk(48))}"/><text class="tx" x="{f(wk(34))}" y="{y0 + 34}">NrtI throughout</text>\n'
+    for w, lab in ((12, "qHBsAg"), (48, "Stop NrtI?")):
+        x, y = wk(w), 76
+        body += f'<path class="c c3 dash" d="M{f(x)} {y + 16}V{y0 - 2}"/>'
+        body += f'<path class="cs" d="M{f(x)} {y - 14}L{f(x + 14)} {y}L{f(x)} {y + 14}L{f(x - 14)} {y}Z"/>'
+        body += f'<path class="c" d="M{f(x)} {y - 14}L{f(x + 14)} {y}L{f(x)} {y + 14}L{f(x - 14)} {y}Z"/>'
+        anchor = "end" if w == 48 else "start"
+        dx = -20 if w == 48 else 20
+        body += f'<text class="tx tx-c" x="{f(x + dx)}" y="{y + 4}" text-anchor="{anchor}">{lab}</text>\n'
+    return svg(body, "HIBSAGO protocol timeline: doses through week 24, NrtI continued to week 48, with decisions at weeks 12 and 48")
+
+
 # ---------------------------------------------------------------- cases
 
 def panel():
@@ -342,7 +366,7 @@ def lobule():
 
 
 ART = {
-    "hcc": hcc, "portal-htn": portal_htn, "backtrack": backtrack,
+    "hcc": hcc, "portal-htn": portal_htn, "backtrack": backtrack, "hibsago": hibsago,
     "panel": panel, "cirrhosis": cirrhosis,
     "pressure": pressure, "liver-sim": liver_sim,
     "abstract": abstract, "auris": auris,

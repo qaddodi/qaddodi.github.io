@@ -1,6 +1,14 @@
 # "What's new" on the homepage and the Atom feed at /feed.xml. Newest first.
 # `project` is an id from projects.yml (optional). `kind`: new | update | site.
 
+- date: 2026-10-28
+  kind: new
+  project: hibsago-protocol
+  title: HIBSAGO Protocol
+  text: >-
+    A one-page clinic guide to bepirovirsen in chronic hepatitis B: eligibility, dosing,
+    standing labs, the week 12 and week 48 decisions, and the hold and stop rules.
+
 - date: 2026-09-26
   kind: site
   title: The calculators get the new look

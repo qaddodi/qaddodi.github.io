@@ -8,7 +8,7 @@
 
 - id: bedside
   title: Use at the bedside
-  blurb: Calculators built on published models.
+  blurb: Calculators and clinic protocols built on published sources.
   types: [calculator]
 
 - id: research
