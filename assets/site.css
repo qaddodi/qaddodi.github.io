@@ -611,8 +611,8 @@ kbd {
 /* bento --------------------------------------------------------------------- */
 .bento {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
 }
 .tile {
   position: relative;
@@ -649,14 +649,14 @@ kbd {
 
 .plate-art {
   position: relative;
-  padding: 44px 18px 8px;
+  padding: 34px 14px 4px;
   background:
     radial-gradient(90% 90% at 50% 100%, color-mix(in srgb, var(--c-wash) 45%, transparent), transparent),
     var(--c-bg);
   border-bottom: 1px solid color-mix(in srgb, var(--c) 18%, var(--line));
 }
-.plate-art .art { width: 100%; height: auto; overflow: visible; }
-.plate-glyph { width: 50% !important; height: auto !important; margin: 10px auto 20px; color: var(--c); stroke-width: .9; }
+.plate-art .art { display: block; width: 100%; height: auto; max-height: 128px; overflow: visible; }
+.plate-glyph { width: 38% !important; height: auto !important; margin: 4px auto 12px; color: var(--c); stroke-width: .9; }
 .plate-type {
   position: absolute;
   top: 14px; left: 16px;
@@ -674,7 +674,7 @@ kbd {
   text-transform: uppercase;
 }
 .plate-type .dot { width: 7px; height: 7px; }
-.badges { position: absolute; top: 14px; right: 14px; display: flex; gap: 6px; }
+.badges { position: absolute; top: 10px; right: 10px; display: flex; gap: 6px; }
 .badges:empty { display: none; }
 .badge {
   padding: 4px 9px;
@@ -690,10 +690,10 @@ kbd {
 .badge--since { background: var(--c); color: var(--c-on); }
 .badge--updated { background: var(--surface); color: var(--c-ink); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 45%, transparent); }
 
-.plate-body { display: grid; gap: 10px; padding: 20px 22px 8px; }
+.plate-body { display: grid; gap: 6px; padding: 14px 16px 4px; }
 .plate-title {
   font-family: var(--display);
-  font-size: 1.5rem;
+  font-size: 1.22rem;
   font-weight: 460;
   font-variation-settings: "opsz" 48, "SOFT" 40;
   line-height: 1.12;
@@ -702,7 +702,7 @@ kbd {
 .plate-link { text-decoration: none; }
 .plate-link::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
 .plate-link:focus-visible { outline: none; }
-.plate-summary { margin: 0; color: var(--ink-2); font-size: .95rem; line-height: 1.55; }
+.plate-summary { margin: 0; color: var(--ink-2); font-size: .88rem; line-height: 1.5; }
 
 .io { display: grid; gap: 8px; margin: 6px 0 0; }
 .io-row { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 10px; align-items: start; }
@@ -733,7 +733,7 @@ kbd {
   align-items: center;
   gap: 6px;
   margin-top: auto;
-  padding: 12px 14px 14px 22px;
+  padding: 8px 10px 12px 16px;
   pointer-events: none;
 }
 .plate-updated { color: var(--muted); font-family: var(--mono); font-size: .74rem; white-space: nowrap; }
@@ -745,12 +745,12 @@ kbd {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  height: 36px;
-  padding: 0 14px;
+  height: 32px;
+  padding: 0 12px;
   border-radius: 999px;
   background: var(--c-bg);
   color: var(--c-ink);
-  font-size: .86rem;
+  font-size: .8rem;
   font-weight: 600;
   white-space: nowrap;
   transition: background-color 220ms var(--ease), color 220ms var(--ease);
@@ -1407,8 +1407,8 @@ dialog::backdrop { background: rgb(14 13 17 / .45); backdrop-filter: blur(4px); 
   .plate.is-wide .plate-body { padding: 18px 18px 6px; }
   .plate.is-wide .plate-title { font-size: 1.5rem; }
   .plate.is-wide .plate-foot { padding-left: 18px; }
-  .plate-art { padding: 36px 14px 4px; }
-  .plate-art .art { max-height: 150px; }
+  .plate-art { padding: 30px 14px 4px; }
+  .plate-art .art { max-height: 120px; }
   .plate .io { display: none; }
   .path-list { grid-auto-columns: 86%; }
   .news-item { grid-template-columns: 48px 32px minmax(0, 1fr); gap: 0 10px; }
@@ -1416,8 +1416,8 @@ dialog::backdrop { background: rgb(14 13 17 / .45); backdrop-filter: blur(4px); 
   .news-node .glyph, .news-node .mark { width: 32px; height: 32px; padding: 6px; }
   .news-date { font-size: .74rem; }
   .news-list { grid-template-columns: minmax(0, 1fr); }
-  .plate-body { padding: 18px 18px 6px; }
-  .plate-foot { padding: 10px 10px 12px 18px; }
+  .plate-body { padding: 14px 16px 4px; }
+  .plate-foot { padding: 8px 10px 12px 16px; }
   .sheet-body { padding: 20px 20px 32px; }
   .shelf { flex-wrap: wrap; gap: 8px 12px; }
   .shelf-list { order: 3; flex-basis: 100%; }
