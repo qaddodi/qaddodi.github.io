@@ -7,7 +7,6 @@ body_class: home
 {%- assign projects = site.data.projects -%}
 {%- assign live_projects = projects | where_exp: "p", "p.soon != true" -%}
 {%- assign sections = site.data.sections -%}
-{%- assign panel_deck = projects | where: "id", "liver-panel" | first -%}
 {%- assign latest = site.data.changelog | first -%}
 
 <main id="contents">
@@ -62,26 +61,6 @@ body_class: home
     </div>
 
     <div class="groups" data-bento>
-
-      <!-- today's panel: filled in by site.js; the fallback links to the deck -->
-      <article class="tile today" id="today" aria-labelledby="today-title" data-special>
-        <div class="today-grid">
-          <div class="today-left">
-            <header class="today-head">
-              <p class="today-kicker"><span class="live" aria-hidden="true"></span>Today&rsquo;s panel <span class="today-no" data-panel-no></span></p>
-              <p class="today-streak" data-panel-streak hidden></p>
-            </header>
-            <h2 class="today-title" id="today-title" data-panel-clue>Read the labs. Name the pattern.</h2>
-            <div data-panel-labs>
-              <p class="today-fallback">
-                One lab panel a day from <a href="{{ panel_deck.url }}">Interpreting the Liver Panel</a>.
-                Turn on JavaScript to play here, or work through all {{ site.data.panels.size }} cases in the deck.
-              </p>
-            </div>
-          </div>
-          <div class="today-right" data-panel-right></div>
-        </div>
-      </article>
 
       {%- for g in site.data.groups %}
       <section class="group" data-group aria-labelledby="g-{{ g.id }}">

@@ -1,4 +1,4 @@
-# Site settings. Projects, the daily panel, and the update log live in _data/.
+# Site settings. Projects and the update log live in _data/.
 # See README.md for how to add a project or roll back the homepage.
 
 title: Mohammad Almeqdadi, MD
@@ -19,9 +19,6 @@ author:
   github: qaddodi
   orcid: 0000-0002-5503-2371
   affiliation: Tufts Medical Center
-
-# The first day of the daily panel. Panel "No. 1" is this date.
-panel_epoch: 2026-09-24
 
 # A project counts as "New" for this many days after its `added` date.
 new_days: 45

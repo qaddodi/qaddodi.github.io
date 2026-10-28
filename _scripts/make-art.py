@@ -301,7 +301,7 @@ def lobule():
         x1, y1 = (r_edge - 14) * math.cos(t), (r_edge - 14) * math.sin(t)
         body += f'<path class="cord" d="M{f(x0)} {f(y0)}L{f(x1)} {f(y1)}"/>'
     body += '</g>\n'
-    # the three acinar zones as hexagonal bands, lit by the daily panel after a reveal:
+    # the three acinar zones as hexagonal bands:
     # zone 1 periportal (outer), zone 2 midzonal, zone 3 pericentral (inner)
     def ring(r0, r1):
         outer = [(r1 * math.cos(math.radians(a)), r1 * math.sin(math.radians(a))) for a in range(0, 360, 60)]
