@@ -5,11 +5,7 @@
          style="view-transition-name: p-{{ p.id }}">
   {%- if p.legacy_anchor %}<span class="legacy-anchor" id="{{ p.legacy_anchor }}"></span>{% endif %}
   <div class="plate-art">
-    {%- if p.art -%}
-      {%- capture art_path %}art/{{ p.art }}.svg{% endcapture %}{% include {{ art_path }} %}
-    {%- else -%}
-      {% include glyph.html id=p.glyph class="plate-glyph" %}
-    {%- endif %}
+    {%- include glyph.html id=p.glyph class="plate-glyph" %}
     <span class="badges" data-badges></span>
   </div>
 

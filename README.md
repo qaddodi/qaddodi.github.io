@@ -40,9 +40,9 @@ figure of what the tool does, drawn by `_scripts/make-art.py`.
    `python3 _scripts/make-art.py`. Without it, the plate shows the glyph large.
 5. Add a `new` entry to the top of `_data/changelog.yml`.
 
-Each group's grid is 4 compact cards wide on a laptop, 2 on a tablet, and 1 on a phone.
-`wide: true` still makes a card take two cells, but no tool uses it today; groups of 4
-fill evenly at every width.
+Each tool shows as a compact row: its small glyph, title, one sentence, and the action.
+Two per row on a laptop, one on a phone. The plate art in `_includes/art/` is no longer shown
+on the cards; the glyph is what each card uses.
 
 ## Try-it cards
 
