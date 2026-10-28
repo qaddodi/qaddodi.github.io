@@ -1460,3 +1460,52 @@ dialog::backdrop { background: rgb(14 13 17 / .45); backdrop-filter: blur(4px); 
   .plate-art { display: none; }
   .plate-link::after { content: " " attr(href); position: static; font-family: var(--mono); font-size: 8pt; }
 }
+
+/* ======================================================== compact cards */
+/* Each tool is a short row: a small colored icon, the title, one sentence, and the action.
+   Two per row on a laptop, one on a phone. (The plate illustrations in _includes/art/ are
+   no longer shown on the cards.) */
+
+.bento { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.plate, .plate.is-wide {
+  grid-column: auto;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  column-gap: 14px;
+  padding: 14px 14px 12px 16px;
+}
+.plate:hover, .plate:focus-within { transform: translateY(-2px); }
+.plate-art, .plate.is-wide .plate-art {
+  position: static;
+  grid-row: 1 / -1;
+  align-self: start;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: var(--c-bg);
+}
+.plate-glyph { width: 26px !important; height: 26px !important; margin: 0; color: var(--c-ink); stroke-width: 1.5; }
+.badges { top: 12px; right: 12px; }
+.badge { padding: 2px 7px; font-size: .6rem; }
+.plate-body, .plate.is-wide .plate-body { gap: 3px; padding: 1px 0 0; }
+.plate:has(.badges:not(:empty)) .plate-body { padding-right: 52px; }
+.plate-title, .plate.is-wide .plate-title { font-size: 1.12rem; font-variation-settings: "opsz" 36, "SOFT" 40; }
+.plate-summary { font-size: .86rem; line-height: 1.45; color: var(--muted); }
+.plate-foot, .plate.is-wide .plate-foot { grid-column: 2; padding: 8px 0 0; }
+.plate-go { margin-left: 0; height: auto; padding: 0; background: none; font-size: .8rem; }
+.plate:hover .plate-go { background: none; color: var(--c-ink); }
+.plate-soon { height: auto; margin-left: 0; padding: 1px 8px; font-size: .62rem; }
+
+@media (max-width: 720px) {
+  .bento { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .plate, .plate.is-wide { display: grid; padding: 12px 12px 10px 14px; column-gap: 12px; }
+  .plate-art, .plate.is-wide .plate-art { padding: 0; border: 0; }
+  .plate-body, .plate.is-wide .plate-body { padding: 1px 0 0; }
+  .plate-foot, .plate.is-wide .plate-foot { padding: 6px 0 0; }
+  .plate-title, .plate.is-wide .plate-title { font-size: 1.06rem; }
+}
