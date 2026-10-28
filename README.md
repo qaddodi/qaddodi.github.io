@@ -11,8 +11,6 @@ Jekyll; there is nothing to install or run to publish. Push to `master` and it d
 | Tool types: names, colors, order, call-to-action wording | `_data/sections.yml` |
 | Homepage groups (Learn, At the bedside, Research) | `_data/groups.yml` |
 | "What's new" and the RSS feed | `_data/changelog.yml` |
-| The daily "Today's panel" cases (and which lobule zone each lights up) | `_data/panels.yml` |
-| Reference ranges and "why this lab" lines for the panel | `_data/labs.yml` |
 | Dotted-underline definitions (HVPG, CSPH, …) | `_data/glossary.yml` |
 | Portal Pressure Simulator card numbers | `_scripts/make-pressure-grid.mjs` → `_data/pressure_grid.json` |
 | Page structure | `index.html`, `_layouts/base.html`, `_includes/` |
@@ -42,7 +40,7 @@ figure of what the tool does, drawn by `_scripts/make-art.py`.
    `python3 _scripts/make-art.py`. Without it, the plate shows the glyph large.
 5. Add a `new` entry to the top of `_data/changelog.yml`.
 
-The grid holds today's panel (two cells), the tools (a `wide: true` tool takes two cells),
+The grid holds the tools (a `wide: true` tool takes two cells),
 and the "Latest" tile (two cells at 3 columns, one at 2). Today that is 15 cells at 3 columns
 and 16 at 2, so both fill evenly; if you add a tool, check both widths (a new tool plus
 `wide: false` on one flagship, or a third flagship, keeps things even). The grid packs densely,
@@ -70,7 +68,7 @@ from disk (`file://`) shows unstyled; preview it through a local server with thi
 
 ## Features that remember things
 
-The shelf (pins and recently opened), guided-path progress, the daily-panel streak, "since your last visit",
+The shelf (pins and recently opened), guided-path progress, "since your last visit",
 and the theme choice are kept in the reader's own browser (`localStorage`, keys start with
 `qd:`). Nothing is sent anywhere, and the page works fully without them.
 

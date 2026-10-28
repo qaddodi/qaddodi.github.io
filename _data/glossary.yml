@@ -1,6 +1,6 @@
 # Hover (or tap) definitions for abbreviations on the homepage.
-# The first use of each term inside a tool summary, its In/Out line, or a daily-panel
-# teaching point gets a dotted underline and this definition.
+# The first use of each term inside a tool summary or its In/Out line
+# gets a dotted underline and this definition.
 
 - term: HVPG
   def: Hepatic venous pressure gradient. Wedged minus free hepatic venous pressure; the reference measure of portal pressure. Normal is 1–5 mmHg.
