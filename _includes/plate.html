@@ -9,10 +9,9 @@
   </div>
 
   <div class="plate-body">
-    <p class="plate-tags">
-      {%- if p.soon %}<span class="pill pill--soon">Coming soon</span>
-      {%- else %}<span class="pill pill--type">{{ p.kind | default: sec.pill }}</span>{% endif -%}
-    </p>
+    {%- if p.soon %}{% assign tag = "Coming soon" %}{% assign tag_class = "pill--soon" %}
+    {%- else %}{% assign tag = p.kind | default: sec.pill %}{% assign tag_class = "pill--type" %}{% endif %}
+    <p class="plate-tags"><span class="pill {{ tag_class }}">{{ tag }}</span></p>
     <h3 class="plate-title">
       {%- if p.soon %}{{ p.title }}{% else %}<a class="plate-link" href="{{ p.url }}" data-track="{{ p.id }}">{{ p.title }}</a>{% endif %}
     </h3>
