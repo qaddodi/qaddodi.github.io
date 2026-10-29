@@ -1509,3 +1509,29 @@ dialog::backdrop { background: rgb(14 13 17 / .45); backdrop-filter: blur(4px); 
   .plate-foot, .plate.is-wide .plate-foot { padding: 6px 0 0; }
   .plate-title, .plate.is-wide .plate-title { font-size: 1.06rem; }
 }
+
+/* ================================================== letterhead (top of page)
+   One short band: the lobule as a small mark, a one-line headline, and the
+   search box. These rules sit last so they win over the earlier hero rules. */
+
+.hero { padding: clamp(24px, 4vw, 48px) var(--pad) clamp(16px, 3vw, 32px); border-bottom: 1px solid var(--line); }
+.hero::before { display: none; }
+.hero-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 340px); align-items: end; gap: 18px clamp(24px, 5vw, 72px); }
+.letterhead { display: flex; align-items: center; gap: 22px; min-width: 0; }
+.hero .lobule { position: static; flex: none; width: 108px; opacity: 1; pointer-events: auto; z-index: auto; justify-self: auto; }
+.hero .lobule .callout { display: none; }
+.hero h1 { margin: 0; font-size: clamp(2.1rem, 3.6vw, 3.2rem); line-height: 1; letter-spacing: -.035em; }
+.hero h1 em { background: none; color: var(--crimson-ink); -webkit-background-clip: initial; background-clip: initial; }
+.hero .lede { max-width: none; margin-top: 10px; font-size: 1.05rem; text-wrap: balance; }
+.hero .lede strong { white-space: nowrap; }
+.hero .search { flex: 1 1 auto; height: 44px; box-shadow: none; }
+.tools-inner { padding-top: 0; }
+.groups > .group:first-child { margin-top: clamp(24px, 3vw, 40px); }
+
+@media (max-width: 760px) {
+  .hero-inner { grid-template-columns: minmax(0, 1fr); }
+  .hero .lobule { display: none; }
+  .hero h1 { font-size: 1.85rem; }
+  .hero .lede { font-size: .98rem; }
+  .hero .search kbd { display: none; }
+}

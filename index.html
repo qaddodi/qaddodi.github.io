@@ -11,24 +11,24 @@ body_class: home
 
 <main id="contents">
 
-<!-- ─── hero ──────────────────────────────────────────────────────── -->
+<!-- ─── letterhead ────────────────────────────────────────────────── -->
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-inner">
-    <div class="hero-copy">
-      <p class="eyebrow">Transplant hepatology &middot; Boston</p>
-      <h1 id="hero-title">Hepatology, <em>made interactive.</em></h1>
-      <p class="lede">
-        Free tools for learning and practicing liver medicine, from transplant hepatologist
-        <strong>{{ site.author.name }}, {{ site.author.honorific }}</strong>. No sign-in, nothing to install.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#tools">See the tools <span class="arrow" aria-hidden="true">&darr;</span></a>
+    <div class="letterhead">
+      <figure class="lobule" data-lobule aria-hidden="true">
+        <div class="lobule-art">{% include art/lobule.svg %}</div>
+      </figure>
+      <div class="hero-copy">
+        <h1 id="hero-title">Hepatology, <em>made interactive.</em></h1>
+        <p class="lede">Free liver medicine tools from <strong>{{ site.author.name }}, {{ site.author.honorific }}</strong>. Nothing to install.</p>
       </div>
     </div>
-
-    <figure class="lobule" data-lobule aria-hidden="true">
-      <div class="lobule-art">{% include art/lobule.svg %}</div>
-    </figure>
+    <label class="search">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m12.7 12.7 4.3 4.3"/></svg>
+      <span class="visually-hidden">Search tools</span>
+      <input id="q" type="search" placeholder="Search the tools" autocomplete="off" spellcheck="false" data-search>
+      <kbd aria-hidden="true">/</kbd>
+    </label>
   </div>
 </section>
 
@@ -36,18 +36,7 @@ body_class: home
 <section class="tools" id="tools" aria-labelledby="tools-title">
   <h2 class="visually-hidden" id="tools-title">Tools</h2>
 
-  <div class="toolbar" data-toolbar>
-    <div class="toolbar-inner">
-      <label class="search">
-        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m12.7 12.7 4.3 4.3"/></svg>
-        <span class="visually-hidden">Search tools</span>
-        <input id="q" type="search" placeholder="Search the tools" autocomplete="off" spellcheck="false" data-search>
-        <kbd aria-hidden="true">/</kbd>
-      </label>
-    </div>
-  </div>
-
-  <div class="tools-inner">
+<div class="tools-inner">
     <p class="since" data-since hidden>
       <span class="since-pulse" aria-hidden="true"></span>
       <span data-since-text></span>
