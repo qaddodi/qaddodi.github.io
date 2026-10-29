@@ -2,16 +2,16 @@
 # sections.yml, shown in this order inside the group.
 
 - id: learn
-  title: Learn liver medicine
-  blurb: Cases and simulators for students, residents, and fellows.
+  title: Teaching
+  blurb: Cases and simulators for students, residents and fellows.
   types: [case, simulator]
 
 - id: bedside
-  title: Use at the bedside
-  blurb: Calculators and clinic protocols built on published sources.
+  title: In clinic
+  blurb: Calculators and one clinic protocol, each built on a published source.
   types: [calculator]
 
 - id: research
-  title: Research tools
-  blurb: Writing and signal tools that run in your browser.
+  title: Research
+  blurb: An abstract writer and an EEG viewer. Both run in your browser.
   types: [research]

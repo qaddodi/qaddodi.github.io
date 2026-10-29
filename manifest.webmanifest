@@ -3,7 +3,7 @@ layout: null
 sitemap: false
 ---
 {
-  "name": "Hepatology tools · {{ site.author.name }}, {{ site.author.honorific }}",
+  "name": "Liver tools · {{ site.author.name }}, {{ site.author.honorific }}",
   "short_name": "Liver tools",
   "description": {{ site.description | strip | jsonify }},
   "start_url": "/?source=homescreen",

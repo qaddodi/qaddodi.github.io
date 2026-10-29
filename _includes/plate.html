@@ -6,21 +6,17 @@
   {%- if p.legacy_anchor %}<span class="legacy-anchor" id="{{ p.legacy_anchor }}"></span>{% endif %}
   <div class="plate-art">
     {%- include glyph.html id=p.glyph class="plate-glyph" %}
-    <span class="badges" data-badges></span>
   </div>
 
   <div class="plate-body">
     <h3 class="plate-title">
       {%- if p.soon %}{{ p.title }}{% else %}<a class="plate-link" href="{{ p.url }}" data-track="{{ p.id }}">{{ p.title }}</a>{% endif %}
+      <span class="badges" data-badges></span>
     </h3>
     <p class="plate-summary">{{ p.summary }}</p>
   </div>
 
-  <footer class="plate-foot">
-    {%- if p.soon %}
-    <span class="plate-soon">Coming soon</span>
-    {%- else %}
-    <span class="plate-go" aria-hidden="true">{{ p.cta | default: sec.verb }} <span class="arrow">&rarr;</span></span>
-    {%- endif %}
-  </footer>
+  {%- if p.soon %}
+  <footer class="plate-foot"><span class="plate-soon">Coming soon</span></footer>
+  {%- endif %}
 </article>

@@ -1,16 +1,16 @@
 ---
 layout: base
 title: Page not found | Mohammad Almeqdadi, MD
-description: That page isn't here. Every hepatology tool on this site is listed below.
+description: That page isn't here. Every liver tool on this site is listed below.
 permalink: /404.html
 sitemap: false
 noindex: true
 body_class: lost-page
 ---
 <main class="lost" id="contents">
-  <p class="eyebrow"><span class="triad-dots" aria-hidden="true"><i class="h-blue"></i><i class="h-crimson"></i><i class="h-green"></i><i class="h-amber"></i></span>404 &middot; Not found</p>
-  <h1>That page isn&rsquo;t here, but every tool is.</h1>
-  <p class="lede">The address may have changed. Pick a tool, or head back to the index.</p>
+  <p class="eyebrow">404</p>
+  <h1>That page isn&rsquo;t here.</h1>
+  <p class="lede">Try one of these, or go back to the front page.</p>
   <ul class="lost-list">
     {%- assign live_projects = site.data.projects | where_exp: "p", "p.soon != true" -%}
     {%- for p in live_projects %}
@@ -18,7 +18,5 @@ body_class: lost-page
     <li class="hue-{{ s.hue }}"><a href="{{ p.url }}">{% include glyph.html id=p.glyph %}<span>{{ p.title }}</span></a></li>
     {%- endfor %}
   </ul>
-  <div class="lost-actions">
-    <a class="btn btn-primary" href="{{ '/' | relative_url }}">Go to the homepage</a>
-  </div>
+  <p class="lost-actions"><a href="{{ '/' | relative_url }}">Back to the front page</a></p>
 </main>

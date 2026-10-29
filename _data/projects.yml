@@ -37,7 +37,7 @@
   glyph: hcc
   art: hcc
   summary: >-
-    Estimate liver cancer risk for a patient with chronic hepatitis B, using two published scores.
+    Liver cancer risk in chronic hepatitis B, from two published scores: PAGE-B and HBsAg-HCC.
   specimen:
     - [In, "Age · sex · platelets · albumin · AST · quantitative HBsAg"]
     - [Out, "HBsAg-HCC and PAGE-B risk, with EMR-ready text to copy"]
@@ -81,7 +81,7 @@
   glyph: portal-htn
   art: portal-htn
   summary: >-
-    Estimate the chance of significant portal hypertension in cirrhosis from a few routine labs.
+    Chance of clinically significant portal hypertension in cirrhosis, from routine labs and, if you have it, liver stiffness.
   specimen:
     - [In, "Platelets · bilirubin · INR · liver stiffness (optional)"]
     - [Out, "P(CSPH, HVPG ≥ 10) and P(severe PH, HVPG ≥ 16)"]
@@ -104,7 +104,7 @@
   glyph: backtrack
   art: backtrack
   summary: >-
-    Estimate what AST, ALT, and LDH were hours or days ago, to time when a liver injury began.
+    Work backward from today's AST, ALT and LDH to estimate when a liver injury started.
   specimen:
     - [In, "AST · ALT · LDH · time drawn"]
     - [Out, "A table of estimated earlier values, in 12-hour steps by default"]
@@ -142,7 +142,7 @@
   glyph: cirrhosis
   art: cirrhosis
   summary: >-
-    Follow one patient with cirrhosis from the first clue in clinic to the transplant decision, answering questions along the way.
+    One patient with cirrhosis, from the first clue in clinic to the transplant decision. You answer questions at each step.
   specimen:
     - [Format, "52 steps · 25 questions to answer before the reveal"]
     - [Goals, "Recognize · Interpret · Stabilize · Escalate"]
@@ -219,7 +219,7 @@
   art: auris
   cta: Open workstation
   summary: >-
-    Open an EEG recording in your browser to review it and listen to it.
+    Open an EEG recording in your browser, review it, and hear it as sound.
   specimen:
     - [In, "EDF/EDF+ recording, or the bundled TUH EEG sample"]
     - [Out, "Montages, filters, spectrum/DSA, sonification, WAV export"]

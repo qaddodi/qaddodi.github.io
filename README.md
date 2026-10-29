@@ -40,9 +40,10 @@ figure of what the tool does, drawn by `_scripts/make-art.py`.
    `python3 _scripts/make-art.py`. Without it, the plate shows the glyph large.
 5. Add a `new` entry to the top of `_data/changelog.yml`.
 
-Each tool shows as a compact row: its small glyph, title, one sentence, and the action.
-Two per row on a laptop, one on a phone. The plate art in `_includes/art/` is no longer shown
-on the cards; the glyph is what each card uses.
+Each tool shows as a plain row: its small glyph in ink, the title (the whole row is the link),
+and one sentence, with a thin line between rows. Two per row on a laptop, one on a phone.
+No cards, tinted boxes, pills, or scroll animation; the one accent color marks "New" and hover.
+The plate art in `_includes/art/` is not shown on the page; the glyph is what each row uses.
 
 ## Try-it cards
 
