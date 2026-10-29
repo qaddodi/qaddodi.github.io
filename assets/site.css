@@ -1210,3 +1210,11 @@ dialog::backdrop { background: rgb(14 13 17 / .45); }
   .plate, .plate.is-wide, .plate:nth-child(odd), .plate:nth-child(even) { padding-top: 20px; }
   .plate-tags .pill, .plate-tags .pill--soon { padding: 4px 10px 4px 11px; font-size: .6rem; }
 }
+
+/* Phones: no sideways scrolling. iOS zooms into any field under 16px when you
+   tap it, which leaves the page wider than the screen, so the search box stays
+   at 16px. Also clip any stray horizontal overflow at the root, where older
+   iOS Safari looks for it. */
+html { overflow-x: hidden; }
+@supports (overflow-x: clip) { html { overflow-x: clip; } }
+@media (max-width: 720px) { .search input { font-size: 16px; } }
