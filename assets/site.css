@@ -462,7 +462,7 @@ kbd {
 
 /* ================================================================= tools */
 
-.tools { padding: 0 0 clamp(56px, 7vw, 96px); }
+.tools { padding: 0 0 clamp(32px, 4vw, 48px); }
 
 .toolbar {
   position: sticky;
@@ -907,7 +907,7 @@ kbd {
 .about {
   width: min(100% - 2 * var(--pad), var(--wide));
   margin: 0 auto;
-  padding-block: clamp(56px, 7vw, 96px);
+  padding-block: clamp(32px, 4vw, 56px);
   border-top: 1px solid var(--line);
 }
 .section-head {
@@ -929,7 +929,7 @@ kbd {
 }
 .section-actions { margin: 0; }
 
-.about { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); }
+.about { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); grid-template-areas: "main side" "idea side"; gap: 32px clamp(32px, 6vw, 96px); }
 .about-why { margin: 28px 0 0; padding: 2px 0 2px 20px; border-left: 3px solid var(--crimson); }
 .about-why p {
   margin: 0;
@@ -944,7 +944,9 @@ kbd {
 }
 .about-bio { max-width: 38em; margin: 26px 0 0; color: var(--ink-2); font-size: 1.08rem; line-height: 1.7; }
 .about-side { display: grid; gap: 16px; align-content: start; }
-.about-idea { grid-column: 1 / -1; margin-top: 0; }
+.about-main { grid-area: main; }
+.about-side { grid-area: side; }
+.about-idea { grid-area: idea; align-self: start; max-width: 38em; margin-top: 0; }
 .links { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
 .links li { border-bottom: 1px solid var(--line); }
 .links a {
@@ -1320,7 +1322,7 @@ dialog::backdrop { background: rgb(14 13 17 / .45); backdrop-filter: blur(4px); 
   .lobule { width: min(100%, 520px); }
   .toolbar-inner { flex-wrap: wrap; }
   .search { flex: 1 1 100%; }
-  .about { grid-template-columns: minmax(0, 1fr); }
+  .about { grid-template-columns: minmax(0, 1fr); grid-template-areas: "main" "side" "idea"; }
   .path-list { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(280px, 44%); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
   .path-list::-webkit-scrollbar { display: none; }
   .path { scroll-snap-align: start; }
