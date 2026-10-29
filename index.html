@@ -81,7 +81,7 @@ body_class: home
   <div class="about-side">
     <ul class="links">
       <li><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Almeqdadi+M%5BAuthor%5D" target="_blank" rel="noopener noreferrer"><span class="link-chip">{% include icons/pubmed.svg %}</span>PubMed</a></li>
-      <li><a href="https://scholar.google.com/scholar?hl=en&amp;q=%22Mohammad+Almeqdadi%22" target="_blank" rel="noopener noreferrer"><span class="link-chip">{% include icons/scholar.svg %}</span>Google Scholar</a></li>
+      <li><a href="https://scholar.google.com/citations?user=r4cFPVcAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer"><span class="link-chip">{% include icons/scholar.svg %}</span>Google Scholar</a></li>
       <li><a href="https://orcid.org/{{ site.author.orcid }}" target="_blank" rel="noopener noreferrer"><span class="link-chip">{% include icons/orcid.svg %}</span>ORCID</a></li>
       <li><a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer"><span class="link-chip">{% include icons/github.svg %}</span>GitHub</a></li>
       <li><a href="mailto:{{ site.author.email }}"><span class="link-chip">{% include icons/email.svg %}</span>Email</a></li>
@@ -134,7 +134,8 @@ body_class: home
     "url": {{ site.url | append: '/' | jsonify }},
     "sameAs": [
       "https://github.com/{{ site.author.github }}",
-      "https://orcid.org/{{ site.author.orcid }}"
+      "https://orcid.org/{{ site.author.orcid }}",
+      "https://scholar.google.com/citations?user=r4cFPVcAAAAJ"
     ]
   }
 }
