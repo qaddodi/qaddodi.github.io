@@ -1177,11 +1177,10 @@ dialog::backdrop { background: rgb(14 13 17 / .45); }
   .plate, .plate.is-wide, .plate:nth-child(odd), .plate:nth-child(even) { grid-template-columns: 48px minmax(0, 1fr); column-gap: 14px; padding: 14px; }
   .plate-art, .plate.is-wide .plate-art { width: 48px; height: 48px; border-radius: 10px; }
   .plate-glyph { width: 26px !important; height: 26px !important; }
-  /* Phones: the pills sit on the card's top edge so titles keep the full width. */
-  .bento { gap: 18px; }
-  .plate { position: relative; }
-  .plate-tags { position: absolute; top: -10px; right: 12px; margin: 0; }
-  .pill, .plate-tags .badge { box-shadow: 0 0 0 2px var(--bg); }
-  .pill--type { background: color-mix(in srgb, var(--c) 18%, var(--surface)); }
-  .pill--soon { background: var(--surface); }
+  /* Phones: a smaller pill tucked into the card's top-right corner, with a
+     little room above the title so the two never collide. */
+  .plate, .plate.is-wide, .plate:nth-child(odd), .plate:nth-child(even) { position: relative; padding-top: 26px; }
+  .plate-tags { position: absolute; top: 8px; right: 8px; margin: 0; }
+  .plate-tags .pill { padding: 1px 7px; font-size: .68rem; }
 }
+.plate-soon-line { margin: 8px 0 0; }

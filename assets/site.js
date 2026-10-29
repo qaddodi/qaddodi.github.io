@@ -137,13 +137,7 @@
 
   const renderBadges = () => {
     for (const plate of plates) {
-      const added = parseDay(plate.dataset.added);
       const updated = parseDay(plate.dataset.updated);
-      const badges = $("[data-badges]", plate);
-      badges.textContent = "";
-      const isNew = added && now - added.getTime() < (CFG.newDays || 45) * DAY;
-      if (isNew) badges.append(el("span", { class: "badge badge--new", text: "New" }));
-
       const label = $("[data-updated-label]", plate);
       if (label && updated) {
         label.dateTime = plate.dataset.updated;
