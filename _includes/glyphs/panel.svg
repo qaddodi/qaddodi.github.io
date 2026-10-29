@@ -1,6 +1,5 @@
-<path d="M3 3.5h26M3 9.7h22.5M3 15.9h26M3 22.1h24M3 28.3h26" opacity=".72"/>
-<path class="tick" d="M16.4 6.6v6.2"/>
-<path class="tick t2" d="M9.5 12.8V19M13.1 12.8V19M20.3 12.8V19"/>
-<path class="tick t3" d="M11.6 19v6.2"/>
-<path class="tick t4" d="M22.1 25.2v6.2"/>
-<path d="M27.2 22.1h1.8" opacity=".72"/>
+<path d="M3 7h26M3 16h26M3 25h26" opacity=".5"/>
+<path class="tick" d="M9 4.6v4.8M21 4.6v4.8M9 13.6v4.8M21 13.6v4.8M9 22.6v4.8M21 22.6v4.8"/>
+<circle cx="16" cy="7" r="1.9"/>
+<circle cx="14" cy="16" r="1.9"/>
+<circle cx="27" cy="25" r="2.2" fill="currentColor"/>
