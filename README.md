@@ -10,7 +10,7 @@ Jekyll; there is nothing to install or run to publish. Push to `master` and it d
 | A project (title, summary, inputs/outputs, sources, dates) | `_data/projects.yml` |
 | Tool types: names, colors, order, call-to-action wording | `_data/sections.yml` |
 | Homepage groups (Learn, At the bedside, Research) | `_data/groups.yml` |
-| "What's new" and the RSS feed | `_data/changelog.yml` |
+| The RSS feed (not linked from the page) | `_data/changelog.yml` |
 | Dotted-underline definitions (HVPG, CSPH, …) | `_data/glossary.yml` |
 | Portal Pressure Simulator card numbers | `_scripts/make-pressure-grid.mjs` → `_data/pressure_grid.json` |
 | Page structure | `index.html`, `_layouts/base.html`, `_includes/` |
@@ -66,7 +66,7 @@ from disk (`file://`) shows unstyled; preview it through a local server with thi
 
 ## Features that remember things
 
-The shelf (pins and recently opened), guided-path progress, "since your last visit",
+Guided-path progress, the "Updated since your visit" badges on tool rows,
 and the theme choice are kept in the reader's own browser (`localStorage`, keys start with
 `qd:`). Nothing is sent anywhere, and the page works fully without them.
 

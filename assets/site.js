@@ -156,7 +156,6 @@
 
   const renderBadges = () => {
     const updatedSince = [];
-    const addedSince = [];
     for (const plate of plates) {
       const id = plate.dataset.project;
       const added = parseDay(plate.dataset.added);
@@ -168,7 +167,6 @@
       if (isNew) badges.append(el("span", { class: "badge badge--new", text: "New" }));
       if (since) badges.append(el("span", { class: "badge badge--since", text: "Updated since your visit" }));
       if (since) updatedSince.push(id);
-      if (returning && isFresh(plate.dataset.added)) addedSince.push(id);
 
       const label = $("[data-updated-label]", plate);
       if (label && updated) {
@@ -176,39 +174,8 @@
         label.textContent = fmtMonth.format(updated);
       }
     }
-
-    const since = $("[data-since]");
-    if (since && (updatedSince.length || addedSince.length) && session.get("since-dismissed") !== "1") {
-      const text = $("[data-since-text]", since);
-      const links = (ids) => ids.flatMap((id, i) => [
-        i ? (i === ids.length - 1 ? (ids.length > 2 ? ", and " : " and ") : ", ") : "",
-        el("a", { href: `#p-${id}`, text: byId[id]?.title || id }),
-      ]);
-      text.textContent = "";
-      text.append(`Since your last visit (${fmtDay.format(new Date(prevVisit))}): `);
-      if (addedSince.length) text.append(...links(addedSince), addedSince.length > 1 ? " are new" : " is new");
-      if (addedSince.length && updatedSince.length) text.append("; ");
-      if (updatedSince.length) text.append(...links(updatedSince), updatedSince.length > 1 ? " were updated" : " was updated");
-      text.append(".");
-      since.hidden = false;
-    }
-
-    let freshLog = 0;
-    for (const item of $$(".news-item")) {
-      const fresh = isFresh(item.dataset.date);
-      item.classList.toggle("is-fresh", fresh);
-      const tag = $("[data-fresh]", item);
-      if (tag) tag.hidden = !fresh;
-      if (fresh) freshLog++;
-    }
-    const dot = $("[data-updates-dot]");
-    if (dot) dot.hidden = !(freshLog || updatedSince.length || addedSince.length);
   };
 
-  $("[data-since-dismiss]")?.addEventListener("click", () => {
-    $("[data-since]").hidden = true;
-    session.set("since-dismissed", "1");
-  });
   renderBadges();
 
   /* live freshness: each repo's latest commit date from GitHub, cached 12 h */
