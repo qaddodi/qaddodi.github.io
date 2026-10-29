@@ -67,7 +67,7 @@ from disk (`file://`) shows unstyled; preview it through a local server with thi
 
 ## Features that remember things
 
-Guided-path progress, the "Updated since your visit" badges on tool rows,
+Guided-path progress
 and the theme choice are kept in the reader's own browser (`localStorage`, keys start with
 `qd:`). Nothing is sent anywhere, and the page works fully without them.
 

@@ -11,12 +11,13 @@
   <div class="plate-body">
     <h3 class="plate-title">
       {%- if p.soon %}{{ p.title }}{% else %}<a class="plate-link" href="{{ p.url }}" data-track="{{ p.id }}">{{ p.title }}</a>{% endif %}
-      <span class="badges" data-badges></span>
     </h3>
     <p class="plate-summary">{{ p.summary }}</p>
   </div>
 
-  {%- if p.soon %}
-  <footer class="plate-foot"><span class="plate-soon">Coming soon</span></footer>
-  {%- endif %}
+  <footer class="plate-foot">
+    <span class="pill pill--type">{{ p.kind | default: sec.pill }}</span>
+    {%- if p.soon %}<span class="pill pill--soon">Coming soon</span>{% endif %}
+    <span class="badges" data-badges></span>
+  </footer>
 </article>

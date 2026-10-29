@@ -494,7 +494,6 @@ html:not(.js) .js-only { display: none !important; }
   white-space: nowrap;
 }
 .badge--new { background: var(--ink); color: var(--bg); }
-.badge--since { background: var(--c); color: var(--c-on); }
 
 .plate-body { display: grid; gap: 6px; padding: 14px 16px 4px; }
 .plate-title {
@@ -1063,7 +1062,7 @@ dialog::backdrop { background: rgb(14 13 17 / .45); }
 .badges:empty { display: none; }
 .badge { display: inline; padding: 0; border-radius: 0; background: none; box-shadow: none; font-family: var(--sans); font-size: .85rem; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--accent); }
 .badge + .badge { margin-left: 8px; }
-.badge--since, .badge--updated { color: var(--muted); }
+.badge--updated { color: var(--muted); }
 .plate:has(.badges:not(:empty)) .plate-body { padding-right: 0; }
 .plate-foot, .plate.is-wide .plate-foot { grid-column: 2; margin: 0; padding: 4px 0 0; }
 .plate-soon { display: inline; height: auto; margin: 0; padding: 0; border: 0; border-radius: 0; font-family: var(--sans); font-size: .85rem; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--muted); }
@@ -1132,17 +1131,49 @@ dialog::backdrop { background: rgb(14 13 17 / .45); }
 .lost-actions { margin: 0; }
 .lost-actions a { text-decoration-color: var(--accent); text-underline-offset: 3px; }
 
-/* Rows as light cards: a hairline box and an arrow say "this opens a tool",
-   which matters on phones where there is no hover. Small corners, no shadow. */
+.term { white-space: nowrap; }
+
+/* Tool cards: a light box, the icon in its section color on a tinted square,
+   and a small pill that says what kind of tool it is. */
 .bento { gap: 12px; }
-.plate, .plate.is-wide, .plate:nth-child(odd), .plate:nth-child(even) { padding: 16px 18px; border: 1px solid var(--line-2); border-radius: 8px; background: var(--surface); }
-.plate:hover, .plate:focus-within { border-color: var(--ink); }
+.plate, .plate.is-wide, .plate:nth-child(odd), .plate:nth-child(even) {
+  grid-template-columns: 56px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  column-gap: 16px;
+  align-items: center;
+  padding: 16px 18px;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.plate:hover, .plate:focus-within { border-color: color-mix(in srgb, var(--c) 60%, var(--line-2)); }
 .plate.is-soon:hover { border-color: var(--line-2); }
-.plate-body { position: relative; padding-right: 28px; }
-.plate:not(.is-soon) .plate-body::after { content: "\2192"; position: absolute; top: 0; right: 0; color: var(--muted); font-size: 1.05rem; line-height: 1.3; }
-.plate:hover .plate-body::after, .plate:focus-within .plate-body::after { color: var(--accent); }
+.plate-art, .plate.is-wide .plate-art {
+  grid-row: 1 / -1;
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--c) 16%, var(--surface));
+}
+.plate-glyph { width: 30px !important; height: 30px !important; color: var(--c-ink); stroke-width: 1.6; }
+.plate.is-soon .plate-art { filter: none; opacity: 1; background: var(--surface-2); }
+.plate.is-soon .plate-glyph { color: var(--muted); }
+.plate-body, .plate.is-wide .plate-body { align-self: end; padding: 0; }
+.plate:hover .plate-link, .plate:focus-within .plate-link { text-decoration-color: var(--c); }
+.plate-foot, .plate.is-wide .plate-foot { grid-column: 2; align-self: start; display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 8px 0 0; }
+.pill, .plate-foot .badge { display: inline-block; padding: 2px 9px; border-radius: 999px; font-family: var(--sans); font-size: .76rem; font-weight: 550; line-height: 1.5; letter-spacing: 0; text-transform: none; }
+.pill--type { background: color-mix(in srgb, var(--c) 14%, var(--surface)); color: var(--c-ink); }
+.pill--soon { border: 1px dashed var(--line-2); color: var(--muted); padding: 1px 8px; }
+.plate-foot .badges { display: contents; margin: 0; }
+.plate-foot .badge--new { background: var(--ink); color: var(--bg); }
+.plate-foot .badge + .badge { margin-left: 0; }
 @media (max-width: 720px) {
   .bento { gap: 10px; }
-  .plate, .plate.is-wide, .plate:nth-child(odd), .plate:nth-child(even) { padding: 14px 14px; }
+  .plate, .plate.is-wide, .plate:nth-child(odd), .plate:nth-child(even) { grid-template-columns: 48px minmax(0, 1fr); column-gap: 14px; padding: 14px; }
+  .plate-art, .plate.is-wide .plate-art { width: 48px; height: 48px; border-radius: 10px; }
+  .plate-glyph { width: 26px !important; height: 26px !important; }
 }
-.term { white-space: nowrap; }

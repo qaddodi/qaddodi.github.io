@@ -1,7 +1,7 @@
 /* ==========================================================================
    qaddodi.github.io — progressive enhancements
    The page is complete without JavaScript. Everything a reader does here
-   (pins, recent, streak, last visit, theme) stays in this browser's
+   (pins, recent, streak, theme) stays in this browser's
    localStorage under "qd:" keys and never leaves it.
    ========================================================================== */
 
@@ -35,10 +35,6 @@
     set(key, value) { try { localStorage.setItem("qd:" + key, JSON.stringify(value)); } catch (e) {} },
     del(key) { try { localStorage.removeItem("qd:" + key); } catch (e) {} },
   };
-  const session = {
-    get(key) { try { return sessionStorage.getItem("qd:" + key); } catch (e) { return null; } },
-    set(key, value) { try { sessionStorage.setItem("qd:" + key, value); } catch (e) {} },
-  };
 
   /* dates ------------------------------------------------------------------ */
   const pad2 = (n) => String(n).padStart(2, "0");
@@ -47,7 +43,6 @@
     const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(s || "");
     return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null;
   };
-  const startOfDay = (t) => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
   const fmtMonth = new Intl.DateTimeFormat(undefined, { month: "short", year: "numeric" });
   const fmtDay = new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric" });
   const fmtLong = new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric", year: "numeric" });
@@ -136,37 +131,18 @@
     toast(`Theme: ${themeLabel[theme]}`);
   });
 
-  /* ========================================================================
-     visits — "since your last visit"
-     ======================================================================== */
   const now = Date.now();
-  let prevVisit = session.get("prev");
-  if (prevVisit == null) {
-    prevVisit = Number(store.get("lastVisit", 0)) || 0;
-    session.set("prev", String(prevVisit));
-    store.set("lastVisit", now);
-  } else {
-    prevVisit = Number(prevVisit) || 0;
-  }
-  const returning = prevVisit > 0;
-  const freshAfter = returning ? startOfDay(prevVisit) + DAY : Infinity;
-  const isFresh = (day) => { const d = parseDay(day); return !!d && d.getTime() >= freshAfter; };
-
+  store.del("lastVisit"); // the "updated since your visit" badge is gone
   const plates = $$("article.plate");
 
   const renderBadges = () => {
-    const updatedSince = [];
     for (const plate of plates) {
-      const id = plate.dataset.project;
       const added = parseDay(plate.dataset.added);
       const updated = parseDay(plate.dataset.updated);
       const badges = $("[data-badges]", plate);
       badges.textContent = "";
       const isNew = added && now - added.getTime() < (CFG.newDays || 45) * DAY;
-      const since = !isNew && isFresh(plate.dataset.updated);
       if (isNew) badges.append(el("span", { class: "badge badge--new", text: "New" }));
-      if (since) badges.append(el("span", { class: "badge badge--since", text: "Updated since your visit" }));
-      if (since) updatedSince.push(id);
 
       const label = $("[data-updated-label]", plate);
       if (label && updated) {

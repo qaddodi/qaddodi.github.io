@@ -59,6 +59,7 @@
   glyph: hibsago
   art: hibsago
   cta: Open protocol
+  kind: Protocol
   summary: >-
     A one-page clinic guide to bepirovirsen for hepatitis B: who qualifies, dosing, labs, and when to stop.
   specimen:

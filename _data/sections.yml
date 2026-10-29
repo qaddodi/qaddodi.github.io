@@ -11,6 +11,7 @@
   vessel: Bilirubin
   title: Calculators
   one: Calculator
+  pill: Calculator
   hue: amber
   verb: Open calculator
   blurb: Risk and pressure estimates from published models.
@@ -20,6 +21,7 @@
   vessel: Hepatic artery
   title: Cases
   one: Interactive case
+  pill: Case
   hue: crimson
   verb: Start case
   blurb: Reason through real patterns before the reveal.
@@ -29,6 +31,7 @@
   vessel: Portal vein
   title: Simulators
   one: Simulator
+  pill: Simulator
   hue: blue
   verb: Run simulator
   blurb: Move a variable and watch the physiology answer.
@@ -38,6 +41,7 @@
   vessel: Bile duct
   title: Research
   one: Research tool
+  pill: Research tool
   hue: green
   verb: Open workspace
   blurb: Writing and signal tools that run in your browser.
