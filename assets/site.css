@@ -1218,3 +1218,7 @@ dialog::backdrop { background: rgb(14 13 17 / .45); }
 html { overflow-x: hidden; }
 @supports (overflow-x: clip) { html { overflow-x: clip; } }
 @media (max-width: 720px) { .search input { font-size: 16px; } }
+/* Safari counts the lobule drawing's off-canvas parts (it is wider than its
+   viewBox and drawn with overflow visible) as page width, so clip it. */
+.hero .lobule, .hero .lobule-art { overflow: hidden; }
+@media (max-width: 720px) { .topbar, .hero, main, .footer { overflow-x: hidden; } }
