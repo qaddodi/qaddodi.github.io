@@ -47,7 +47,16 @@ body_class: home
           {%- for t in g.types %}
             {%- assign s = sections | where: "type", t | first -%}
             {%- assign in_section = projects | where: "type", t -%}
-            {%- for p in in_section %}
+            {%- assign ready = in_section | where_exp: "p", "p.soon != true" -%}
+            {%- for p in ready %}
+          {% include plate.html project=p section=s %}
+            {%- endfor -%}
+          {%- endfor %}
+          {%- comment %} Coming-soon tools go last in their group. {% endcomment -%}
+          {%- for t in g.types %}
+            {%- assign s = sections | where: "type", t | first -%}
+            {%- assign soon = projects | where: "type", t | where: "soon", true -%}
+            {%- for p in soon %}
           {% include plate.html project=p section=s %}
             {%- endfor -%}
           {%- endfor %}

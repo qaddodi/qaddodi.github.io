@@ -1164,11 +1164,14 @@ dialog::backdrop { background: rgb(14 13 17 / .45); }
 .plate.is-soon .plate-glyph { color: var(--muted); }
 .plate-body, .plate.is-wide .plate-body { align-self: center; padding: 0; }
 .plate:hover .plate-link, .plate:focus-within .plate-link { text-decoration-color: var(--c); }
-.plate-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-.plate-tags { flex: none; display: flex; gap: 6px; margin: 2px 0 0; }
+/* The pill floats right, so only the title's first line gives way to it. */
+.plate-body, .plate.is-wide .plate-body { display: block; }
+.plate-tags { float: right; margin: 2px 0 -12px 12px; }
+.plate-summary { clear: none; }
+.plate-summary { margin-top: 4px; }
 .pill, .plate-tags .badge { display: inline-block; padding: 2px 9px; border-radius: 999px; font-family: var(--sans); font-size: .76rem; font-weight: 550; line-height: 1.5; letter-spacing: 0; text-transform: none; }
 .pill--type { background: color-mix(in srgb, var(--c) 14%, var(--surface)); color: var(--c-ink); }
-.pill--soon { border: 1px dashed var(--line-2); color: var(--muted); padding: 1px 8px; }
+.pill--soon { background: var(--surface-2); color: var(--muted); }
 .plate-tags .badges { display: contents; margin: 0; }
 .plate-tags .badge--new { background: var(--ink); color: var(--bg); }
 .plate-tags .badge + .badge { margin-left: 0; }
@@ -1177,10 +1180,14 @@ dialog::backdrop { background: rgb(14 13 17 / .45); }
   .plate, .plate.is-wide, .plate:nth-child(odd), .plate:nth-child(even) { grid-template-columns: 48px minmax(0, 1fr); column-gap: 14px; padding: 14px; }
   .plate-art, .plate.is-wide .plate-art { width: 48px; height: 48px; border-radius: 10px; }
   .plate-glyph { width: 26px !important; height: 26px !important; }
-  /* Phones: a smaller pill tucked into the card's top-right corner, with a
-     little room above the title so the two never collide. */
-  .plate, .plate.is-wide, .plate:nth-child(odd), .plate:nth-child(even) { position: relative; padding-top: 26px; }
-  .plate-tags { position: absolute; top: 8px; right: 8px; margin: 0; }
-  .plate-tags .pill { padding: 1px 7px; font-size: .68rem; }
+  /* Phones: a tighter card. Smaller icon at the top, smaller type, and the
+     pill floats in the top-right corner beside the title's first line. */
+  .plate, .plate.is-wide, .plate:nth-child(odd), .plate:nth-child(even) { grid-template-columns: 36px minmax(0, 1fr); column-gap: 12px; padding: 12px 12px 13px; }
+  .plate-art, .plate.is-wide .plate-art { align-self: start; width: 36px; height: 36px; border-radius: 9px; }
+  .plate-glyph { width: 21px !important; height: 21px !important; }
+  .plate-title, .plate.is-wide .plate-title { font-size: 1rem; line-height: 1.25; letter-spacing: -.01em; }
+  .plate-summary { margin-top: 3px; font-size: .86rem; line-height: 1.45; }
+  .plate-tags { margin: 1px 0 -12px 6px; }
+  .plate-tags .pill { padding: 1px 6px; font-size: .64rem; }
 }
-.plate-soon-line { margin: 8px 0 0; }
+.plate-title { text-wrap: wrap; }

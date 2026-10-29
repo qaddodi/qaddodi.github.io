@@ -9,18 +9,13 @@
   </div>
 
   <div class="plate-body">
-    <div class="plate-head">
-      <h3 class="plate-title">
-        {%- if p.soon %}{{ p.title }}{% else %}<a class="plate-link" href="{{ p.url }}" data-track="{{ p.id }}">{{ p.title }}</a>{% endif %}
-      </h3>
-      <p class="plate-tags">
-        <span class="pill pill--type">{{ p.kind | default: sec.pill }}</span>
-      </p>
-    </div>
+    <p class="plate-tags">
+      {%- if p.soon %}<span class="pill pill--soon">Coming soon</span>
+      {%- else %}<span class="pill pill--type">{{ p.kind | default: sec.pill }}</span>{% endif -%}
+    </p>
+    <h3 class="plate-title">
+      {%- if p.soon %}{{ p.title }}{% else %}<a class="plate-link" href="{{ p.url }}" data-track="{{ p.id }}">{{ p.title }}</a>{% endif %}
+    </h3>
     <p class="plate-summary">{{ p.summary }}</p>
-    {%- if p.soon %}
-    <p class="plate-soon-line"><span class="pill pill--soon">Coming soon</span></p>
-    {%- endif %}
   </div>
-
 </article>
